@@ -109,6 +109,20 @@ for (const f of ["cdd-intake-proposal-r6-unknown-heavy.json", "cdd-intake-propos
   check("rejects non-object", !validateIntakeProposal(null).valid);
 }
 
+// 7b. P2 — generatedAt must be a real ISO 8601 timestamp, not just non-blank
+{
+  const p = buildIntakeProposal(records[0], { now: FIXED_NOW });
+  check("accepts ISO Z timestamp (toISOString shape)", validateIntakeProposal(p).valid);
+  check("accepts ISO offset timestamp",
+    validateIntakeProposal({ ...p, generatedAt: "2026-08-26T08:30:00+08:00" }).valid);
+  check("accepts ISO without millis",
+    validateIntakeProposal({ ...p, generatedAt: "2026-08-26T00:00:00Z" }).valid);
+  check("rejects date-only string", !validateIntakeProposal({ ...p, generatedAt: "2026-08-26" }).valid);
+  check("rejects human-readable string", !validateIntakeProposal({ ...p, generatedAt: "August 26, 2026" }).valid);
+  check("rejects epoch number", !validateIntakeProposal({ ...p, generatedAt: 1785100000000 }).valid);
+  check("rejects impossible date (invalid ISO)", !validateIntakeProposal({ ...p, generatedAt: "2026-13-45T99:99:99Z" }).valid);
+}
+
 // 8. unknown-heavy fixture semantics (R6) — unknowns preserved, not invented
 {
   const f = loadFixture("cdd-intake-proposal-r6-unknown-heavy.json");

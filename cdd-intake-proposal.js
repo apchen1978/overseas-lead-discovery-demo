@@ -41,6 +41,13 @@ const SIGNAL_SOURCE_FIELD = {
 
 const isBlank = (v) => v === undefined || v === null || String(v).trim() === "";
 
+// ISO 8601 timestamp check (P2 review item): accepts the shapes produced by
+// Date#toISOString() and common ISO 8601 variants; rejects non-ISO strings.
+const ISO_TIMESTAMP_RE =
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
+const isIsoTimestamp = (v) =>
+  typeof v === "string" && ISO_TIMESTAMP_RE.test(v) && !Number.isNaN(Date.parse(v));
+
 /**
  * Build an intake proposal from one source record (the records.js shape).
  * Deterministic except `generatedAt`.
@@ -128,6 +135,7 @@ export function validateIntakeProposal(p) {
   need(p.sourceSystem === INTAKE_PROPOSAL.sourceSystem, `sourceSystem must be "${INTAKE_PROPOSAL.sourceSystem}"`);
   need(!isBlank(p.sourceRecordId), "sourceRecordId must be present");
   need(!isBlank(p.generatedAt), "generatedAt must be present (ISO timestamp)");
+  need(isIsoTimestamp(p.generatedAt), "generatedAt must be a valid ISO 8601 timestamp");
 
   // sourceDisclosure — the truth boundary must survive export.
   const d = p.sourceDisclosure || {};

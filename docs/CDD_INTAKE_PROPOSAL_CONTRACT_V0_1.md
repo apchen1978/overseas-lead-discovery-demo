@@ -94,19 +94,45 @@ fixture == build(record) modulo `generatedAt`.
 5. **Nothing in this export authorizes action.** Human decision and commercial
    outcome remain entirely with the CDD human workflow.
 
+## 6a. Import acceptance gate (P1, reviewer ruling 2026-08-26 — ACCEPTED with condition)
+
+Independent review accepted the source-side contract with one hard condition for
+the CDD import slice: `proposedSignals` carry `signal` / `value` / `sourceField`
+only — there is **no per-signal `rationale` or `sourceRefs`**, so the export
+cannot answer "which source evidence supports BUYER_FIT?" per signal. Therefore
+the CDD import **must not** convert signals into formal evidence directly.
+
+The import slice MUST enforce, before anything enters the existing CDD adapter:
+
+1. **Import preview** shows source signal, global `rationale[]` and source tier —
+   never a bare signal → evidence conversion.
+2. **Owner confirms each proposed signal individually.**
+3. Until confirmed, every signal stays labeled **`PROPOSED`** — it is not
+   evidence.
+4. CDD **never auto-registers** a contradiction (potentialTensions require
+   human escalation, per §6 item 3).
+5. CDD **never auto-produces** a recommendation from this proposal.
+
+These are acceptance gates for the import slice, not blockers for the
+source-side contract (`72d81ee`). The source side does not change its schema to
+enforce this; the import side is responsible for the human-review-first preview.
+
 ## 7. Validation
 
 ```bash
 node cdd-intake-proposal.test.mjs
 ```
 
-Checks (35): both fixtures validate; fixture == build(record) modulo
+Checks (42): both fixtures validate; fixture == build(record) modulo
 `generatedAt`; determinism (two runs identical, only `generatedAt` differs
 with a different clock); all 8 source records build + validate; contract
 literals; truth boundary preserved; no forbidden field leaks; validation
 fails closed on every violation class (wrong kind / version / system, missing
 disclosure, `anonymized:false`, `humanReviewRequired:false`, unknown signal,
 tension flag dropped, `humanDecision` / `recommendation` leak, `entryBarrier`
-leak, non-object); R6 unknowns verbatim; R1 tension flagged non-canonical.
+leak, non-object); **P2: `generatedAt` must be a real ISO 8601 timestamp**
+(accepts Z / offset / no-millis; rejects date-only, human-readable, epoch
+number, impossible date); R6 unknowns verbatim; R1 tension flagged
+non-canonical.
 
-**Result: 35/35 PASS** · deterministic · no network · no persistence.
+**Result: 42/42 PASS** · deterministic · no network · no persistence.
