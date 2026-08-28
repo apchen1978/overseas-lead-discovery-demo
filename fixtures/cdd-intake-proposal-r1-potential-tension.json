@@ -1,0 +1,75 @@
+{
+  "kind": "cdd-intake-proposal",
+  "schemaVersion": 1,
+  "sourceSystem": "overseas-lead-discovery",
+  "sourceRecordId": "R1",
+  "generatedAt": "2026-08-26T00:00:00.000Z",
+  "sourceDisclosure": {
+    "classification": "REPRESENTATIVE_ANONYMIZED",
+    "anonymized": true,
+    "syntheticElements": true,
+    "realProspectIdentitiesExposed": false,
+    "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+  },
+  "opportunityProposal": {
+    "buyer": {
+      "name": "Norcliff Flooring Group",
+      "type": "Importer / private-label flooring brand"
+    },
+    "market": {
+      "category": "SPC / LVT flooring",
+      "importOpenness": "YES"
+    },
+    "rationale": [
+      "Group structure built around importing and co-producing rigid-core flooring with overseas manufacturing partners (PRIMARY)",
+      "Public product program lists SPC / WPC / LVT as core lines (PRIMARY)"
+    ],
+    "sourceTiers": [
+      "PRIMARY",
+      "SUPPORTING"
+    ]
+  },
+  "proposedSignals": [
+    {
+      "signal": "BUYER_FIT",
+      "value": "HIGH",
+      "sourceField": "buyerFit"
+    },
+    {
+      "signal": "CATEGORY_FIT",
+      "value": "STRONG",
+      "sourceField": "categoryFit"
+    },
+    {
+      "signal": "IMPORT_OPENNESS",
+      "value": "YES",
+      "sourceField": "importOpenness"
+    }
+  ],
+  "unknowns": [
+    "Exact annual purchase volume",
+    "Which specific suppliers are current"
+  ],
+  "potentialTensions": [
+    {
+      "note": "Describes itself as a global manufacturer, so some product may be produced in-house; still purchases Asian-made finished goods (contradictory evidence)",
+      "notCanonicalContradiction": true,
+      "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+    }
+  ],
+  "humanReviewRequired": true,
+  "boundary": {
+    "excludedFromCdd": [
+      "entryBarrier",
+      "asiaSourcing",
+      "recommendation",
+      "momentum",
+      "coverage",
+      "probability",
+      "priorityScore",
+      "humanDecision",
+      "commercialOutcome"
+    ],
+    "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+  }
+}

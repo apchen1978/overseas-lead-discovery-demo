@@ -1,0 +1,75 @@
+{
+  "kind": "cdd-intake-proposal",
+  "schemaVersion": 1,
+  "sourceSystem": "overseas-lead-discovery",
+  "sourceRecordId": "R6",
+  "generatedAt": "2026-08-26T00:00:00.000Z",
+  "sourceDisclosure": {
+    "classification": "REPRESENTATIVE_ANONYMIZED",
+    "anonymized": true,
+    "syntheticElements": true,
+    "realProspectIdentitiesExposed": false,
+    "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+  },
+  "opportunityProposal": {
+    "buyer": {
+      "name": "Delphi Textile Distributors",
+      "type": "Wholesale distributor / private-label textiles"
+    },
+    "market": {
+      "category": "Window treatments · fabrics",
+      "importOpenness": "YES"
+    },
+    "rationale": [
+      "Trade-only distributor of drapery fabrics and finished window treatments (PRIMARY)",
+      "Carries multiple international brands, indicating imported goods (PRIMARY)"
+    ],
+    "sourceTiers": [
+      "PRIMARY",
+      "SUPPORTING"
+    ]
+  },
+  "proposedSignals": [
+    {
+      "signal": "BUYER_FIT",
+      "value": "HIGH",
+      "sourceField": "buyerFit"
+    },
+    {
+      "signal": "CATEGORY_FIT",
+      "value": "STRONG",
+      "sourceField": "categoryFit"
+    },
+    {
+      "signal": "IMPORT_OPENNESS",
+      "value": "YES",
+      "sourceField": "importOpenness"
+    }
+  ],
+  "unknowns": [
+    "Asia sourcing",
+    "Whether it buys finished curtains or fabric only"
+  ],
+  "potentialTensions": [
+    {
+      "note": "Asia sourcing not confirmed — imports may be European (import openness ≠ Asia sourcing)",
+      "notCanonicalContradiction": true,
+      "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+    }
+  ],
+  "humanReviewRequired": true,
+  "boundary": {
+    "excludedFromCdd": [
+      "entryBarrier",
+      "asiaSourcing",
+      "recommendation",
+      "momentum",
+      "coverage",
+      "probability",
+      "priorityScore",
+      "humanDecision",
+      "commercialOutcome"
+    ],
+    "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+  }
+}
