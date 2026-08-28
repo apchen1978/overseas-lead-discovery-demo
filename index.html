@@ -82,6 +82,13 @@
       padding: 10px; cursor: pointer;
     }
     .evidence-toggle:hover { background: #e4e8df; }
+    .handoff-action {
+      display: block; width: calc(100% - 32px); margin: 0 16px 12px;
+      padding: 9px 12px; border: 1px solid var(--forest); border-radius: 8px;
+      background: #fff; color: var(--forest); font: inherit; font-size: 12.5px;
+      font-weight: 700; text-align: center; cursor: pointer;
+    }
+    .handoff-action:hover { background: var(--paper); }
     .evidence { display: none; padding: 14px 16px 18px; border-top: 1px solid var(--line); background: #fafbf7; font-size: 13px; }
     .card.open .evidence { display: block; }
     .evidence h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 12px 0 6px; }
@@ -140,6 +147,7 @@
 
   <script type="module">
     import { records } from "./records.js";
+    import { buildIntakeProposal } from "./cdd-intake-proposal.js";
 
     const cards = document.getElementById("cards");
 
@@ -175,6 +183,7 @@
           <div class="row"><span>Asia Sourcing</span><b>${fmt(r.asiaSourcing)}</b></div>
           <div class="row"><span>Entry Barrier</span><b>${fmt(r.entryBarrier)}</b></div>
         </div>
+        <button class="handoff-action" type="button" data-record-id="${r.id}">Export CDD Intake Proposal · JSON</button>
         <button class="evidence-toggle" type="button">View Evidence</button>
         <div class="evidence">
           <h4>WHY (with sources)</h4>
@@ -187,6 +196,16 @@
           <div class="unknown-box">${r.unknown.map((u) => `<div>· ${u}</div>`).join("")}</div>
         </div>
       `;
+      el.querySelector(".handoff-action").addEventListener("click", () => {
+        const proposal = buildIntakeProposal(r);
+        const blob = new Blob([JSON.stringify(proposal, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = `CDD-Intake-Proposal-${r.id}.json`;
+        anchor.click();
+        URL.revokeObjectURL(url);
+      });
       el.querySelector(".evidence-toggle").addEventListener("click", () => el.classList.toggle("open"));
       cards.appendChild(el);
     }
