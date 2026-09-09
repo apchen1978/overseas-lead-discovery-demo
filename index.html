@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="data:," />
-  <title>Overseas Lead Discovery — Qualification Demo</title>
+  <title>海外客戶開發 — 證據式資格篩選 Demo</title>
   <style>
     :root {
       --ink: #17271f;
@@ -101,6 +101,8 @@
     .unknown-box { background: #f6f1e4; border: 1px solid #e5d9b8; border-radius: 8px; padding: 8px 10px; font-size: 12.5px; }
     .foot { margin-top: 28px; text-align: center; font-size: 12px; color: var(--muted); }
     .foot strong { color: var(--ink); }
+    .lang-switch { position: absolute; top: 18px; right: 18px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--forest); padding: 6px 11px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .lang-switch:hover { background: var(--paper); }
     @media (max-width: 640px) {
       .cards { grid-template-columns: 1fr; }
       .stats { grid-template-columns: repeat(2, 1fr); }
@@ -111,38 +113,35 @@
 <body>
   <div class="wrap">
     <header>
-      <p class="kicker">AI-Assisted Overseas Lead Discovery</p>
-      <h1>Which companies are worth a sales team's time?</h1>
-      <p class="sub">AI can find hundreds of companies. This workflow qualifies them with public-web evidence — and is honest about what it does not know.</p>
+      <button class="lang-switch" id="lang-switch" type="button" aria-label="切換語言">EN</button>
+      <p class="kicker" data-copy="kicker">AI 輔助海外客戶開發</p>
+      <h1 data-copy="title">哪些公司值得業務投入時間？</h1>
+      <p class="sub" data-copy="sub">AI 可以找到幾百家公司；這個流程用公開網路證據逐一篩選，也誠實保留目前不知道的事。</p>
     </header>
 
-    <div class="flow" aria-label="Workflow steps">
-      <span>44 discovered</span><span class="arrow">→</span>
-      <span>evidence qualification</span><span class="arrow">→</span>
-      <span>Top candidates</span><span class="arrow">→</span>
-      <span>contradiction checking</span><span class="arrow">→</span>
-      <span>domain learning</span><span class="arrow">→</span>
-      <span>refined shortlist</span>
+    <div class="flow" id="flow" aria-label="工作流程">
+      <span data-copy="flow1">44 家候選</span><span class="arrow">→</span>
+      <span data-copy="flow2">證據式資格篩選</span><span class="arrow">→</span>
+      <span data-copy="flow3">優先候選</span><span class="arrow">→</span>
+      <span data-copy="flow4">矛盾證據檢查</span><span class="arrow">→</span>
+      <span data-copy="flow5">領域學習</span><span class="arrow">→</span>
+      <span data-copy="flow6">收斂短名單</span>
     </div>
 
     <div class="disclosure">
-      <strong>Disclosure</strong>
-      No unsupported claim is presented as confirmed.
-      Representative, anonymized records — real prospect identities are not shown.
-      Public-web evidence workflow. Simulated / domain-learning elements included.
-      Real Owner Precision@20 remains pending. No outreach performed.
-      No commercial adoption claim.
+      <strong data-copy="disclosureTitle">資料揭露</strong>
+      <span data-copy="disclosureBody">沒有證據支持的資訊，不會被標示為已確認事實。這裡展示的是脫敏代表性資料與公開網路證據流程；包含模擬／領域學習元素，真實 Owner Precision@20 尚待驗證，未進行 outreach，也不宣稱商業採用。</span>
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="n">44</div><div class="l">companies discovered</div></div>
-      <div class="stat"><div class="n">20</div><div class="l">top candidates</div></div>
-      <div class="stat"><div class="n">8</div><div class="l">shown here (anon.)</div></div>
+      <div class="stat"><div class="n">44</div><div class="l" data-copy="stat1">家候選公司</div></div>
+      <div class="stat"><div class="n">20</div><div class="l" data-copy="stat2">家證據式短名單</div></div>
+      <div class="stat"><div class="n">8</div><div class="l" data-copy="stat3">家展示資料（脫敏）</div></div>
     </div>
 
     <div class="cards" id="cards"></div>
 
-    <p class="foot"><strong>Lead list ≠ Qualified lead list.</strong> Every claim here carries a source; every unknown is labeled. Public-web discovery → evidence qualification → contradiction checking → human judgment → qualification iteration.</p>
+    <p class="foot"><strong data-copy="footStrong">名單 ≠ 合格商機名單。</strong> <span data-copy="footBody">每個主張都附有來源；每個未知都會被標示。公開網路發現 → 證據式資格篩選 → 矛盾檢查 → 人的判斷 → 迭代篩選。</span></p>
   </div>
 
   <script type="module">
@@ -150,6 +149,22 @@
     import { buildIntakeProposal } from "./cdd-intake-proposal.js";
 
     const cards = document.getElementById("cards");
+    const locale = {
+      zh: { kicker: "AI 輔助海外客戶開發", title: "哪些公司值得業務投入時間？", sub: "AI 可以找到幾百家公司；這個流程用公開網路證據逐一篩選，也誠實保留目前不知道的事。", flow1: "44 家候選", flow2: "證據式資格篩選", flow3: "優先候選", flow4: "矛盾證據檢查", flow5: "領域學習", flow6: "收斂短名單", disclosureTitle: "資料揭露", disclosureBody: "沒有證據支持的資訊，不會被標示為已確認事實。這裡展示的是脫敏代表性資料與公開網路證據流程；包含模擬／領域學習元素，真實 Owner Precision@20 尚待驗證，未進行 outreach，也不宣稱商業採用。", stat1: "家候選公司", stat2: "家證據式短名單", stat3: "家展示資料（脫敏）", footStrong: "名單 ≠ 合格商機名單。", footBody: "每個主張都附有來源；每個未知都會被標示。公開網路發現 → 證據式資格篩選 → 矛盾檢查 → 人的判斷 → 迭代篩選。", buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻", export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "脫敏資料" },
+      en: { kicker: "AI-Assisted Overseas Lead Discovery", title: "Which companies are worth a sales team's time?", sub: "AI can find hundreds of companies. This workflow qualifies them with public-web evidence — and is honest about what it does not know.", flow1: "44 discovered", flow2: "evidence qualification", flow3: "top candidates", flow4: "contradiction checking", flow5: "domain learning", flow6: "refined shortlist", disclosureTitle: "Disclosure", disclosureBody: "No unsupported claim is presented as confirmed. Representative, anonymized records and a public-web evidence workflow are shown; simulated / domain-learning elements are included. Real Owner Precision@20 remains pending, no outreach was performed, and no commercial adoption is claimed.", stat1: "companies discovered", stat2: "evidence-qualified shortlist", stat3: "shown here (anonymized)", footStrong: "Lead list ≠ qualified lead list.", footBody: "Every claim here carries a source; every unknown is labeled. Public-web discovery → evidence qualification → contradiction checking → human judgment → qualification iteration.", buyer: "Buyer Fit", category: "Category Fit", import: "Import Openness", asia: "Asia Sourcing", barrier: "Entry Barrier", export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "UNKNOWN", anonymized: "ANONYMIZED" },
+    };
+    let lang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "zh";
+    const copy = () => locale[lang];
+    const t = (key) => copy()[key];
+    const applyLocale = () => {
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+      document.title = lang === "zh" ? "海外客戶開發 — 證據式資格篩選 Demo" : "Overseas Lead Discovery — Qualification Demo";
+      document.querySelectorAll("[data-copy]").forEach((node) => { node.textContent = t(node.dataset.copy); });
+      document.getElementById("lang-switch").textContent = lang === "zh" ? "EN" : "繁中";
+      document.getElementById("lang-switch").setAttribute("aria-label", lang === "zh" ? "Switch language" : "切換語言");
+      document.getElementById("flow").setAttribute("aria-label", lang === "zh" ? "工作流程" : "Workflow steps");
+      renderCards();
+    };
 
     const fmt = (v) => {
       if (v === "HIGH" || v === "STRONG" || v === "YES" || v === "CONFIRMED") return `<span class="val-hi">${v}</span>`;
@@ -158,41 +173,43 @@
       return v;
     };
 
-    for (const r of records) {
+    function renderCards() {
+      cards.innerHTML = "";
+      for (const r of records) {
       const el = document.createElement("article");
       el.className = "card" + (r.flaggedWeak ? " weak" : "");
       const weakTag = r.flaggedWeak ? '<span class="tag weak">WEAK CATEGORY FIT</span>' : "";
       el.innerHTML = `
         <div class="card-head">
-          <div class="id">${r.id} · ANONYMIZED</div>
+          <div class="id">${r.id} · ${t("anonymized")}</div>
           <h3>${r.name}</h3>
           <div class="meta">${r.type}</div>
           <div class="meta">Category: ${r.category}</div>
           <div class="tags">
-            <span class="tag ok">Buyer ${r.buyerFit}</span>
-            <span class="tag ${r.categoryFit === "WEAK" ? "weak" : "ok"}">Category ${r.categoryFit}</span>
-            <span class="tag ${r.importOpenness === "YES" ? "ok" : "unk"}">Import ${r.importOpenness}</span>
-            <span class="tag ${r.asiaSourcing === "CONFIRMED" ? "ok" : "unk"}">Asia ${r.asiaSourcing}</span>
+            <span class="tag ok">${t("buyer")} ${r.buyerFit}</span>
+            <span class="tag ${r.categoryFit === "WEAK" ? "weak" : "ok"}">${t("category")} ${r.categoryFit}</span>
+            <span class="tag ${r.importOpenness === "YES" ? "ok" : "unk"}">${t("import")} ${r.importOpenness}</span>
+            <span class="tag ${r.asiaSourcing === "CONFIRMED" ? "ok" : "unk"}">${t("asia")} ${r.asiaSourcing}</span>
             ${weakTag}
           </div>
         </div>
         <div class="fits">
-          <div class="row"><span>Buyer Fit</span><b>${fmt(r.buyerFit)}</b></div>
-          <div class="row"><span>Category Fit</span><b>${fmt(r.categoryFit)}</b></div>
-          <div class="row"><span>Import Openness</span><b>${fmt(r.importOpenness)}</b></div>
-          <div class="row"><span>Asia Sourcing</span><b>${fmt(r.asiaSourcing)}</b></div>
-          <div class="row"><span>Entry Barrier</span><b>${fmt(r.entryBarrier)}</b></div>
+          <div class="row"><span>${t("buyer")}</span><b>${fmt(r.buyerFit)}</b></div>
+          <div class="row"><span>${t("category")}</span><b>${fmt(r.categoryFit)}</b></div>
+          <div class="row"><span>${t("import")}</span><b>${fmt(r.importOpenness)}</b></div>
+          <div class="row"><span>${t("asia")}</span><b>${fmt(r.asiaSourcing)}</b></div>
+          <div class="row"><span>${t("barrier")}</span><b>${fmt(r.entryBarrier)}</b></div>
         </div>
-        <button class="handoff-action" type="button" data-record-id="${r.id}">Export CDD Intake Proposal · JSON</button>
-        <button class="evidence-toggle" type="button">View Evidence</button>
+        <button class="handoff-action" type="button" data-record-id="${r.id}">${t("export")}</button>
+        <button class="evidence-toggle" type="button">${t("evidence")}</button>
         <div class="evidence">
-          <h4>WHY (with sources)</h4>
+          <h4>${t("why")}</h4>
           <ul>${r.why.map((w) => `<li>${w}</li>`).join("")}</ul>
-          <h4>WHY NOT / contradictory evidence</h4>
+          <h4>${t("whyNot")}</h4>
           <ul>${r.whyNot.map((w) => `<li>${w}</li>`).join("")}</ul>
-          <h4>Evidence sources</h4>
+          <h4>${t("sources")}</h4>
           <ul>${r.sources.map((s) => `<li>${s.note} <span class="tier ${s.tier}">${s.tier}</span></li>`).join("")}</ul>
-          <h4>UNKNOWN</h4>
+          <h4>${t("unknown")}</h4>
           <div class="unknown-box">${r.unknown.map((u) => `<div>· ${u}</div>`).join("")}</div>
         </div>
       `;
@@ -208,7 +225,10 @@
       });
       el.querySelector(".evidence-toggle").addEventListener("click", () => el.classList.toggle("open"));
       cards.appendChild(el);
+      }
     }
+    document.getElementById("lang-switch").addEventListener("click", () => { lang = lang === "zh" ? "en" : "zh"; applyLocale(); });
+    applyLocale();
   </script>
 </body>
 </html>
