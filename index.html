@@ -130,13 +130,13 @@
       <button class="lang-switch" id="lang-switch" type="button" aria-label="切換語言">EN</button>
       <p class="kicker" data-copy="kicker">AI 輔助海外客戶開發</p>
       <h1 data-copy="title">哪些公司值得業務投入時間？</h1>
-      <p class="sub" data-copy="sub">AI 可以找到幾百家公司；這個流程用公開網路證據逐一篩選，也誠實保留目前不知道的事。</p>
-      <p class="capability-note" data-copy="capabilityNote">公開網路公司研究、資料補充與 AI 輔助分類；證據與未知仍由人檢視。本示例未宣稱使用特定付費資料庫。</p>
+      <p class="sub" data-copy="sub">AI 先從公開網頁找出可能的買方，再用證據逐一查核；哪些公司值得業務繼續投入，最後仍要靠商業判斷。</p>
+      <p class="capability-note" data-copy="capabilityNote">這類工作可結合公開網頁研究、公司資料補充與 AI 分類。本例展示的是公開網頁證據，由人檢查判讀與未知之處；未指明使用特定付費資料庫。</p>
     </header>
 
     <div class="disclosure">
       <strong data-copy="disclosureTitle">資料揭露</strong>
-      <span data-copy="disclosureBody">沒有證據支持的資訊，不會被標示為已確認事實。這裡展示的是脫敏代表性資料與公開網路證據流程；包含模擬／領域學習元素，真實 Owner Precision@20 尚待驗證，未進行 outreach，也不宣稱商業採用。</span>
+      <span data-copy="disclosureBody">沒有證據支持的資訊，不會當成事實呈現。頁面使用匿名化的代表性資料，並展示如何查核公開網頁證據；其中也包含模擬與領域學習資料。真實資料的 Owner Precision@20 尚未驗證；未聯絡這些公司，也不宣稱已被商業採用。</span>
     </div>
 
     <div class="stats">
@@ -144,7 +144,7 @@
       <div class="stat"><div class="n">20</div><div class="l" data-copy="stat2">家證據式短名單</div></div>
       <div class="stat"><div class="n">8</div><div class="l" data-copy="stat3">家展示資料（脫敏）</div></div>
     </div>
-    <p class="funnel-note" data-copy="funnel">44 家候選經證據篩選後，20 家進入合格短名單；下方另展示 8 筆脫敏示例，並非 8 家最終商業優先對象。</p>
+    <p class="funnel-note" data-copy="funnel">44 家候選公司經證據篩選後，20 家列入證據合格短名單。頁面另展示 8 筆匿名示例，不代表 8 家已確認的優先開發對象。</p>
 
     <div class="cards" id="cards"></div>
     <div class="flow" id="flow" aria-label="工作流程">
@@ -163,7 +163,7 @@
       <a href="https://paulstradecraft.com/#contact" data-copy="nextLink">與 Paul 討論下一步 ↗</a>
     </section>
 
-    <p class="foot"><strong data-copy="footStrong">名單 ≠ 合格商機名單。</strong> <span data-copy="footBody">每個主張都附有來源；每個未知都會被標示。公開網路發現 → 證據式資格篩選 → 矛盾檢查 → 人的判斷 → 迭代篩選。</span></p>
+    <p class="foot"><strong data-copy="footStrong">名單 ≠ 合格商機名單。</strong> <span data-copy="footBody">每項判斷都附有來源；未知之處會明確標示。從公開網頁找資料、核對證據與矛盾，再由人做商業判斷。</span></p>
   </div>
 
   <script type="module">
@@ -172,7 +172,7 @@
 
     const cards = document.getElementById("cards");
     const locale = {
-      zh: { kicker: "AI 輔助海外客戶開發", title: "哪些公司值得業務投入時間？", sub: "AI 可以從公開網路找到候選公司，再以證據逐一檢視；商業判斷決定哪些值得業務投入時間。", capabilityNote: "這類工作可結合公開網路公司研究、資料補充與 AI 輔助分類。本示例展示公開網路證據；證據與未知由人檢視，未宣稱使用特定付費資料庫。", flow1: "44 家候選", flow2: "證據式資格篩選", flow3: "優先候選", flow4: "矛盾證據檢查", flow5: "領域學習", flow6: "收斂短名單", disclosureTitle: "資料揭露", disclosureBody: "沒有證據支持的資訊，不會被標示為已確認事實。這裡展示的是脫敏代表性資料與公開網路證據流程；包含模擬／領域學習元素，真實 Owner Precision@20 尚待驗證，未進行 outreach，也不宣稱商業採用。", stat1: "家候選公司", stat2: "家進入證據短名單", stat3: "筆匿名示例", funnel: "44 家候選經證據篩選後，20 家進入證據合格短名單；下方另展示 8 筆脫敏示例，並非 8 家最終商業優先對象。", notPrioritized: "雖有買家與進口訊號，品類契合仍弱，因此不優先投入業務時間。", nextTitle: "接著看看，客戶開發以外還能怎麼判斷", nextBody: "這裡是方法與代表性資料展示，不是 CRM 或自動發信服務。若你有一筆可匿名化的商業問題，可以再與 Paul 討論。", nextPathLink: "下一步：海外市場與商業判斷 ↗", nextLink: "與 Paul 討論真實問題 ↗", footStrong: "找到公司 ≠ 找到值得優先開發的買家。", footBody: "每個主張都附有來源；每個未知都會被標示。公開網路研究 → 證據資格檢視 → 矛盾檢查 → 人的商業判斷。", buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻", export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "脫敏資料" },
+      zh: { kicker: "AI 輔助海外客戶開發", title: "哪些公司值得業務投入時間？", sub: "AI 先從公開網頁找出可能的買方，再用證據逐一查核；哪些公司值得業務繼續投入，最後仍要靠商業判斷。", capabilityNote: "這類工作可結合公開網頁研究、公司資料補充與 AI 分類。本例展示的是公開網頁證據，由人檢查判讀與未知之處；未指明使用特定付費資料庫。", flow1: "44 家候選", flow2: "依證據篩選", flow3: "優先候選", flow4: "核對矛盾證據", flow5: "補充產業脈絡", flow6: "收斂候選名單", disclosureTitle: "資料揭露", disclosureBody: "沒有證據支持的資訊，不會當成事實呈現。頁面使用匿名化的代表性資料，並展示如何查核公開網頁證據；其中也包含模擬與領域學習資料。真實資料的 Owner Precision@20 尚未驗證；未聯絡這些公司，也不宣稱已被商業採用。", stat1: "家候選公司", stat2: "家列入證據合格名單", stat3: "筆匿名示例", funnel: "44 家候選公司經證據篩選後，20 家列入證據合格短名單。頁面另展示 8 筆匿名示例，不代表 8 家已確認的優先開發對象。", notPrioritized: "買方輪廓合適，也有進口開放訊號；但產品品類契合度偏弱，目前不列為優先開發對象。", nextTitle: "客戶開發之外，這套判斷還能用在哪裡？", nextBody: "這裡展示的是方法與匿名案例，不是 CRM，也不會自動寄出開發信。若你手上有商業問題，可先移除可識別資訊，再和 Paul 討論。", nextPathLink: "接著看：海外市場與商業判斷 ↗", nextLink: "與 Paul 討論真實問題 ↗", footStrong: "找到公司，不等於找到值得優先開發的買家。", footBody: "每項判斷都附有來源；未知之處會明確標示。從公開網頁找資料、核對證據與矛盾，再由人做商業判斷。", buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻", export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "匿名資料" },
       en: { kicker: "AI-Assisted Overseas Lead Discovery", title: "Which companies deserve a sales team's time?", sub: "AI can surface candidate companies from the public web. Evidence helps screen them; commercial judgment decides where people spend attention.", capabilityNote: "This kind of work can combine public-web company research, information enrichment, and AI-assisted classification. This example shows public-web evidence reviewed by people; no specific paid database is claimed.", flow1: "44 candidates", flow2: "evidence qualification", flow3: "top candidates", flow4: "contradiction checking", flow5: "domain learning", flow6: "refined shortlist", disclosureTitle: "Disclosure", disclosureBody: "No unsupported claim is presented as confirmed. Representative, anonymized records and a public-web evidence workflow are shown; simulated / domain-learning elements are included. Real Owner Precision@20 remains pending, no outreach was performed, and no commercial adoption is claimed.", stat1: "companies discovered", stat2: "evidence-qualified shortlist", stat3: "anonymized examples shown", funnel: "44 candidates were screened; 20 entered the evidence-qualified shortlist. Eight anonymized examples are shown below and are not eight proven commercial priorities.", notPrioritized: "Buyer and import signals are positive, but weak category fit means this account is not prioritized for sales attention.", nextTitle: "See where this kind of judgment leads next", nextBody: "This is a method and representative-data showcase, not a CRM or auto-outreach service. If you have an anonymizable commercial question, you can discuss it with Paul.", nextPathLink: "Next: overseas market and commercial judgment ↗", nextLink: "Discuss a real question with Paul ↗", footStrong: "Finding a company is not the same as finding a buyer worth prioritizing.", footBody: "Claims carry sources; unknowns stay labeled. Public-web research → evidence qualification → contradiction checking → human commercial judgment.", buyer: "Buyer Fit", category: "Category Fit", import: "Import Openness", asia: "Asia Sourcing", barrier: "Entry Barrier", export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "UNKNOWN", anonymized: "ANONYMIZED" },
     };
     const zhRecords = {
