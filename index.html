@@ -100,6 +100,8 @@
     .tier.VERIFICATION_REQUIRED { background: #f0ded8; color: #9c4433; }
     .unknown-box { background: #f6f1e4; border: 1px solid #e5d9b8; border-radius: 8px; padding: 8px 10px; font-size: 12.5px; }
     .foot { margin-top: 28px; text-align: center; font-size: 12px; color: var(--muted); }
+    .capability-note { max-width: 720px; margin: 10px auto 0; color: var(--muted); font-size: 13px; }
+    .priority-note { margin: 10px 16px 16px; padding: 9px 11px; border-left: 3px solid var(--amber); background: #fbf7ee; color: var(--forest); font-size: 13px; font-weight: 700; }
     .foot strong { color: var(--ink); }
     .funnel-note { margin: -12px auto 24px; max-width: 760px; text-align: center; color: var(--muted); font-size: 13px; }
     .learning-callout, .next-step { margin-top: 24px; border: 1px solid var(--line); border-left: 4px solid var(--amber); border-radius: 10px; background: #fff; padding: 14px 16px; }
@@ -110,7 +112,14 @@
     .lang-switch:hover { background: var(--paper); }
     @media (max-width: 640px) {
       .cards { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: 1fr; gap: 0; margin-bottom: 16px; }
+      .stat { display: flex; align-items: baseline; justify-content: center; gap: 10px; padding: 6px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; }
+      .stat .n { font-size: 21px; }
+      .stat .l { margin-top: 0; }
+      .funnel-note { margin: 0 auto 18px; text-align: left; }
+      .flow { display: grid; grid-template-columns: 1fr; gap: 2px; margin: 18px auto 22px; }
+      .flow .arrow { display: none; }
+      .flow span:not(.arrow) { border: 0; border-left: 2px solid var(--line); border-radius: 0; background: transparent; padding: 4px 10px; }
       h1 { font-size: 24px; }
     }
   </style>
@@ -122,16 +131,8 @@
       <p class="kicker" data-copy="kicker">AI 輔助海外客戶開發</p>
       <h1 data-copy="title">哪些公司值得業務投入時間？</h1>
       <p class="sub" data-copy="sub">AI 可以找到幾百家公司；這個流程用公開網路證據逐一篩選，也誠實保留目前不知道的事。</p>
+      <p class="capability-note" data-copy="capabilityNote">公開網路公司研究、資料補充與 AI 輔助分類；證據與未知仍由人檢視。本示例未宣稱使用特定付費資料庫。</p>
     </header>
-
-    <div class="flow" id="flow" aria-label="工作流程">
-      <span data-copy="flow1">44 家候選</span><span class="arrow">→</span>
-      <span data-copy="flow2">證據式資格篩選</span><span class="arrow">→</span>
-      <span data-copy="flow3">優先候選</span><span class="arrow">→</span>
-      <span data-copy="flow4">矛盾證據檢查</span><span class="arrow">→</span>
-      <span data-copy="flow5">領域學習</span><span class="arrow">→</span>
-      <span data-copy="flow6">收斂短名單</span>
-    </div>
 
     <div class="disclosure">
       <strong data-copy="disclosureTitle">資料揭露</strong>
@@ -143,18 +144,22 @@
       <div class="stat"><div class="n">20</div><div class="l" data-copy="stat2">家證據式短名單</div></div>
       <div class="stat"><div class="n">8</div><div class="l" data-copy="stat3">家展示資料（脫敏）</div></div>
     </div>
-    <p class="funnel-note" data-copy="funnel">44 家候選 → 20 家證據合格短名單 → 8 家在此展示（脫敏）</p>
+    <p class="funnel-note" data-copy="funnel">44 家候選經證據篩選後，20 家進入合格短名單；下方另展示 8 筆脫敏示例，並非 8 家最終商業優先對象。</p>
 
     <div class="cards" id="cards"></div>
-
-    <section class="learning-callout" aria-labelledby="learning-title">
-      <h2 id="learning-title" data-copy="learningTitle">一個重要的篩選教訓</h2>
-      <p data-copy="learningBody">R8 看起來像合適買方：買方契合度 HIGH、進口開放度 YES；但因核心品類不匹配，仍不進入優先短名單。單一正面訊號不能取代品類契合。</p>
-    </section>
+    <div class="flow" id="flow" aria-label="工作流程">
+      <span data-copy="flow1">44 家候選</span><span class="arrow">→</span>
+      <span data-copy="flow2">證據式資格篩選</span><span class="arrow">→</span>
+      <span data-copy="flow3">優先候選</span><span class="arrow">→</span>
+      <span data-copy="flow4">矛盾證據檢查</span><span class="arrow">→</span>
+      <span data-copy="flow5">領域學習</span><span class="arrow">→</span>
+      <span data-copy="flow6">收斂短名單</span>
+    </div>
 
     <section class="next-step" aria-labelledby="next-title">
       <h2 id="next-title" data-copy="nextTitle">把這個方法帶進一個真實問題</h2>
       <p data-copy="nextBody">這裡是方法與合成資料的展示，不是 CRM 或自動發信服務。若你有一筆可匿名化的商業問題，可以先與 Paul 討論下一步。</p>
+      <a href="https://paulstradecraft.com/#global-business-development" data-copy="nextPathLink">接著看：海外市場與商業判斷 ↗</a>
       <a href="https://paulstradecraft.com/#contact" data-copy="nextLink">與 Paul 討論下一步 ↗</a>
     </section>
 
@@ -167,8 +172,8 @@
 
     const cards = document.getElementById("cards");
     const locale = {
-      zh: { kicker: "AI 輔助海外客戶開發", title: "哪些公司值得業務投入時間？", sub: "AI 可以找到幾百家公司；這個流程用公開網路證據逐一篩選，也誠實保留目前不知道的事。", flow1: "44 家候選", flow2: "證據式資格篩選", flow3: "優先候選", flow4: "矛盾證據檢查", flow5: "領域學習", flow6: "收斂短名單", disclosureTitle: "資料揭露", disclosureBody: "沒有證據支持的資訊，不會被標示為已確認事實。這裡展示的是脫敏代表性資料與公開網路證據流程；包含模擬／領域學習元素，真實 Owner Precision@20 尚待驗證，未進行 outreach，也不宣稱商業採用。", stat1: "家候選公司", stat2: "家證據式短名單", stat3: "家展示資料（脫敏）", funnel: "44 家候選 → 20 家證據合格短名單 → 8 家在此展示（脫敏）", learningTitle: "一個重要的篩選教訓", learningBody: "R8 看起來像合適買方：買方契合度 HIGH、進口開放度 YES；但因核心品類不匹配，仍不進入優先短名單。單一正面訊號不能取代品類契合。", nextTitle: "把這個方法帶進一個真實問題", nextBody: "這裡是方法與合成資料的展示，不是 CRM 或自動發信服務。若你有一筆可匿名化的商業問題，可以先與 Paul 討論下一步。", nextLink: "與 Paul 討論下一步 ↗", footStrong: "名單 ≠ 合格商機名單。", footBody: "每個主張都附有來源；每個未知都會被標示。公開網路發現 → 證據式資格篩選 → 矛盾檢查 → 人的判斷 → 迭代篩選。", buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻", export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "脫敏資料" },
-      en: { kicker: "AI-Assisted Overseas Lead Discovery", title: "Which companies are worth a sales team's time?", sub: "AI can find hundreds of companies. This workflow qualifies them with public-web evidence — and is honest about what it does not know.", flow1: "44 discovered", flow2: "evidence qualification", flow3: "top candidates", flow4: "contradiction checking", flow5: "domain learning", flow6: "refined shortlist", disclosureTitle: "Disclosure", disclosureBody: "No unsupported claim is presented as confirmed. Representative, anonymized records and a public-web evidence workflow are shown; simulated / domain-learning elements are included. Real Owner Precision@20 remains pending, no outreach was performed, and no commercial adoption is claimed.", stat1: "companies discovered", stat2: "evidence-qualified shortlist", stat3: "shown here (anonymized)", funnel: "44 candidates → 20 evidence-qualified shortlist → 8 shown here (anonymized)", learningTitle: "One important qualification lesson", learningBody: "R8 looks like a promising buyer: HIGH Buyer Fit and YES Import Openness. It still does not enter the priority shortlist because the core category does not match. One positive signal cannot replace category fit.", nextTitle: "Bring the method to a real question", nextBody: "This is a method and synthetic-data showcase, not a CRM or auto-outreach service. If you have an anonymizable commercial question, you can discuss the next step with Paul.", nextLink: "Discuss the next step with Paul ↗", footStrong: "Lead list ≠ qualified lead list.", footBody: "Every claim here carries a source; every unknown is labeled. Public-web discovery → evidence qualification → contradiction checking → human judgment → qualification iteration.", buyer: "Buyer Fit", category: "Category Fit", import: "Import Openness", asia: "Asia Sourcing", barrier: "Entry Barrier", export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "UNKNOWN", anonymized: "ANONYMIZED" },
+      zh: { kicker: "AI 輔助海外客戶開發", title: "哪些公司值得業務投入時間？", sub: "AI 可以從公開網路找到候選公司，再以證據逐一檢視；商業判斷決定哪些值得業務投入時間。", capabilityNote: "這類工作可結合公開網路公司研究、資料補充與 AI 輔助分類。本示例展示公開網路證據；證據與未知由人檢視，未宣稱使用特定付費資料庫。", flow1: "44 家候選", flow2: "證據式資格篩選", flow3: "優先候選", flow4: "矛盾證據檢查", flow5: "領域學習", flow6: "收斂短名單", disclosureTitle: "資料揭露", disclosureBody: "沒有證據支持的資訊，不會被標示為已確認事實。這裡展示的是脫敏代表性資料與公開網路證據流程；包含模擬／領域學習元素，真實 Owner Precision@20 尚待驗證，未進行 outreach，也不宣稱商業採用。", stat1: "家候選公司", stat2: "家進入證據短名單", stat3: "筆匿名示例", funnel: "44 家候選經證據篩選後，20 家進入證據合格短名單；下方另展示 8 筆脫敏示例，並非 8 家最終商業優先對象。", notPrioritized: "雖有買家與進口訊號，品類契合仍弱，因此不優先投入業務時間。", nextTitle: "接著看看，客戶開發以外還能怎麼判斷", nextBody: "這裡是方法與代表性資料展示，不是 CRM 或自動發信服務。若你有一筆可匿名化的商業問題，可以再與 Paul 討論。", nextPathLink: "下一步：海外市場與商業判斷 ↗", nextLink: "與 Paul 討論真實問題 ↗", footStrong: "找到公司 ≠ 找到值得優先開發的買家。", footBody: "每個主張都附有來源；每個未知都會被標示。公開網路研究 → 證據資格檢視 → 矛盾檢查 → 人的商業判斷。", buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻", export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "脫敏資料" },
+      en: { kicker: "AI-Assisted Overseas Lead Discovery", title: "Which companies deserve a sales team's time?", sub: "AI can surface candidate companies from the public web. Evidence helps screen them; commercial judgment decides where people spend attention.", capabilityNote: "This kind of work can combine public-web company research, information enrichment, and AI-assisted classification. This example shows public-web evidence reviewed by people; no specific paid database is claimed.", flow1: "44 candidates", flow2: "evidence qualification", flow3: "top candidates", flow4: "contradiction checking", flow5: "domain learning", flow6: "refined shortlist", disclosureTitle: "Disclosure", disclosureBody: "No unsupported claim is presented as confirmed. Representative, anonymized records and a public-web evidence workflow are shown; simulated / domain-learning elements are included. Real Owner Precision@20 remains pending, no outreach was performed, and no commercial adoption is claimed.", stat1: "companies discovered", stat2: "evidence-qualified shortlist", stat3: "anonymized examples shown", funnel: "44 candidates were screened; 20 entered the evidence-qualified shortlist. Eight anonymized examples are shown below and are not eight proven commercial priorities.", notPrioritized: "Buyer and import signals are positive, but weak category fit means this account is not prioritized for sales attention.", nextTitle: "See where this kind of judgment leads next", nextBody: "This is a method and representative-data showcase, not a CRM or auto-outreach service. If you have an anonymizable commercial question, you can discuss it with Paul.", nextPathLink: "Next: overseas market and commercial judgment ↗", nextLink: "Discuss a real question with Paul ↗", footStrong: "Finding a company is not the same as finding a buyer worth prioritizing.", footBody: "Claims carry sources; unknowns stay labeled. Public-web research → evidence qualification → contradiction checking → human commercial judgment.", buyer: "Buyer Fit", category: "Category Fit", import: "Import Openness", asia: "Asia Sourcing", barrier: "Entry Barrier", export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "UNKNOWN", anonymized: "ANONYMIZED" },
     };
     const zhRecords = {
       R1: { type: "進口商／自有品牌地板集團", category: "SPC／LVT 地板", why: ["集團以進口及與海外製造夥伴共同生產剛性核心地板為主要模式（主要來源）", "公開產品方案將 SPC／WPC／LVT 列為核心產品線（主要來源）"], whyNot: ["公司也將自己描述為全球製造商，因此部分產品可能自產；但仍採購亞洲製成品（矛盾證據）"], unknown: ["確切年度採購量", "目前合作的特定供應商"], sources: ["公司公開資料", "貿易產業報導"] },
@@ -202,11 +207,20 @@
 
     function renderCards() {
       cards.innerHTML = "";
-      for (const r of records) {
+      for (const r of [...records].sort((a, b) => Number(b.id === "R8") - Number(a.id === "R8"))) {
       const localized = lang === "zh" ? (zhRecords[r.id] || {}) : r;
       const el = document.createElement("article");
       el.className = "card" + (r.flaggedWeak ? " weak" : "");
-      const weakTag = r.flaggedWeak ? `<span class="tag weak">${lang === "zh" ? "品類契合度 WEAK" : "WEAK CATEGORY FIT"}</span>` : "";
+      const priorityNote = r.id === "R8" ? `<p class="priority-note">${t("notPrioritized")}</p>` : "";
+      const additionalSignal = r.id === "R8" ? "" : `<span class="tag ${r.asiaSourcing === "CONFIRMED" ? "ok" : "unk"}">${t("asia")} ${r.asiaSourcing}</span>`;
+      const fitRows = r.id === "R8" ? "" : `
+        <div class="fits">
+          <div class="row"><span>${t("buyer")}</span><b>${fmt(r.buyerFit)}</b></div>
+          <div class="row"><span>${t("category")}</span><b>${fmt(r.categoryFit)}</b></div>
+          <div class="row"><span>${t("import")}</span><b>${fmt(r.importOpenness)}</b></div>
+          <div class="row"><span>${t("asia")}</span><b>${fmt(r.asiaSourcing)}</b></div>
+          <div class="row"><span>${t("barrier")}</span><b>${fmt(r.entryBarrier)}</b></div>
+        </div>`;
       el.innerHTML = `
         <div class="card-head">
           <div class="id">${r.id} · ${t("anonymized")}</div>
@@ -217,17 +231,11 @@
             <span class="tag ok">${t("buyer")} ${r.buyerFit}</span>
             <span class="tag ${r.categoryFit === "WEAK" ? "weak" : "ok"}">${t("category")} ${r.categoryFit}</span>
             <span class="tag ${r.importOpenness === "YES" ? "ok" : "unk"}">${t("import")} ${r.importOpenness}</span>
-            <span class="tag ${r.asiaSourcing === "CONFIRMED" ? "ok" : "unk"}">${t("asia")} ${r.asiaSourcing}</span>
-            ${weakTag}
+            ${additionalSignal}
           </div>
         </div>
-        <div class="fits">
-          <div class="row"><span>${t("buyer")}</span><b>${fmt(r.buyerFit)}</b></div>
-          <div class="row"><span>${t("category")}</span><b>${fmt(r.categoryFit)}</b></div>
-          <div class="row"><span>${t("import")}</span><b>${fmt(r.importOpenness)}</b></div>
-          <div class="row"><span>${t("asia")}</span><b>${fmt(r.asiaSourcing)}</b></div>
-          <div class="row"><span>${t("barrier")}</span><b>${fmt(r.entryBarrier)}</b></div>
-        </div>
+        ${priorityNote}
+        ${fitRows}
         <button class="handoff-action" type="button" data-record-id="${r.id}">${t("export")}</button>
         <button class="evidence-toggle" type="button">${t("evidence")}</button>
         <div class="evidence">
