@@ -8,6 +8,12 @@
  * reconstructed (not copied verbatim) evidence phrasing. Facts shown are
  * representative of the workflow output, labeled clearly as anonymized.
  *
+ * The country on each record is a REPRESENTATIVE label for the archetype and does
+ * not identify a real company. R9-R12 are SYNTHETIC ARCHETYPES of screened-out
+ * accounts (a manufacturer, a regional-sourcing retailer, a partial-category
+ * distributor, a compliance-gated buyer), added to show what screening rejects;
+ * they are not drawn from the 44-candidate pool and make no claim about it.
+ *
  * Evidence-source strength tiers:
  *   PRIMARY               — official company / regulatory
  *   SUPPORTING            — industry publications / associations / exhibitions
@@ -18,6 +24,8 @@
 export const records = [
   {
     id: "R1",
+    market: { country: "GB" },
+    basis: "REPRESENTATIVE",
     name: "Norcliff Flooring Group",
     type: "Importer / private-label flooring brand",
     category: "SPC / LVT flooring",
@@ -41,6 +49,8 @@ export const records = [
   },
   {
     id: "R2",
+    market: { country: "US" },
+    basis: "REPRESENTATIVE",
     name: "Meridian Surfaces International",
     type: "Multi-category distributor / importer",
     category: "SPC / LVT flooring · tile · stone",
@@ -62,6 +72,8 @@ export const records = [
   },
   {
     id: "R3",
+    market: { country: "US" },
+    basis: "REPRESENTATIVE",
     name: "Harborview Hard-Surface Retail Group",
     type: "Large direct-import flooring retailer",
     category: "SPC / LVT flooring",
@@ -82,6 +94,8 @@ export const records = [
   },
   {
     id: "R4",
+    market: { country: "GB" },
+    basis: "REPRESENTATIVE",
     name: "Vantage Wallcoverings & Home",
     type: "Multi-category interior distributor / importer",
     category: "Wallcoverings · flooring · home accessories",
@@ -103,6 +117,8 @@ export const records = [
   },
   {
     id: "R5",
+    market: { country: "AU" },
+    basis: "REPRESENTATIVE",
     name: "Aster Wallcoverings Import Co.",
     type: "Wallpaper importer / distributor",
     category: "Wallcoverings",
@@ -123,6 +139,8 @@ export const records = [
   },
   {
     id: "R6",
+    market: { country: "DE" },
+    basis: "REPRESENTATIVE",
     name: "Delphi Textile Distributors",
     type: "Wholesale distributor / private-label textiles",
     category: "Window treatments · fabrics",
@@ -144,6 +162,8 @@ export const records = [
   },
   {
     id: "R7",
+    market: { country: "CA" },
+    basis: "REPRESENTATIVE",
     name: "Northgate Contract Wallcovering",
     type: "Contract wallcovering distributor",
     category: "Wallcoverings (contract)",
@@ -165,6 +185,8 @@ export const records = [
   },
   {
     id: "R8",
+    market: { country: "AE" },
+    basis: "REPRESENTATIVE",
     name: "Cascade Home Décor Supply",
     type: "Importer / wholesale home décor",
     category: "Adjacent (home décor / lighting / accessories)",
@@ -186,5 +208,103 @@ export const records = [
       { tier: "SUPPORTING", note: "Trade directory", url: "#" },
     ],
     flaggedWeak: true,
+  },
+  {
+    id: "R9",
+    market: { country: "PL" },
+    basis: "SYNTHETIC_ARCHETYPE",
+    name: "Halden Surfaces Manufacturing",
+    type: "Flooring manufacturer (vertically integrated)",
+    category: "SPC / LVT flooring",
+    buyerFit: "LOW",
+    categoryFit: "STRONG",
+    importOpenness: "NO",
+    asiaSourcing: "NO",
+    entryBarrier: "HIGH",
+    why: [
+      "Operates its own extrusion and pressing lines for rigid-core flooring (PRIMARY)",
+    ],
+    whyNot: [
+      "It buys raw materials and machinery, not finished flooring: for these customers it is a competitor, not a buyer (PRIMARY)",
+    ],
+    unknown: ["Whether it ever subcontracts overflow volume"],
+    sources: [
+      { tier: "PRIMARY", note: "Company production pages", url: "#" },
+      { tier: "SUPPORTING", note: "Trade press coverage", url: "#" },
+    ],
+  },
+  {
+    id: "R10",
+    market: { country: "FR" },
+    basis: "SYNTHETIC_ARCHETYPE",
+    name: "Verdane Interiors Retail",
+    type: "Regional retail chain with private-label ranges",
+    category: "SPC / LVT flooring · wallcoverings",
+    buyerFit: "MEDIUM",
+    categoryFit: "STRONG",
+    importOpenness: "YES",
+    asiaSourcing: "NO",
+    entryBarrier: "MEDIUM",
+    why: [
+      "Runs private-label flooring and wallcovering ranges across a regional store network (PRIMARY)",
+    ],
+    whyNot: [
+      "Its published sourcing policy commits private-label ranges to European-made supply and states a preference against long-distance sourcing (PRIMARY): explicit evidence against Asia sourcing",
+    ],
+    unknown: ["Whether the policy covers every range or only the flagship line", "Commercial-project purchases outside private label"],
+    sources: [
+      { tier: "PRIMARY", note: "Published sourcing policy", url: "#" },
+      { tier: "SUPPORTING", note: "Trade directory", url: "#" },
+    ],
+  },
+  {
+    id: "R11",
+    market: { country: "NL" },
+    basis: "SYNTHETIC_ARCHETYPE",
+    name: "Marlow Coatings & Decor Wholesale",
+    type: "Paint, coatings and décor distributor",
+    category: "Paints and coatings · wallcoverings (secondary line)",
+    buyerFit: "HIGH",
+    categoryFit: "PARTIAL",
+    importOpenness: "YES",
+    asiaSourcing: "CONFIRMED",
+    entryBarrier: "LOW",
+    why: [
+      "Imports décor products through a major port and lists wallcoverings as a secondary line (PRIMARY)",
+      "Asia-origin goods appear in its public product catalogue (PRIMARY)",
+    ],
+    whyNot: [
+      "Wallcoverings are a side line beside paints and coatings, so the commercial weight of the seed category is unclear (partial category fit)",
+    ],
+    unknown: ["Share of revenue from wallcoverings", "Who owns the wallcovering purchasing decision"],
+    sources: [
+      { tier: "PRIMARY", note: "Company product catalogue", url: "#" },
+      { tier: "SUPPORTING", note: "Industry directory", url: "#" },
+    ],
+  },
+  {
+    id: "R12",
+    market: { country: "SANCTIONED" },
+    basis: "SYNTHETIC_ARCHETYPE",
+    complianceGate: "SANCTIONS_JURISDICTION",
+    name: "Kestrel Interior Trading",
+    type: "Importer / trading company",
+    category: "Wallcoverings · window treatments",
+    buyerFit: "HIGH",
+    categoryFit: "STRONG",
+    importOpenness: "YES",
+    asiaSourcing: "CONFIRMED",
+    entryBarrier: "LOW",
+    why: [
+      "Active importer of wallcoverings and window treatments with Asia-origin goods (SUPPORTING)",
+    ],
+    whyNot: [
+      "Its registered address is in a jurisdiction under comprehensive sanctions: not a candidate whatever the fit (compliance gate)",
+    ],
+    unknown: ["Whether any lawful route exists, which needs legal counsel and is outside this tool"],
+    sources: [
+      { tier: "SUPPORTING", note: "Trade directory", url: "#" },
+      { tier: "PRIMARY", note: "Public registry entry", url: "#" },
+    ],
   },
 ];

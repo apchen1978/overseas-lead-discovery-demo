@@ -59,7 +59,7 @@ for (const f of ["cdd-intake-proposal-r6-unknown-heavy.json", "cdd-intake-propos
     const v = validateIntakeProposal(buildIntakeProposal(r, { now: FIXED_NOW }));
     if (!v.valid) { allOk = false; detail.push(`${r.id}: ${v.errors.join("; ")}`); }
   }
-  check("all 8 source records build + validate", allOk, detail.join(" | "));
+  check("all 12 source records build + validate", allOk, detail.join(" | "));
 }
 
 // 5. contract literals + truth boundary
