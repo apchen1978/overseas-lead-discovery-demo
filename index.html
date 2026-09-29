@@ -232,8 +232,8 @@
     <section class="next-step" aria-labelledby="next-title">
       <h2 id="next-title" data-copy="nextTitle">把這個方法帶進一個真實問題</h2>
       <p data-copy="nextBody"></p>
-      <a href="https://paulstradecraft.com/#global-business-development" data-copy="nextPathLink">接著看：海外市場與商業判斷 ↗</a>
-      <a href="https://paulstradecraft.com/#contact" data-copy="nextLink">與 Paul 討論下一步 ↗</a>
+      <a id="next-path-link" href="https://paulstradecraft.com/#global-business-development" data-copy="nextPathLink">接著看：海外市場與商業判斷 ↗</a>
+      <a id="next-contact" href="https://paulstradecraft.com/#contact" data-copy="nextLink">與 Paul 討論下一步 ↗</a>
     </section>
 
     <p class="foot"><strong data-copy="footStrong">名單 ≠ 合格商機名單。</strong> <span data-copy="footBody"></span></p>
@@ -368,6 +368,8 @@
     const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     const L = (o) => (o ? o[lang] : "");
     const reasonList = (codes) => codes.map((c) => t("reasons")[c] || c).join(lang === "zh" ? "；" : "; ");
+    // The portfolio homepage reads ?lang=, so every link back to it keeps the language.
+    const portfolioUrl = (hash) => `https://paulstradecraft.com/${lang === "en" ? "?lang=en" : ""}${hash}`;
 
     const ranked = rankRecords(records);
     const summary = summarize(records);
@@ -536,13 +538,15 @@
       const next = "https://apchen1978.github.io/commercial-decision-desk/" + (lang === "en" ? "?lang=en" : "") + "#mode-sample";
       const nav = document.getElementById("portfolio-nav");
       nav.setAttribute("aria-label", t("navLabel"));
-      nav.innerHTML = `<a href="https://paulstradecraft.com/#three-questions">${esc(t("navBack"))}</a><span class="pos">${esc(t("navPos"))}</span><span class="links"><a href="${next}">${esc(t("navNext"))} →</a></span>`;
+      nav.innerHTML = `<a href="${portfolioUrl("#three-questions")}">${esc(t("navBack"))}</a><span class="pos">${esc(t("navPos"))}</span><span class="links"><a href="${next}">${esc(t("navNext"))} →</a></span>`;
     }
 
     function render() {
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
       document.title = lang === "zh" ? "海外客戶開發 — 證據式資格篩選 Demo" : "Overseas Lead Discovery — Qualification Demo";
       document.querySelectorAll("[data-copy]").forEach((node) => { node.textContent = t(node.dataset.copy); });
+      document.getElementById("next-path-link").href = portfolioUrl("#global-business-development");
+      document.getElementById("next-contact").href = portfolioUrl("#contact");
       document.getElementById("example-count").textContent = String(records.length);
       const sw = document.getElementById("lang-switch");
       sw.textContent = lang === "zh" ? "EN" : "繁中";
