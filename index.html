@@ -174,9 +174,19 @@
       .matrix td[data-label]::before { content: attr(data-label) ": "; color: var(--muted); font-size: 12px; }
       .matrix td.acct::before { content: none; }
     }
+
+    /* portfolio navigation bar */
+    .portfolio-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 18px; padding: 10px 18px; background: #f4f5f0; border-bottom: 1px solid #d9ded4; font-size: 13px; line-height: 1.45; font-family: inherit; }
+    .portfolio-nav a { color: #1f4d3a; font-weight: 700; text-decoration: none; }
+    .portfolio-nav a:hover, .portfolio-nav a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+    .portfolio-nav a:focus-visible { outline: 2px solid #a05a10; outline-offset: 3px; }
+    .portfolio-nav .pos { color: #5c6b62; }
+    .portfolio-nav .links { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+    @media (min-width: 641px) { html { scroll-padding-top: 64px; } .portfolio-nav { position: sticky; top: 0; z-index: 100; } }
   </style>
 </head>
 <body>
+  <nav class="portfolio-nav" id="portfolio-nav" aria-label="Portfolio navigation"></nav>
   <div class="wrap">
     <header>
       <button class="lang-switch" id="lang-switch" type="button" aria-label="切換語言">EN</button>
@@ -283,6 +293,7 @@
         buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻",
         export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "匿名資料",
         categoryLabel: "品類",
+        navLabel: "作品集導覽", navBack: "← 回作品集", navPos: "問題 1／3 · 哪些公司真的值得業務花時間？", navNext: "下一個：這筆訂單現在能不能接？",
       },
       en: {
         kicker: "AI-Assisted Overseas Lead Discovery", title: "Which companies deserve a sales team's time?",
@@ -331,6 +342,7 @@
         buyer: "Buyer Fit", category: "Category Fit", import: "Import Openness", asia: "Asia Sourcing", barrier: "Entry Barrier",
         export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "UNKNOWN", anonymized: "ANONYMIZED",
         categoryLabel: "Category",
+        navLabel: "Portfolio navigation", navBack: "← Back to portfolio", navPos: "Question 1 of 3 · Which companies are really worth your sales team's time?", navNext: "Next: can you take this order now?",
       },
     };
 
@@ -520,6 +532,13 @@
       }
     }
 
+    function renderNav() {
+      const next = "https://apchen1978.github.io/commercial-decision-desk/" + (lang === "en" ? "?lang=en" : "") + "#mode-sample";
+      const nav = document.getElementById("portfolio-nav");
+      nav.setAttribute("aria-label", t("navLabel"));
+      nav.innerHTML = `<a href="https://paulstradecraft.com/#three-questions">${esc(t("navBack"))}</a><span class="pos">${esc(t("navPos"))}</span><span class="links"><a href="${next}">${esc(t("navNext"))} →</a></span>`;
+    }
+
     function render() {
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
       document.title = lang === "zh" ? "海外客戶開發 — 證據式資格篩選 Demo" : "Overseas Lead Discovery — Qualification Demo";
@@ -529,6 +548,7 @@
       sw.textContent = lang === "zh" ? "EN" : "繁中";
       sw.setAttribute("aria-label", lang === "zh" ? "Switch language" : "切換語言");
       document.getElementById("flow").setAttribute("aria-label", lang === "zh" ? "工作流程" : "Workflow steps");
+      renderNav();
       renderInsights();
       renderFilters();
       renderMatrix();
