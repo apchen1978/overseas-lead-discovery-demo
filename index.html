@@ -26,14 +26,14 @@
       color: var(--ink);
       line-height: 1.5;
     }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 60px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 28px 18px 60px; }
     header { text-align: center; padding: 8px 0 20px; }
     .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); }
     h1 { font-size: 30px; margin: 10px 0 6px; letter-spacing: -0.01em; }
     .sub { color: var(--muted); font-size: 15px; max-width: 640px; margin: 0 auto; }
     .flow {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;
-      margin: 18px auto 26px; max-width: 760px;
+      margin: 26px auto 26px; max-width: 760px;
     }
     .flow span {
       font-size: 12px; font-weight: 600; color: var(--forest);
@@ -52,30 +52,69 @@
       padding: 14px 12px; text-align: center;
     }
     .stat .n { font-size: 26px; font-weight: 800; color: var(--forest); }
-    .stat .l { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .stat .l { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .funnel-note { margin: -12px auto 24px; max-width: 760px; text-align: center; color: var(--muted); font-size: 13px; }
+
+    /* insight + tiers + filters */
+    .insight { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--forest); border-radius: 12px; padding: 16px 18px; margin-bottom: 18px; }
+    .insight h2 { margin: 0 0 8px; font-size: 16px; }
+    .insight ul { margin: 0; padding-left: 18px; font-size: 14px; }
+    .insight li { margin: 5px 0; }
+    .tier-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+    .tier-box { text-align: left; font: inherit; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+    .tier-box[aria-pressed="true"] { outline: 2px solid var(--forest); outline-offset: -2px; }
+    .tier-box .n { font-size: 24px; font-weight: 800; }
+    .tier-box .name { font-size: 14px; font-weight: 700; }
+    .tier-box .desc { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+    .tier-box.ENGAGE_FIRST .n { color: var(--ok); }
+    .tier-box.VERIFY_FIRST .n { color: #8a6d1a; }
+    .tier-box.HOLD .n { color: var(--bad); }
+    .tier-box.EXCLUDE .n { color: #5a4a44; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; align-items: center; }
+    .chips .label { font-size: 12px; color: var(--muted); margin-right: 4px; }
+    .chip { font: inherit; font-size: 13px; font-weight: 600; color: var(--forest); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+    .chip[aria-pressed="true"] { background: var(--forest); color: #fff; border-color: var(--forest); }
+
+    /* comparison matrix */
+    .matrix-wrap { background: #fff; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 26px; overflow: hidden; }
+    table.matrix { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .matrix th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 10px 12px; background: var(--paper); border-bottom: 1px solid var(--line); }
+    .matrix td { padding: 10px 12px; border-top: 1px solid #eceee6; vertical-align: top; }
+    .matrix tbody tr { cursor: pointer; }
+    .matrix tbody tr:hover, .matrix tbody tr:focus-visible { background: #f7f8f3; outline: none; }
+    .matrix .acct b { display: block; }
+    .matrix .acct span { font-size: 12px; color: var(--muted); }
+
+    /* cards */
+    .group-title { display: flex; align-items: baseline; gap: 10px; margin: 26px 0 10px; }
+    .group-title h2 { margin: 0; font-size: 18px; }
+    .group-title span { font-size: 13px; color: var(--muted); }
     .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .card {
-      background: #fff; border: 1px solid var(--line); border-radius: 14px;
-      overflow: hidden;
-    }
-    .card.weak { border-color: #e0c0b8; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; scroll-margin-top: 16px; }
+    .card.tier-HOLD { border-color: #e0c0b8; }
+    .card.tier-EXCLUDE { border-color: #cfc8c3; background: #fbfaf9; }
     .card-head { padding: 14px 16px 10px; }
-    .card-head .id { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; }
+    .card-head .id { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; }
     .card-head h3 { margin: 3px 0 4px; font-size: 17px; }
-    .card-head .meta { font-size: 12px; color: var(--muted); }
-    .card-head .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-top: 6px; }
+    .card-head .meta { font-size: 13px; color: var(--muted); }
+    .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
     .tag.ok { background: #e2efe7; color: var(--ok); }
     .tag.unk { background: #f0e9d8; color: #8a6d1a; }
     .tag.weak { background: #f6e4e0; color: var(--bad); }
-    .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
-    .tags .tag { margin-top: 0; }
-    .fits { padding: 0 16px 8px; font-size: 12.5px; }
+    .tag.tier-ENGAGE_FIRST { background: #e2efe7; color: var(--ok); }
+    .tag.tier-VERIFY_FIRST { background: #f0e9d8; color: #8a6d1a; }
+    .tag.tier-HOLD { background: #f6e4e0; color: var(--bad); }
+    .tag.tier-EXCLUDE { background: #e6e3e0; color: #5a4a44; }
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+    .first-move { margin: 10px 16px 6px; padding: 9px 11px; border-left: 3px solid var(--amber); background: #fbf7ee; color: var(--forest); font-size: 13px; font-weight: 700; }
+    .card.tier-EXCLUDE .first-move { border-left-color: #8a7c76; background: #f1eeeb; color: #4a3f3a; }
+    .fits { padding: 0 16px 8px; font-size: 13px; }
     .fits .row { display: flex; justify-content: space-between; padding: 3px 0; border-top: 1px dashed #e6e6e6; }
     .fits .row:first-child { border-top: none; }
-    .fits .row b { font-weight: 700; }
     .val-hi { color: var(--ok); font-weight: 700; }
     .val-unk { color: #8a6d1a; font-weight: 700; }
     .val-weak { color: var(--bad); font-weight: 700; }
+    .val-plain { font-weight: 700; }
     .evidence-toggle {
       width: 100%; text-align: center; font: inherit; font-size: 13px; font-weight: 700;
       color: var(--forest); background: var(--paper); border: none; border-top: 1px solid var(--line);
@@ -85,31 +124,38 @@
     .handoff-action {
       display: block; width: calc(100% - 32px); margin: 0 16px 12px;
       padding: 9px 12px; border: 1px solid var(--forest); border-radius: 8px;
-      background: #fff; color: var(--forest); font: inherit; font-size: 12.5px;
+      background: #fff; color: var(--forest); font: inherit; font-size: 13px;
       font-weight: 700; text-align: center; cursor: pointer;
     }
     .handoff-action:hover { background: var(--paper); }
-    .evidence { display: none; padding: 14px 16px 18px; border-top: 1px solid var(--line); background: #fafbf7; font-size: 13px; }
+    .no-export { margin: 0 16px 12px; font-size: 12.5px; color: var(--muted); }
+    .evidence { display: none; padding: 14px 16px 18px; border-top: 1px solid var(--line); background: #fafbf7; font-size: 13.5px; }
     .card.open .evidence { display: block; }
-    .evidence h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 12px 0 6px; }
+    .evidence h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 14px 0 6px; }
+    .evidence h4:first-child { margin-top: 0; }
+    .evidence h5 { font-size: 13px; margin: 10px 0 4px; }
     .evidence ul { margin: 0; padding-left: 18px; }
     .evidence li { margin: 4px 0; }
-    .tier { font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 6px; margin-left: 6px; white-space: nowrap; }
+    .tier { font-size: 12px; font-weight: 700; padding: 1px 7px; border-radius: 6px; margin-left: 6px; white-space: nowrap; }
     .tier.PRIMARY { background: #dcebe2; color: var(--ok); }
     .tier.SUPPORTING { background: #e9e3cf; color: #7a5d12; }
     .tier.VERIFICATION_REQUIRED { background: #f0ded8; color: #9c4433; }
-    .unknown-box { background: #f6f1e4; border: 1px solid #e5d9b8; border-radius: 8px; padding: 8px 10px; font-size: 12.5px; }
+    .unknown-box { background: #f6f1e4; border: 1px solid #e5d9b8; border-radius: 8px; padding: 8px 10px; font-size: 13px; }
+    .market-lens { border: 1px solid #d8dccf; border-radius: 10px; background: #fff; padding: 10px 12px; }
+    .market-lens .lens-row { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; }
+    .market-lens p { margin: 4px 0; }
+    .basis-note { font-size: 12px; color: var(--muted); }
     .foot { margin-top: 28px; text-align: center; font-size: 12px; color: var(--muted); }
     .capability-note { max-width: 720px; margin: 10px auto 0; color: var(--muted); font-size: 13px; }
-    .priority-note { margin: 10px 16px 16px; padding: 9px 11px; border-left: 3px solid var(--amber); background: #fbf7ee; color: var(--forest); font-size: 13px; font-weight: 700; }
     .foot strong { color: var(--ink); }
-    .funnel-note { margin: -12px auto 24px; max-width: 760px; text-align: center; color: var(--muted); font-size: 13px; }
-    .learning-callout, .next-step { margin-top: 24px; border: 1px solid var(--line); border-left: 4px solid var(--amber); border-radius: 10px; background: #fff; padding: 14px 16px; }
-    .learning-callout h2, .next-step h2 { margin: 0 0 5px; font-size: 15px; }
-    .learning-callout p, .next-step p { margin: 0; color: var(--muted); font-size: 13px; }
-    .next-step a { display: inline-block; margin-top: 10px; color: var(--forest); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .next-step { margin-top: 24px; border: 1px solid var(--line); border-left: 4px solid var(--amber); border-radius: 10px; background: #fff; padding: 14px 16px; }
+    .next-step h2 { margin: 0 0 5px; font-size: 15px; }
+    .next-step p { margin: 0; color: var(--muted); font-size: 13px; }
+    .next-step a { display: inline-block; margin-top: 10px; margin-right: 14px; color: var(--forest); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
     .lang-switch { position: absolute; top: 18px; right: 18px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--forest); padding: 6px 11px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
     .lang-switch:hover { background: var(--paper); }
+    .empty { padding: 18px; color: var(--muted); font-size: 14px; text-align: center; }
+    @media (max-width: 860px) { .tier-strip { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px) {
       .cards { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; gap: 0; margin-bottom: 16px; }
@@ -121,6 +167,12 @@
       .flow .arrow { display: none; }
       .flow span:not(.arrow) { border: 0; border-left: 2px solid var(--line); border-radius: 0; background: transparent; padding: 4px 10px; }
       h1 { font-size: 24px; }
+      table.matrix, .matrix tbody, .matrix tr, .matrix td { display: block; width: 100%; }
+      .matrix thead { display: none; }
+      .matrix tr { padding: 10px 12px; border-top: 1px solid #eceee6; }
+      .matrix td { border: 0; padding: 2px 0; }
+      .matrix td[data-label]::before { content: attr(data-label) ": "; color: var(--muted); font-size: 12px; }
+      .matrix td.acct::before { content: none; }
     }
   </style>
 </head>
@@ -136,17 +188,28 @@
 
     <div class="disclosure">
       <strong data-copy="disclosureTitle">資料揭露</strong>
-      <span data-copy="disclosureBody">沒有證據支持的資訊，不會當成事實呈現。頁面使用匿名化的代表性資料，並展示如何查核公開網頁證據；其中也包含模擬與領域學習資料。真實資料的 Owner Precision@20 尚未驗證；未聯絡這些公司，也不宣稱已被商業採用。</span>
+      <span data-copy="disclosureBody"></span>
     </div>
 
     <div class="stats">
       <div class="stat"><div class="n">44</div><div class="l" data-copy="stat1">家候選公司</div></div>
       <div class="stat"><div class="n">20</div><div class="l" data-copy="stat2">家證據式短名單</div></div>
-      <div class="stat"><div class="n">8</div><div class="l" data-copy="stat3">家展示資料（脫敏）</div></div>
+      <div class="stat"><div class="n" id="example-count">12</div><div class="l" data-copy="stat3">家展示資料（脫敏）</div></div>
     </div>
-    <p class="funnel-note" data-copy="funnel">44 家候選公司經證據篩選後，20 家列入證據合格短名單。頁面另展示 8 筆匿名示例，不代表 8 家已確認的優先開發對象。</p>
+    <p class="funnel-note" data-copy="funnel"></p>
 
-    <div class="cards" id="cards"></div>
+    <section class="insight" aria-labelledby="insight-title">
+      <h2 id="insight-title" data-copy="insightTitle">篩選之後看到什麼</h2>
+      <ul id="insight-list"></ul>
+    </section>
+
+    <div class="tier-strip" id="tier-strip" role="group" aria-label="分層"></div>
+    <div class="chips" id="region-chips" role="group" aria-label="地區"></div>
+
+    <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+
+    <div id="groups"></div>
+
     <div class="flow" id="flow" aria-label="工作流程">
       <span data-copy="flow1">44 家候選</span><span class="arrow">→</span>
       <span data-copy="flow2">證據式資格篩選</span><span class="arrow">→</span>
@@ -158,23 +221,119 @@
 
     <section class="next-step" aria-labelledby="next-title">
       <h2 id="next-title" data-copy="nextTitle">把這個方法帶進一個真實問題</h2>
-      <p data-copy="nextBody">這裡是方法與合成資料的展示，不是 CRM 或自動發信服務。若你有一筆可匿名化的商業問題，可以先與 Paul 討論下一步。</p>
+      <p data-copy="nextBody"></p>
       <a href="https://paulstradecraft.com/#global-business-development" data-copy="nextPathLink">接著看：海外市場與商業判斷 ↗</a>
       <a href="https://paulstradecraft.com/#contact" data-copy="nextLink">與 Paul 討論下一步 ↗</a>
     </section>
 
-    <p class="foot"><strong data-copy="footStrong">名單 ≠ 合格商機名單。</strong> <span data-copy="footBody">每項判斷都附有來源；未知之處會明確標示。從公開網頁找資料、核對證據與矛盾，再由人做商業判斷。</span></p>
+    <p class="foot"><strong data-copy="footStrong">名單 ≠ 合格商機名單。</strong> <span data-copy="footBody"></span></p>
   </div>
 
   <script type="module">
     import { records } from "./records.js";
     import { buildIntakeProposal } from "./cdd-intake-proposal.js";
+    import { MARKETS, REGIONS, marketFor } from "./markets.js";
+    import { TIERS, rankRecords, summarize } from "./qualification.js";
 
-    const cards = document.getElementById("cards");
     const locale = {
-      zh: { kicker: "AI 輔助海外客戶開發", title: "哪些公司值得業務投入時間？", sub: "AI 先從公開網頁找出可能的買方，再用證據逐一查核；哪些公司值得業務繼續投入，最後仍要靠商業判斷。", capabilityNote: "這類工作可結合公開網頁研究、公司資料補充與 AI 分類。本例展示的是公開網頁證據，由人檢查判讀與未知之處；未指明使用特定付費資料庫。", flow1: "44 家候選", flow2: "依證據篩選", flow3: "優先候選", flow4: "核對矛盾證據", flow5: "補充產業脈絡", flow6: "收斂候選名單", disclosureTitle: "資料揭露", disclosureBody: "沒有證據支持的資訊，不會當成事實呈現。頁面使用匿名化的代表性資料，並展示如何查核公開網頁證據；其中也包含模擬與領域學習資料。真實資料的 Owner Precision@20 尚未驗證；未聯絡這些公司，也不宣稱已被商業採用。", stat1: "家候選公司", stat2: "家列入證據合格名單", stat3: "筆匿名示例", funnel: "44 家候選公司經證據篩選後，20 家列入證據合格短名單。頁面另展示 8 筆匿名示例，不代表 8 家已確認的優先開發對象。", notPrioritized: "買方輪廓合適，也有進口開放訊號；但產品品類契合度偏弱，目前不列為優先開發對象。", nextTitle: "客戶開發之外，這套判斷還能用在哪裡？", nextBody: "這裡展示的是方法與匿名案例，不是 CRM，也不會自動寄出開發信。若你手上有商業問題，可先移除可識別資訊，再和 Paul 討論。", nextPathLink: "接著看：海外市場與商業判斷 ↗", nextLink: "與 Paul 討論真實問題 ↗", footStrong: "找到公司，不等於找到值得優先開發的買家。", footBody: "每項判斷都附有來源；未知之處會明確標示。從公開網頁找資料、核對證據與矛盾，再由人做商業判斷。", buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻", export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "匿名資料" },
-      en: { kicker: "AI-Assisted Overseas Lead Discovery", title: "Which companies deserve a sales team's time?", sub: "AI can surface candidate companies from the public web. Evidence helps screen them; commercial judgment decides where people spend attention.", capabilityNote: "This kind of work can combine public-web company research, information enrichment, and AI-assisted classification. This example shows public-web evidence reviewed by people; no specific paid database is claimed.", flow1: "44 candidates", flow2: "evidence qualification", flow3: "top candidates", flow4: "contradiction checking", flow5: "domain learning", flow6: "refined shortlist", disclosureTitle: "Disclosure", disclosureBody: "No unsupported claim is presented as confirmed. Representative, anonymized records and a public-web evidence workflow are shown; simulated / domain-learning elements are included. Real Owner Precision@20 remains pending, no outreach was performed, and no commercial adoption is claimed.", stat1: "companies discovered", stat2: "evidence-qualified shortlist", stat3: "anonymized examples shown", funnel: "44 candidates were screened; 20 entered the evidence-qualified shortlist. Eight anonymized examples are shown below and are not eight proven commercial priorities.", notPrioritized: "Buyer and import signals are positive, but weak category fit means this account is not prioritized for sales attention.", nextTitle: "See where this kind of judgment leads next", nextBody: "This is a method and representative-data showcase, not a CRM or auto-outreach service. If you have an anonymizable commercial question, you can discuss it with Paul.", nextPathLink: "Next: overseas market and commercial judgment ↗", nextLink: "Discuss a real question with Paul ↗", footStrong: "Finding a company is not the same as finding a buyer worth prioritizing.", footBody: "Claims carry sources; unknowns stay labeled. Public-web research → evidence qualification → contradiction checking → human commercial judgment.", buyer: "Buyer Fit", category: "Category Fit", import: "Import Openness", asia: "Asia Sourcing", barrier: "Entry Barrier", export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "UNKNOWN", anonymized: "ANONYMIZED" },
+      zh: {
+        kicker: "AI 輔助海外客戶開發", title: "哪些公司值得業務投入時間？",
+        sub: "AI 先從公開網頁找出可能的買方，再用證據逐一查核；哪些公司值得業務繼續投入，最後仍要靠商業判斷。",
+        capabilityNote: "這類工作可結合公開網頁研究、公司資料補充與 AI 分類。本例展示的是公開網頁證據，由人檢查判讀與未知之處；未指明使用特定付費資料庫。",
+        flow1: "44 家候選", flow2: "依證據篩選", flow3: "優先候選", flow4: "核對矛盾證據", flow5: "補充產業脈絡", flow6: "收斂候選名單",
+        disclosureTitle: "資料揭露",
+        disclosureBody: "沒有證據支持的資訊，不會當成事實呈現。頁面使用匿名化的代表性資料，並展示如何查核公開網頁證據；其中也包含模擬與領域學習資料。國家只是代表性標示，不對應任何真實公司。R9–R12 是合成的「被篩除典型」，用來展示篩選會排除什麼，不是從 44 家候選中抽出的公司。市場層屬領域學習，使用前須逐項查證。真實資料的 Owner Precision@20 尚未驗證；未聯絡這些公司，也不宣稱已被商業採用。",
+        stat1: "家候選公司", stat2: "家列入證據合格名單", stat3: "筆匿名示例",
+        funnel: "44 家候選公司經證據篩選後，20 家列入證據合格短名單。頁面另展示 12 筆匿名示例（8 筆短名單代表案例＋4 筆合成的被篩除典型），不代表 12 家已確認的優先開發對象。",
+        insightTitle: "篩選之後看到什麼",
+        insightCounts: "{total} 個示例裡，現在只有 {engage} 個值得業務投入；{verify} 個要先查證，{hold} 個暫緩，{exclude} 個直接排除。",
+        insightBarrier: "合格的 {engage} 個裡，{high} 個是高進入門檻的大型買方：合格不等於容易。",
+        insightLowDoor: "門檻最低的入口反而還沒資格：{list}。先補證據，再決定要不要開發。",
+        insightRegions: "依市場看：{list}。",
+        regionItem: "{region} {total} 個（{engage} 個合格）",
+        tierLabel: { ENGAGE_FIRST: "先開發", VERIFY_FIRST: "先查證", HOLD: "暫緩", EXCLUDE: "排除" },
+        tierDesc: {
+          ENGAGE_FIRST: "所有閘門都通過，可以準備開發",
+          VERIFY_FIRST: "關鍵資訊未知或證據太薄，先補證據",
+          HOLD: "現階段不投入，並說明原因",
+          EXCLUDE: "不是可服務的買方，或被合規閘門擋下",
+        },
+        allTiers: "全部", allRegions: "全部地區", regionLabel: "地區",
+        reasons: {
+          COMPLIANCE_GATE: "落在合規閘門（例如受全面制裁的司法管轄區）", NOT_A_BUYER: "不是買方（自己生產，是競爭者）", NO_IMPORT_APPETITE: "沒有進口意願",
+          WEAK_CATEGORY: "品類契合度弱", NO_ASIA_SOURCING: "明確不採購亞洲貨源", IMPORT_UNKNOWN: "進口開放度未知", ASIA_UNKNOWN: "亞洲採購未知",
+          PARTIAL_CATEGORY: "品類只部分契合", NO_PRIMARY_SOURCE: "缺少第一手來源（只有第三方或輔助來源）", BUYER_FIT_NOT_STRONG: "買方契合度不夠強", ALL_GATES_CLEAR: "所有閘門通過",
+        },
+        move: {
+          ENGAGE_FIRST: "下一步：準備品類專屬的接觸方式，並同步查證下方的市場項目。",
+          VERIFY_FIRST: "下一步：先補證據，再決定是否開發：{reasons}。",
+          HOLD: "下一步：現階段不投入：{reasons}。",
+          EXCLUDE: "不投入，也不匯出：{reasons}。",
+        },
+        noExport: "不提供匯出：這筆被閘門排除，不應交給 CDD。",
+        cols: { account: "公司", country: "國家", tier: "分層", why: "主要原因", barrier: "進入門檻", currency: "幣別" },
+        marketTitle: "市場層 · 領域學習（使用前須逐項查證）", country: "國家", currency: "幣別",
+        checksTitle: "報價前要確認的項目", noChecks: "這個品類與種子品類沒有交集，因此不列出任何查核項目。",
+        paymentTitle: "付款習慣", remedyTitle: "貿易救濟", basisNote: "國家是代表性標示，不對應任何真實公司；以上是要查證的項目，不是已確認的事實或稅率。",
+        basisRep: "代表性資料", basisSyn: "合成的被篩除典型",
+        nextTitle: "客戶開發之外，這套判斷還能用在哪裡？",
+        nextBody: "這裡展示的是方法與匿名案例，不是 CRM，也不會自動寄出開發信。若你手上有商業問題，可先移除可識別資訊，再和 Paul 討論。",
+        nextPathLink: "接著看：海外市場與商業判斷 ↗", nextLink: "與 Paul 討論真實問題 ↗",
+        footStrong: "找到公司，不等於找到值得優先開發的買家。", footBody: "每項判斷都附有來源；未知之處會明確標示。從公開網頁找資料、核對證據與矛盾，再由人做商業判斷。",
+        buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻",
+        export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "匿名資料",
+        categoryLabel: "品類",
+      },
+      en: {
+        kicker: "AI-Assisted Overseas Lead Discovery", title: "Which companies deserve a sales team's time?",
+        sub: "AI can surface candidate companies from the public web. Evidence helps screen them; commercial judgment decides where people spend attention.",
+        capabilityNote: "This kind of work can combine public-web company research, information enrichment, and AI-assisted classification. This example shows public-web evidence reviewed by people; no specific paid database is claimed.",
+        flow1: "44 candidates", flow2: "evidence qualification", flow3: "top candidates", flow4: "contradiction checking", flow5: "domain learning", flow6: "refined shortlist",
+        disclosureTitle: "Disclosure",
+        disclosureBody: "No unsupported claim is presented as confirmed. Representative, anonymized records and a public-web evidence workflow are shown; simulated / domain-learning elements are included. A country is a representative label and does not identify a real company. R9–R12 are synthetic screened-out archetypes that show what screening rejects; they are not companies drawn from the 44 candidates. The market layer is domain learning and must be verified item by item before use. Real Owner Precision@20 remains pending, no outreach was performed, and no commercial adoption is claimed.",
+        stat1: "companies discovered", stat2: "evidence-qualified shortlist", stat3: "anonymized examples shown",
+        funnel: "44 candidates were screened; 20 entered the evidence-qualified shortlist. Twelve anonymized examples are shown below (8 shortlisted archetypes plus 4 synthetic screened-out archetypes) and are not twelve proven commercial priorities.",
+        insightTitle: "What the screening shows",
+        insightCounts: "Of {total} examples, only {engage} deserve sales time now; {verify} need verifying first, {hold} are on hold and {exclude} are excluded.",
+        insightBarrier: "Of the {engage} qualified accounts, {high} are large, high-barrier buyers: qualified does not mean easy.",
+        insightLowDoor: "The easiest doors are not yet qualified: {list}. Close the evidence gap before deciding whether to pursue.",
+        insightRegions: "By market: {list}.",
+        regionItem: "{region} {total} ({engage} qualified)",
+        tierLabel: { ENGAGE_FIRST: "Engage first", VERIFY_FIRST: "Verify first", HOLD: "Hold", EXCLUDE: "Exclude" },
+        tierDesc: {
+          ENGAGE_FIRST: "Every gate is clear; prepare the approach",
+          VERIFY_FIRST: "Something decisive is unknown or thin; close the evidence gap",
+          HOLD: "Do not invest now, with the reason stated",
+          EXCLUDE: "Not a buyer we can serve, or stopped by a compliance gate",
+        },
+        allTiers: "All", allRegions: "All regions", regionLabel: "Region",
+        reasons: {
+          COMPLIANCE_GATE: "Compliance gate (for example a comprehensively sanctioned jurisdiction)", NOT_A_BUYER: "Not a buyer (produces in-house; a competitor)", NO_IMPORT_APPETITE: "No import appetite",
+          WEAK_CATEGORY: "Weak category fit", NO_ASIA_SOURCING: "Explicitly not sourcing from Asia", IMPORT_UNKNOWN: "Import openness unknown", ASIA_UNKNOWN: "Asia sourcing unknown",
+          PARTIAL_CATEGORY: "Category fit is only partial", NO_PRIMARY_SOURCE: "No primary source (only third-party or supporting evidence)", BUYER_FIT_NOT_STRONG: "Buyer fit is not strong", ALL_GATES_CLEAR: "Every gate is clear",
+        },
+        move: {
+          ENGAGE_FIRST: "Next: prepare a category-specific approach and verify the market checks below in parallel.",
+          VERIFY_FIRST: "Next: close the evidence gap before deciding: {reasons}.",
+          HOLD: "Next: do not invest now: {reasons}.",
+          EXCLUDE: "Do not pursue and do not export: {reasons}.",
+        },
+        noExport: "No export: this account was excluded by a gate and should not be handed to CDD.",
+        cols: { account: "Account", country: "Country", tier: "Tier", why: "Main reason", barrier: "Entry barrier", currency: "Currency" },
+        marketTitle: "Market layer · domain learning (verify each item before use)", country: "Country", currency: "Currency",
+        checksTitle: "Checks to clear before quoting", noChecks: "This category does not touch a seed category, so no checks are listed.",
+        paymentTitle: "Payment practice", remedyTitle: "Trade remedies", basisNote: "The country is a representative label and does not identify a real company; the items above are things to verify, not confirmed facts or rates.",
+        basisRep: "Representative data", basisSyn: "Synthetic screened-out archetype",
+        nextTitle: "See where this kind of judgment leads next",
+        nextBody: "This is a method and representative-data showcase, not a CRM or auto-outreach service. If you have an anonymizable commercial question, you can discuss it with Paul.",
+        nextPathLink: "Next: overseas market and commercial judgment ↗", nextLink: "Discuss a real question with Paul ↗",
+        footStrong: "Finding a company is not the same as finding a buyer worth prioritizing.", footBody: "Claims carry sources; unknowns stay labeled. Public-web research → evidence qualification → contradiction checking → human commercial judgment.",
+        buyer: "Buyer Fit", category: "Category Fit", import: "Import Openness", asia: "Asia Sourcing", barrier: "Entry Barrier",
+        export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "UNKNOWN", anonymized: "ANONYMIZED",
+        categoryLabel: "Category",
+      },
     };
+
     const zhRecords = {
       R1: { type: "進口商／自有品牌地板集團", category: "SPC／LVT 地板", why: ["集團以進口及與海外製造夥伴共同生產剛性核心地板為主要模式（主要來源）", "公開產品方案將 SPC／WPC／LVT 列為核心產品線（主要來源）"], whyNot: ["公司也將自己描述為全球製造商，因此部分產品可能自產；但仍採購亞洲製成品（矛盾證據）"], unknown: ["確切年度採購量", "目前合作的特定供應商"], sources: ["公司公開資料", "貿易產業報導"] },
       R2: { type: "多品類經銷商／進口商", category: "SPC／LVT 地板 · 磁磚 · 石材", why: ["公開資料表示產品來自包括中國與印度在內的數十個國家（主要來源）", "多個室內材料品類並設有專責全球採購團隊（主要來源）"], whyNot: ["大型成熟買方，可能已有穩定供應商關係（進入難度，不代表買方不適合）"], unknown: ["更換供應商的意願", "目前亞洲供應商組合"], sources: ["公司公開聲明", "產業出版物"] },
@@ -184,72 +343,153 @@
       R6: { type: "批發經銷商／自有品牌紡織品", category: "窗簾軟裝 · 布料", why: ["面向貿易客戶的窗簾布料與成品窗飾經銷商（主要來源）", "銷售多個國際品牌，顯示其產品包含進口商品（主要來源）"], whyNot: ["尚未確認亞洲採購——進口來源也可能是歐洲（進口開放度不等於亞洲採購）"], unknown: ["亞洲採購", "採購成品窗簾還是僅採購布料"], sources: ["公司頁面", "產業名錄"] },
       R7: { type: "工程用壁紙經銷商", category: "工程用壁紙", why: ["提供工程用壁紙與設計解決方案，具專門產品線（主要來源）", "服務商業與設計產業客戶（輔助來源）"], whyNot: ["進口開放度與亞洲採購目前都 UNKNOWN，沒有任何一方的證據"], unknown: ["進口開放度", "亞洲採購", "採購決策權細節"], sources: ["公司網站", "產業名錄"] },
       R8: { type: "進口商／家居裝飾批發商", category: "相鄰品類（家居裝飾／照明／配件）", why: ["註冊為家居裝飾與配件進口商（主要來源）", "擁有大型多品類目錄（輔助來源）"], whyNot: ["品類契合度為 WEAK——並非種子品類（壁紙／窗飾／SPC-LVT）；進口活動不能抵銷品類不匹配（領域學習規則）"], unknown: ["種子品類是否具有商業意義", "亞洲採購"], sources: ["進口商註冊資料", "貿易名錄"] },
+      R9: { type: "垂直整合的地板製造商", category: "SPC／LVT 地板", why: ["自有擠出與壓合產線，生產剛性核心地板（主要來源）"], whyNot: ["它採購的是原料與機械，不是成品地板：對這些客戶而言它是競爭者，不是買方（主要來源）"], unknown: ["是否曾把溢單外包"], sources: ["公司生產頁面", "貿易產業報導"] },
+      R10: { type: "有自有品牌系列的區域零售連鎖", category: "SPC／LVT 地板 · 壁紙", why: ["在區域門市網絡販售自有品牌地板與壁紙系列（主要來源）"], whyNot: ["其公開採購政策承諾自有品牌採用歐洲製造，並表明不偏好長途採購（主要來源）：有明確證據反對亞洲採購"], unknown: ["政策涵蓋全部系列或只涵蓋主力系列", "自有品牌以外的工程採購"], sources: ["公開採購政策", "貿易名錄"] },
+      R11: { type: "油漆、塗料與裝飾材料經銷商", category: "油漆與塗料 · 壁紙（次要產品線）", why: ["透過大型港口進口裝飾材料，並將壁紙列為次要產品線（主要來源）", "公開產品目錄可見亞洲原產商品（主要來源）"], whyNot: ["壁紙只是油漆與塗料之外的副線，種子品類的商業比重不明（品類只部分契合）"], unknown: ["壁紙占營收的比例", "壁紙採購決策由誰負責"], sources: ["公司產品目錄", "產業名錄"] },
+      R12: { type: "進口／貿易公司", category: "壁紙 · 窗簾軟裝", why: ["有亞洲原產商品的壁紙與窗飾活躍進口商（輔助來源）"], whyNot: ["其登記地址位於受全面制裁的司法管轄區：無論契合度如何都不是候選對象（合規閘門）"], unknown: ["是否存在合法途徑：需要法律顧問，超出本工具範圍"], sources: ["貿易名錄", "公開登記資料"] },
     };
+
     let lang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "zh";
-    const copy = () => locale[lang];
-    const t = (key) => copy()[key];
-    const applyLocale = () => {
-      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
-      document.title = lang === "zh" ? "海外客戶開發 — 證據式資格篩選 Demo" : "Overseas Lead Discovery — Qualification Demo";
-      document.querySelectorAll("[data-copy]").forEach((node) => { node.textContent = t(node.dataset.copy); });
-      document.getElementById("lang-switch").textContent = lang === "zh" ? "EN" : "繁中";
-      document.getElementById("lang-switch").setAttribute("aria-label", lang === "zh" ? "Switch language" : "切換語言");
-      document.getElementById("flow").setAttribute("aria-label", lang === "zh" ? "工作流程" : "Workflow steps");
-      renderCards();
-    };
+    const state = { tier: "ALL", region: "ALL" };
+    const t = (key) => locale[lang][key];
+    const fill = (text, values) => Object.entries(values).reduce((out, [k, v]) => out.replaceAll(`{${k}}`, String(v)), text);
+    const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const L = (o) => (o ? o[lang] : "");
+    const reasonList = (codes) => codes.map((c) => t("reasons")[c] || c).join(lang === "zh" ? "；" : "; ");
 
-    const fmt = (v) => {
-      if (v === "HIGH" || v === "STRONG" || v === "YES" || v === "CONFIRMED") return `<span class="val-hi">${v}</span>`;
-      if (v === "UNKNOWN" || v === "MAYBE" || v === "PARTIAL") return `<span class="val-unk">${v}</span>`;
-      if (v === "WEAK") return `<span class="val-weak">${v}</span>`;
-      return v;
-    };
+    const ranked = rankRecords(records);
+    const summary = summarize(records);
 
-    function renderCards() {
-      cards.innerHTML = "";
-      for (const r of [...records].sort((a, b) => Number(b.id === "R8") - Number(a.id === "R8"))) {
+    function signalClass(v) {
+      if (["HIGH", "STRONG", "YES", "CONFIRMED"].includes(v)) return "ok";
+      if (["UNKNOWN", "MAYBE", "PARTIAL", "MEDIUM"].includes(v)) return "unk";
+      return "weak"; // WEAK, LOW, NO
+    }
+    const valSpan = (v) => `<span class="val-${signalClass(v) === "ok" ? "hi" : signalClass(v) === "unk" ? "unk" : "weak"}">${esc(v)}</span>`;
+    const marketName = (r) => L(MARKETS[r.market?.country]?.name) || "—";
+    const visible = () => ranked.filter(({ record, q }) => (state.tier === "ALL" || q.tier === state.tier) && (state.region === "ALL" || MARKETS[record.market?.country]?.region === state.region));
+
+    function renderInsights() {
+      const c = summary.counts;
+      const lines = [fill(t("insightCounts"), { total: summary.total, engage: c.ENGAGE_FIRST, verify: c.VERIFY_FIRST, hold: c.HOLD, exclude: c.EXCLUDE })];
+      if (c.ENGAGE_FIRST) lines.push(fill(t("insightBarrier"), { engage: c.ENGAGE_FIRST, high: summary.engageHighBarrier }));
+      if (summary.lowBarrierNotReadyIds.length) {
+        const list = summary.lowBarrierNotReadyIds.map((id) => {
+          const item = ranked.find((x) => x.record.id === id);
+          return `${id}（${reasonList(item.q.reasons)}）`;
+        }).join(lang === "zh" ? "、" : ", ");
+        lines.push(fill(t("insightLowDoor"), { list }));
+      }
+      const regions = Object.entries(summary.byRegion).filter(([key]) => key !== "restricted")
+        .map(([key, v]) => fill(t("regionItem"), { region: L(REGIONS[key]), total: v.total, engage: v.engage }));
+      lines.push(fill(t("insightRegions"), { list: regions.join(lang === "zh" ? "；" : "; ") }));
+      document.getElementById("insight-list").innerHTML = lines.map((l) => `<li>${esc(l)}</li>`).join("");
+    }
+
+    function renderFilters() {
+      const strip = document.getElementById("tier-strip");
+      strip.innerHTML = TIERS.map((tier) => `
+        <button type="button" class="tier-box ${tier}" data-tier="${tier}" aria-pressed="${state.tier === tier}">
+          <div class="n">${summary.counts[tier]}</div><div class="name">${t("tierLabel")[tier]}</div><div class="desc">${t("tierDesc")[tier]}</div>
+        </button>`).join("");
+      strip.setAttribute("aria-label", lang === "zh" ? "分層" : "Tiers");
+      strip.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { state.tier = state.tier === b.dataset.tier ? "ALL" : b.dataset.tier; render(); }));
+      const regionKeys = [...new Set(records.map((r) => MARKETS[r.market?.country]?.region).filter(Boolean))];
+      const chips = document.getElementById("region-chips");
+      chips.setAttribute("aria-label", t("regionLabel"));
+      chips.innerHTML = `<span class="label">${t("regionLabel")}</span>` +
+        [["ALL", t("allRegions")], ...regionKeys.map((k) => [k, L(REGIONS[k])])].map(([k, name]) => `<button type="button" class="chip" data-region="${k}" aria-pressed="${state.region === k}">${esc(name)}</button>`).join("");
+      chips.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { state.region = b.dataset.region; render(); }));
+    }
+
+    function renderMatrix() {
+      const rows = visible();
+      const cols = t("cols");
+      const table = document.getElementById("matrix");
+      if (!rows.length) { table.innerHTML = `<tbody><tr><td class="empty">—</td></tr></tbody>`; return; }
+      table.innerHTML = `<thead><tr><th>${cols.account}</th><th>${cols.country}</th><th>${cols.tier}</th><th>${cols.why}</th><th>${cols.barrier}</th><th>${cols.currency}</th></tr></thead><tbody>` +
+        rows.map(({ record: r, q }) => {
+          const m = MARKETS[r.market?.country];
+          return `<tr tabindex="0" data-id="${r.id}">
+            <td class="acct"><b>${r.id} · ${esc(r.name)}</b><span>${esc((lang === "zh" ? zhRecords[r.id]?.type : null) || r.type)}</span></td>
+            <td data-label="${cols.country}">${esc(marketName(r))}</td>
+            <td data-label="${cols.tier}"><span class="tag tier-${q.tier}">${t("tierLabel")[q.tier]}</span></td>
+            <td data-label="${cols.why}">${esc(reasonList(q.reasons))}</td>
+            <td data-label="${cols.barrier}"><b>${esc(q.barrier)}</b></td>
+            <td data-label="${cols.currency}">${esc(m?.currency ?? "—")}</td></tr>`;
+        }).join("") + "</tbody>";
+      table.querySelectorAll("tbody tr[data-id]").forEach((tr) => {
+        const open = () => { const card = document.getElementById(`card-${tr.dataset.id}`); if (card) { card.classList.add("open"); card.scrollIntoView({ behavior: "smooth", block: "start" }); } };
+        tr.addEventListener("click", open);
+        tr.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+      });
+    }
+
+    function marketLens(r) {
+      const mk = marketFor(r);
+      if (!mk) return "";
+      const checks = mk.checksToVerify.length
+        ? `<ul>${mk.checksToVerify.map((c) => `<li>${esc(L(c))}</li>`).join("")}</ul>`
+        : `<p class="basis-note">${t("noChecks")}</p>`;
+      return `
+        <h4>${t("marketTitle")}</h4>
+        <div class="market-lens">
+          <div class="lens-row"><span>${t("country")}</span><b>${esc(L(mk.name))}${mk.currency ? ` · ${mk.currency}` : ""}</b></div>
+          <h5>${t("checksTitle")}</h5>${checks}
+          <h5>${t("paymentTitle")}</h5><p>${esc(L(mk.payment))}</p>
+          <h5>${t("remedyTitle")}</h5><p>${esc(L(mk.remedyWatch))}</p>
+          <p class="basis-note">${t("basisNote")}</p>
+        </div>`;
+    }
+
+    function renderCard({ record: r, q }) {
       const localized = lang === "zh" ? (zhRecords[r.id] || {}) : r;
       const el = document.createElement("article");
-      el.className = "card" + (r.flaggedWeak ? " weak" : "");
-      const priorityNote = r.id === "R8" ? `<p class="priority-note">${t("notPrioritized")}</p>` : "";
-      const additionalSignal = r.id === "R8" ? "" : `<span class="tag ${r.asiaSourcing === "CONFIRMED" ? "ok" : "unk"}">${t("asia")} ${r.asiaSourcing}</span>`;
-      const fitRows = r.id === "R8" ? "" : `
-        <div class="fits">
-          <div class="row"><span>${t("buyer")}</span><b>${fmt(r.buyerFit)}</b></div>
-          <div class="row"><span>${t("category")}</span><b>${fmt(r.categoryFit)}</b></div>
-          <div class="row"><span>${t("import")}</span><b>${fmt(r.importOpenness)}</b></div>
-          <div class="row"><span>${t("asia")}</span><b>${fmt(r.asiaSourcing)}</b></div>
-          <div class="row"><span>${t("barrier")}</span><b>${fmt(r.entryBarrier)}</b></div>
-        </div>`;
+      el.className = `card tier-${q.tier}`;
+      el.id = `card-${r.id}`;
+      const reasons = reasonList(q.reasons);
+      const move = q.tier === "ENGAGE_FIRST" ? t("move").ENGAGE_FIRST : fill(t("move")[q.tier], { reasons });
+      const exportBlock = q.tier === "EXCLUDE"
+        ? `<p class="no-export">${t("noExport")}</p>`
+        : `<button class="handoff-action" type="button" data-record-id="${r.id}">${t("export")}</button>`;
       el.innerHTML = `
         <div class="card-head">
-          <div class="id">${r.id} · ${t("anonymized")}</div>
-          <h3>${r.name}</h3>
-          <div class="meta">${localized.type || r.type}</div>
-          <div class="meta">${lang === "zh" ? "品類" : "Category"}: ${localized.category || r.category}</div>
+          <div class="id">${r.id} · ${t("anonymized")} · ${r.basis === "SYNTHETIC_ARCHETYPE" ? t("basisSyn") : t("basisRep")}</div>
+          <h3>${esc(r.name)}</h3>
+          <div class="meta">${esc(localized.type || r.type)}</div>
+          <div class="meta">${t("categoryLabel")}: ${esc(localized.category || r.category)}</div>
+          <div class="meta">${t("country")}: ${esc(marketName(r))}</div>
           <div class="tags">
-            <span class="tag ok">${t("buyer")} ${r.buyerFit}</span>
-            <span class="tag ${r.categoryFit === "WEAK" ? "weak" : "ok"}">${t("category")} ${r.categoryFit}</span>
-            <span class="tag ${r.importOpenness === "YES" ? "ok" : "unk"}">${t("import")} ${r.importOpenness}</span>
-            ${additionalSignal}
+            <span class="tag tier-${q.tier}">${t("tierLabel")[q.tier]}</span>
+            <span class="tag ${signalClass(r.buyerFit)}">${t("buyer")} ${esc(r.buyerFit)}</span>
+            <span class="tag ${signalClass(r.categoryFit)}">${t("category")} ${esc(r.categoryFit)}</span>
+            <span class="tag ${signalClass(r.importOpenness)}">${t("import")} ${esc(r.importOpenness)}</span>
+            <span class="tag ${signalClass(r.asiaSourcing)}">${t("asia")} ${esc(r.asiaSourcing)}</span>
           </div>
         </div>
-        ${priorityNote}
-        ${fitRows}
-        <button class="handoff-action" type="button" data-record-id="${r.id}">${t("export")}</button>
+        <p class="first-move">${esc(move)}</p>
+        <div class="fits">
+          <div class="row"><span>${t("buyer")}</span><b>${valSpan(r.buyerFit)}</b></div>
+          <div class="row"><span>${t("category")}</span><b>${valSpan(r.categoryFit)}</b></div>
+          <div class="row"><span>${t("import")}</span><b>${valSpan(r.importOpenness)}</b></div>
+          <div class="row"><span>${t("asia")}</span><b>${valSpan(r.asiaSourcing)}</b></div>
+          <div class="row"><span>${t("barrier")}</span><b class="val-plain">${esc(r.entryBarrier)}</b></div>
+        </div>
+        ${exportBlock}
         <button class="evidence-toggle" type="button">${t("evidence")}</button>
         <div class="evidence">
           <h4>${t("why")}</h4>
-          <ul>${(localized.why || r.why).map((w) => `<li>${w}</li>`).join("")}</ul>
+          <ul>${(localized.why || r.why).map((w) => `<li>${esc(w)}</li>`).join("")}</ul>
           <h4>${t("whyNot")}</h4>
-          <ul>${(localized.whyNot || r.whyNot).map((w) => `<li>${w}</li>`).join("")}</ul>
+          <ul>${(localized.whyNot || r.whyNot).map((w) => `<li>${esc(w)}</li>`).join("")}</ul>
           <h4>${t("sources")}</h4>
-          <ul>${r.sources.map((s, i) => `<li>${(localized.sources || [])[i] || s.note} <span class="tier ${s.tier}">${s.tier}</span></li>`).join("")}</ul>
+          <ul>${r.sources.map((s, i) => `<li>${esc((localized.sources || [])[i] || s.note)} <span class="tier ${s.tier}">${s.tier}</span></li>`).join("")}</ul>
           <h4>${t("unknown")}</h4>
-          <div class="unknown-box">${(localized.unknown || r.unknown).map((u) => `<div>· ${u}</div>`).join("")}</div>
-        </div>
-      `;
-      el.querySelector(".handoff-action").addEventListener("click", () => {
+          <div class="unknown-box">${(localized.unknown || r.unknown).map((u) => `<div>· ${esc(u)}</div>`).join("")}</div>
+          ${marketLens(r)}
+        </div>`;
+      const button = el.querySelector(".handoff-action");
+      if (button) button.addEventListener("click", () => {
         const proposal = buildIntakeProposal(r);
         const blob = new Blob([JSON.stringify(proposal, null, 2)], { type: "application/json" });
         const url = URL.createObjectURL(blob);
@@ -260,11 +500,43 @@
         URL.revokeObjectURL(url);
       });
       el.querySelector(".evidence-toggle").addEventListener("click", () => el.classList.toggle("open"));
-      cards.appendChild(el);
+      return el;
+    }
+
+    function renderGroups() {
+      const host = document.getElementById("groups");
+      host.innerHTML = "";
+      const rows = visible();
+      for (const tier of TIERS) {
+        const inTier = rows.filter(({ q }) => q.tier === tier);
+        if (!inTier.length) continue;
+        const heading = document.createElement("div");
+        heading.className = "group-title";
+        heading.innerHTML = `<h2>${t("tierLabel")[tier]}</h2><span>${inTier.length} · ${t("tierDesc")[tier]}</span>`;
+        const grid = document.createElement("div");
+        grid.className = "cards";
+        inTier.forEach((item) => grid.appendChild(renderCard(item)));
+        host.append(heading, grid);
       }
     }
-    document.getElementById("lang-switch").addEventListener("click", () => { lang = lang === "zh" ? "en" : "zh"; applyLocale(); });
-    applyLocale();
+
+    function render() {
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+      document.title = lang === "zh" ? "海外客戶開發 — 證據式資格篩選 Demo" : "Overseas Lead Discovery — Qualification Demo";
+      document.querySelectorAll("[data-copy]").forEach((node) => { node.textContent = t(node.dataset.copy); });
+      document.getElementById("example-count").textContent = String(records.length);
+      const sw = document.getElementById("lang-switch");
+      sw.textContent = lang === "zh" ? "EN" : "繁中";
+      sw.setAttribute("aria-label", lang === "zh" ? "Switch language" : "切換語言");
+      document.getElementById("flow").setAttribute("aria-label", lang === "zh" ? "工作流程" : "Workflow steps");
+      renderInsights();
+      renderFilters();
+      renderMatrix();
+      renderGroups();
+    }
+
+    document.getElementById("lang-switch").addEventListener("click", () => { lang = lang === "zh" ? "en" : "zh"; render(); });
+    render();
   </script>
 </body>
 </html>
