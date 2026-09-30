@@ -193,6 +193,35 @@
     .own-summary li { margin: 4px 0; font-size: 14px; }
     .own-before li { margin: 6px 0; font-size: 14px; }
     @media (max-width: 640px) { .mode-cards { grid-template-columns: 1fr; } .own-grid { grid-template-columns: 1fr; } }
+    /* take-away brief */
+    .brief { border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 18px 20px; margin-top: 12px; }
+    .brief h2 { font-size: 20px; margin: 0 0 2px; }
+    .brief h3 { font-size: 15px; margin: 18px 0 6px; }
+    .brief p, .brief li { font-size: 13px; }
+    .brief .brief-sub { color: var(--muted); margin: 0 0 10px; }
+    .brief .brief-meta { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 0; font-size: 13px; }
+    .brief .brief-meta dt { color: var(--muted); }
+    .brief .brief-meta dd { margin: 0; font-weight: 600; }
+    .brief-scroll { overflow-x: auto; }
+    .brief-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 640px; }
+    .brief-table th, .brief-table td { border-top: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+    .brief-table th { font-size: 11px; color: var(--muted); }
+    .brief-table td:nth-child(2) { white-space: nowrap; }
+    .brief .brief-note { color: var(--muted); }
+    .brief .brief-foot { margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    @media print {
+      @page { margin: 14mm; }
+      body { background: #fff; }
+      .portfolio-nav, .lang-switch, .mode-screen, #view-sample, .next-step, .foot { display: none !important; }
+      .wrap > :not(#view-own) { display: none !important; }
+      #view-own > :not(#own-brief-section) { display: none !important; }
+      #own-brief-section { border: 0; padding: 0; margin: 0; }
+      #own-brief-section > :not(#own-brief) { display: none !important; }
+      .brief { border: 0; padding: 0; margin: 0; }
+      .brief-scroll { overflow: visible; }
+      .brief-table { min-width: 0; font-size: 10.5px; }
+      .brief h3, .brief-table tr { break-inside: avoid; }
+    }
     .lang-switch { position: absolute; top: 18px; right: 18px; z-index: 101; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--forest); padding: 6px 11px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
     .lang-switch:hover { background: var(--paper); }
     .empty { padding: 18px; color: var(--muted); font-size: 14px; text-align: center; }
@@ -307,6 +336,12 @@
         <h3 id="own-step3"></h3>
         <div id="own-result" aria-live="polite"></div>
       </section>
+      <section class="own-step" id="own-brief-section" aria-labelledby="own-brief-title">
+        <h3 id="own-brief-title"></h3>
+        <p class="own-intro" id="own-brief-note"></p>
+        <div class="own-actions"><button type="button" class="own-btn" id="own-print"></button><button type="button" class="own-btn" id="own-download"></button></div>
+        <article class="brief" id="own-brief" aria-live="polite"></article>
+      </section>
       <section class="own-step" aria-labelledby="own-plan-title"><h3 id="own-plan-title"></h3><div id="own-plan"></div></section>
       <section class="own-step" aria-labelledby="own-before-title"><h3 id="own-before-title"></h3><p class="own-intro" id="own-before-note"></p><ul class="own-before" id="own-before"></ul></section>
       <section class="own-step" aria-labelledby="own-next-title"><h3 id="own-next-title"></h3><p class="own-intro" id="own-next-body"></p><a id="own-next-link" href="#"></a></section>
@@ -330,6 +365,8 @@
     import { TIERS, rankRecords, summarize } from "./qualification.js";
     import { MAX_COMPANIES, OPTIONS, ANGLE_FIELDS, blankCompany, rankOwn, summarizeOwn, marketPlan, countryCodes } from "./own-list.js";
     import { OWN_COPY, SAMPLE_COMPANIES } from "./own-list-copy.js";
+    import { BRIEF_COPY } from "./own-brief-copy.js";
+    import { buildBrief, briefToMarkdown } from "./own-brief.js";
 
     const locale = {
       zh: {
@@ -710,7 +747,9 @@
       add.textContent = add.disabled ? c.full : c.addCompany;
     }
 
-    function renderOwnResult() {
+    function renderOwnResult() { renderOwnResultCore(); renderBrief(); }
+
+    function renderOwnResultCore() {
       const c = oc();
       const host = document.getElementById("own-result");
       if (!ownState.companies.length) { host.innerHTML = `<p class="own-intro">${esc(c.emptyResult)}</p>`; return; }
@@ -733,11 +772,51 @@
         }).join("");
     }
 
-    function renderOwnPlan() {
+    function renderOwnPlan() { renderOwnPlanCore(); renderBrief(); }
+
+    function renderOwnPlanCore() {
       const c = oc();
       const host = document.getElementById("own-plan");
       const plan = ownState.categories.size && ownState.country ? marketPlan({ country: ownState.country, categories: [...ownState.categories] }) : null;
       host.innerHTML = plan ? lensHtml(plan) : `<p class="own-intro">${esc(c.planNone)}</p>`;
+    }
+
+    const currentBrief = () => buildBrief({ lang, date: new Date().toLocaleDateString("en-CA"), categories: [...ownState.categories], country: ownState.country, companies: ownState.companies });
+
+    function renderBrief() {
+      const bc = BRIEF_COPY[lang];
+      document.getElementById("own-brief-title").textContent = bc.sectionTitle;
+      document.getElementById("own-brief-note").textContent = bc.sectionNote;
+      const print = document.getElementById("own-print");
+      const download = document.getElementById("own-download");
+      print.textContent = bc.print; download.textContent = bc.download;
+      print.disabled = download.disabled = !ownState.companies.length;
+      const host = document.getElementById("own-brief");
+      if (!ownState.companies.length) { host.innerHTML = `<p class="brief-note">${esc(bc.empty)}</p>`; return; }
+      const b = currentBrief();
+      const list = (items) => `<ul>${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>`;
+      const angleCell = (row) => row.angle ? `${row.angle.parts.map((p) => `${esc(p.label)} ${esc(p.value)}`).join(lang === "zh" ? "／" : " / ")}<br>${esc(row.angle.status)}` : esc(b.angleNotNeeded);
+      host.innerHTML = `
+        <h2>${esc(b.title)}</h2><p class="brief-sub">${esc(b.subtitle)}</p>
+        <dl class="brief-meta"><dt>${esc(b.productLabel)}</dt><dd>${esc(b.product)}</dd><dt>${esc(b.marketLabel)}</dt><dd>${esc(b.market)}</dd><dt>${esc(b.generatedLabel)}</dt><dd>${esc(b.generated)}</dd></dl>
+        <h3>${esc(b.summaryTitle)}</h3>${list(b.summaryLines)}
+        <h3>${esc(b.listTitle)}</h3>
+        <div class="brief-scroll"><table class="brief-table"><thead><tr>${b.columns.map((col) => `<th>${esc(col)}</th>`).join("")}</tr></thead><tbody>${b.rows.map((row) => `<tr><td><b>${esc(row.name)}</b></td><td>${esc(row.tierLabel)}</td><td>${esc(row.reasons.join(lang === "zh" ? "；" : "; "))}</td><td>${angleCell(row)}</td><td>${esc(row.next)}</td></tr>`).join("")}</tbody></table></div>
+        <h3>${esc(b.marketTitle)}</h3><p class="brief-note">${esc(b.marketNote)}</p>
+        ${b.marketChecks.length ? `${list(b.marketChecks)}<p><b>${esc(b.payment.title)}:</b> ${esc(b.payment.text)}</p><p><b>${esc(b.remedy.title)}:</b> ${esc(b.remedy.text)}</p>` : `<p>${esc(b.marketNone)}</p>`}
+        <h3>${esc(b.beforeTitle)}</h3>${list(b.before)}
+        <h3>${esc(b.notTitle)}</h3>${list(b.not)}
+        <p class="brief-foot">${esc(b.footer)}</p>`;
+    }
+
+    function downloadBrief() {
+      const blob = new Blob([briefToMarkdown(currentBrief())], { type: "text/markdown;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = "lead-list-brief.md";
+      anchor.click();
+      URL.revokeObjectURL(url);
     }
 
     function renderOwn() { renderModeCards(); renderOwnStatic(); renderOwnCompanies(); renderOwnResult(); renderOwnPlan(); }
@@ -779,6 +858,8 @@
         renderOwnCompanies(); renderOwnResult();
       }
     });
+    document.getElementById("own-print").addEventListener("click", () => window.print());
+    document.getElementById("own-download").addEventListener("click", downloadBrief);
     for (const card of document.querySelectorAll(".mode-card")) card.addEventListener("click", () => setMode(card.dataset.mode, { scroll: true }));
 
     document.getElementById("lang-switch").addEventListener("click", () => { lang = lang === "zh" ? "en" : "zh"; render(); renderOwn(); });

@@ -48,3 +48,13 @@ The owner brings a product category, a target market and up to 20 candidate comp
 - Wording rules are enforced by `own-list.test.mjs`: no UNKNOWN, PASS, HOLD or WHY NOT in the copy, no reply or conversion numbers, no mention of third-party list tools.
 
 Tests: `node own-list.test.mjs`.
+
+### The take-away list brief (`own-brief.js`)
+
+The same mode ends with a one-page brief built from what the owner entered: product and market, summary counts, each company with its tier, reasons, angle and next step, what to check in the market, what to do before reaching out, and what the brief does not mean. It can be printed or saved as PDF (only the brief prints) or downloaded as Markdown.
+
+- Pure functions, no network, no storage, no clock (the page passes the date in). The tiers come from `own-list.js`, so the brief cannot disagree with the page.
+- It states no reply rate, no order number and no score; a tier is a reading order. The payment-risk line stays "a preliminary check, not a credit report".
+- A company name cannot break the Markdown table. A category outside the seed list gets no market checks.
+
+Tests: `node own-brief.test.mjs`.
