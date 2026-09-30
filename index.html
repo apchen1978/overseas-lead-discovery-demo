@@ -155,6 +155,44 @@
     .next-step h2 { margin: 0 0 5px; font-size: 15px; }
     .next-step p { margin: 0; color: var(--muted); font-size: 13px; }
     .next-step a { display: inline-block; margin-top: 10px; margin-right: 14px; color: var(--forest); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    /* mode chooser + bring-your-own list */
+    .mode-screen { margin: 4px 0 22px; }
+    .mode-title { font-size: 16px; margin: 0 0 10px; text-align: center; }
+    .mode-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .mode-card { text-align: left; font: inherit; color: inherit; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; display: grid; gap: 4px; }
+    .mode-card[aria-pressed="true"] { border-color: var(--forest); outline: 2px solid var(--forest); outline-offset: -2px; }
+    .mode-card:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+    .mode-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--amber); }
+    .mode-name { font-size: 17px; }
+    .mode-body { font-size: 13px; color: var(--muted); }
+    .mode-cta { font-size: 13px; font-weight: 700; color: var(--forest); margin-top: 4px; }
+    .own h2 { font-size: 20px; margin: 0 0 6px; }
+    .own-intro, .own-privacy, .own-scope { font-size: 14px; color: var(--muted); max-width: 760px; }
+    .own-privacy { border-left: 4px solid var(--amber); background: #fff; padding: 8px 12px; border-radius: 8px; }
+    .own-step { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 16px 0; }
+    .own-step h3 { margin: 0 0 10px; font-size: 16px; }
+    .own fieldset { border: 0; padding: 0; margin: 0 0 10px; min-width: 0; }
+    .own legend { font-size: 13px; font-weight: 700; padding: 0; margin-bottom: 6px; }
+    .own-cats { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+    .own label { font-size: 13px; }
+    .own-check { display: inline-flex; gap: 6px; align-items: center; }
+    .own select, .own input[type="text"] { font: inherit; font-size: 14px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 8px; background: #fff; max-width: 100%; }
+    .own-field { display: grid; gap: 4px; }
+    .own-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .own-btn { font: inherit; font-size: 13px; font-weight: 700; color: var(--forest); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+    .own-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .own-btn:focus-visible, .own select:focus-visible, .own input:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+    .own-company { border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 12px; background: var(--bone); }
+    .own-company-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .own-company-head h4 { margin: 0; font-size: 14px; }
+    .own-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .own-result-row { border: 1px solid var(--line); border-left-width: 4px; border-radius: 10px; background: #fff; padding: 10px 12px; margin: 8px 0; }
+    .own-result-row h4 { margin: 0 0 4px; font-size: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .own-result-row p { margin: 3px 0; font-size: 13px; }
+    .own-result-row .angle { color: var(--muted); }
+    .own-summary li { margin: 4px 0; font-size: 14px; }
+    .own-before li { margin: 6px 0; font-size: 14px; }
+    @media (max-width: 640px) { .mode-cards { grid-template-columns: 1fr; } .own-grid { grid-template-columns: 1fr; } }
     .lang-switch { position: absolute; top: 18px; right: 18px; z-index: 101; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--forest); padding: 6px 11px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
     .lang-switch:hover { background: var(--paper); }
     .empty { padding: 18px; color: var(--muted); font-size: 14px; text-align: center; }
@@ -203,6 +241,15 @@
       </div>
     </header>
 
+    <section class="mode-screen" id="mode-screen" aria-labelledby="mode-title">
+      <h2 class="mode-title" id="mode-title"></h2>
+      <div class="mode-cards">
+        <button type="button" class="mode-card" id="mode-sample" data-mode="sample" aria-pressed="true"><span class="mode-tag"></span><strong class="mode-name"></strong><span class="mode-body"></span><span class="mode-cta"></span></button>
+        <button type="button" class="mode-card" id="mode-own" data-mode="own" aria-pressed="false"><span class="mode-tag"></span><strong class="mode-name"></strong><span class="mode-body"></span><span class="mode-cta"></span></button>
+      </div>
+    </section>
+
+    <div id="view-sample">
     <div class="disclosure">
       <strong data-copy="disclosureTitle">資料揭露</strong>
       <span data-copy="disclosureBody"></span>
@@ -235,6 +282,36 @@
       <span data-copy="flow5">領域學習</span><span class="arrow">→</span>
       <span data-copy="flow6">收斂短名單</span>
     </div>
+    </div>
+
+    <div id="view-own" class="own" hidden>
+      <h2 id="own-title"></h2>
+      <p class="own-intro" id="own-intro"></p>
+      <p class="own-privacy" id="own-privacy"></p>
+      <section class="own-step" aria-labelledby="own-step1">
+        <h3 id="own-step1"></h3>
+        <fieldset><legend id="own-product-label"></legend><div class="own-cats" id="own-categories"></div></fieldset>
+        <p class="own-intro" id="own-other-note"></p>
+        <div class="own-field"><label for="own-country" id="own-country-label"></label><select id="own-country"></select></div>
+      </section>
+      <section class="own-step" aria-labelledby="own-step2">
+        <h3 id="own-step2"></h3>
+        <div class="own-actions">
+          <button type="button" class="own-btn" id="own-add"></button>
+          <button type="button" class="own-btn" id="own-sample"></button>
+          <button type="button" class="own-btn" id="own-clear"></button>
+        </div>
+        <div id="own-companies"></div>
+      </section>
+      <section class="own-step" aria-labelledby="own-step3">
+        <h3 id="own-step3"></h3>
+        <div id="own-result" aria-live="polite"></div>
+      </section>
+      <section class="own-step" aria-labelledby="own-plan-title"><h3 id="own-plan-title"></h3><div id="own-plan"></div></section>
+      <section class="own-step" aria-labelledby="own-before-title"><h3 id="own-before-title"></h3><p class="own-intro" id="own-before-note"></p><ul class="own-before" id="own-before"></ul></section>
+      <section class="own-step" aria-labelledby="own-next-title"><h3 id="own-next-title"></h3><p class="own-intro" id="own-next-body"></p><a id="own-next-link" href="#"></a></section>
+      <p class="own-scope" id="own-scope"></p>
+    </div>
 
     <section class="next-step" aria-labelledby="next-title">
       <h2 id="next-title" data-copy="nextTitle">把這個方法帶進一個真實問題</h2>
@@ -251,6 +328,8 @@
     import { buildIntakeProposal } from "./cdd-intake-proposal.js";
     import { MARKETS, REGIONS, marketFor } from "./markets.js";
     import { TIERS, rankRecords, summarize } from "./qualification.js";
+    import { MAX_COMPANIES, OPTIONS, ANGLE_FIELDS, blankCompany, rankOwn, summarizeOwn, marketPlan, countryCodes } from "./own-list.js";
+    import { OWN_COPY, SAMPLE_COMPANIES } from "./own-list-copy.js";
 
     const locale = {
       zh: {
@@ -280,7 +359,7 @@
         allTiers: "全部", allRegions: "全部地區", regionLabel: "地區",
         reasons: {
           COMPLIANCE_GATE: "落在合規閘門（例如受全面制裁的司法管轄區）", NOT_A_BUYER: "不是買方（自己生產，是競爭者）", NO_IMPORT_APPETITE: "沒有進口意願",
-          WEAK_CATEGORY: "品類契合度弱", NO_ASIA_SOURCING: "明確不採購亞洲貨源", IMPORT_UNKNOWN: "進口開放度未知", ASIA_UNKNOWN: "亞洲採購未知",
+          WEAK_CATEGORY: "品類契合度弱", NO_ASIA_SOURCING: "明確不採購亞洲貨源", IMPORT_UNKNOWN: "進口開放度查無公開資料", ASIA_UNKNOWN: "亞洲採購查無公開資料", CATEGORY_UNKNOWN: "品類契合度查無公開資料",
           PARTIAL_CATEGORY: "品類只部分契合", NO_PRIMARY_SOURCE: "缺少第一手來源（只有第三方或輔助來源）", BUYER_FIT_NOT_STRONG: "買方契合度不夠強", ALL_GATES_CLEAR: "所有閘門通過",
         },
         move: {
@@ -300,7 +379,7 @@
         nextPathLink: "接著看：海外市場與商業判斷 ↗", nextLink: "與 Paul 討論真實問題 ↗",
         footStrong: "找到公司，不等於找到值得優先開發的買家。", footBody: "每項判斷都附有來源；未知之處會明確標示。從公開網頁找資料、核對證據與矛盾，再由人做商業判斷。",
         buyer: "買方契合", category: "品類契合", import: "進口開放度", asia: "亞洲採購", barrier: "進入門檻",
-        export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "UNKNOWN", anonymized: "匿名資料",
+        export: "匯出 CDD Intake Proposal · JSON", evidence: "查看證據", hide: "收起證據", why: "WHY（附來源）", whyNot: "WHY NOT／矛盾證據", sources: "證據來源", unknown: "查無公開資料", anonymized: "匿名資料",
         categoryLabel: "品類",
         navLabel: "作品集導覽", navBack: "← 回作品集", navPos: "問題 1／3 · 還沒談條件之前，該先接觸誰？", navNext: "下一個：這筆訂單現在能不能接？",
       },
@@ -331,7 +410,7 @@
         allTiers: "All", allRegions: "All regions", regionLabel: "Region",
         reasons: {
           COMPLIANCE_GATE: "Compliance gate (for example a comprehensively sanctioned jurisdiction)", NOT_A_BUYER: "Not a buyer (produces in-house; a competitor)", NO_IMPORT_APPETITE: "No import appetite",
-          WEAK_CATEGORY: "Weak category fit", NO_ASIA_SOURCING: "Explicitly not sourcing from Asia", IMPORT_UNKNOWN: "Import openness unknown", ASIA_UNKNOWN: "Asia sourcing unknown",
+          WEAK_CATEGORY: "Weak category fit", NO_ASIA_SOURCING: "Explicitly not sourcing from Asia", IMPORT_UNKNOWN: "Import openness not public", ASIA_UNKNOWN: "Asia sourcing not public", CATEGORY_UNKNOWN: "Category fit not public",
           PARTIAL_CATEGORY: "Category fit is only partial", NO_PRIMARY_SOURCE: "No primary source (only third-party or supporting evidence)", BUYER_FIT_NOT_STRONG: "Buyer fit is not strong", ALL_GATES_CLEAR: "Every gate is clear",
         },
         move: {
@@ -351,7 +430,7 @@
         nextPathLink: "Next: overseas market and commercial judgment ↗", nextLink: "Discuss a real question with Paul ↗",
         footStrong: "Finding a company is not the same as finding a buyer worth prioritizing.", footBody: "Claims carry sources; unknowns stay labeled. Public-web research → evidence qualification → contradiction checking → human commercial judgment.",
         buyer: "Buyer Fit", category: "Category Fit", import: "Import Openness", asia: "Asia Sourcing", barrier: "Entry Barrier",
-        export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "UNKNOWN", anonymized: "ANONYMIZED",
+        export: "Export CDD Intake Proposal · JSON", evidence: "View Evidence", hide: "Hide Evidence", why: "WHY (with sources)", whyNot: "WHY NOT / contradictory evidence", sources: "Evidence sources", unknown: "Not public", anonymized: "ANONYMIZED",
         categoryLabel: "Category",
         navLabel: "Portfolio navigation", navBack: "← Back to portfolio", navPos: "Question 1 of 3 · Before any terms are discussed, who should we reach first?", navNext: "Next: can you take this order now?",
       },
@@ -364,7 +443,7 @@
       R4: { type: "多品類室內材料經銷商／進口商", category: "壁紙 · 地板 · 家居配件", why: ["公開資料將其描述為具有全球業務的壁紙主要進口商／經銷商（主要來源）", "在包括中國在內的三大洲設有辦公室（主要來源）"], whyNot: ["具備部分自有製造能力（部分垂直整合）"], unknown: ["直接中國供應商合約", "壁紙與地板的採購比例"], sources: ["公司關於／全球業務頁面", "產業報告"] },
       R5: { type: "壁紙進口商／經銷商", category: "壁紙", why: ["商業模式以進口壁紙為主；第三方貿易情報平台出現進口紀錄（需驗證）"], whyNot: ["未找到官方網站——需要透過目錄或名錄建立接觸（驗證缺口）"], unknown: ["特定亞洲供應商", "採購量"], sources: ["第三方貿易資料庫", "商業名錄"] },
       R6: { type: "批發經銷商／自有品牌紡織品", category: "窗簾軟裝 · 布料", why: ["面向貿易客戶的窗簾布料與成品窗飾經銷商（主要來源）", "銷售多個國際品牌，顯示其產品包含進口商品（主要來源）"], whyNot: ["尚未確認亞洲採購——進口來源也可能是歐洲（進口開放度不等於亞洲採購）"], unknown: ["亞洲採購", "採購成品窗簾還是僅採購布料"], sources: ["公司頁面", "產業名錄"] },
-      R7: { type: "工程用壁紙經銷商", category: "工程用壁紙", why: ["提供工程用壁紙與設計解決方案，具專門產品線（主要來源）", "服務商業與設計產業客戶（輔助來源）"], whyNot: ["進口開放度與亞洲採購目前都 UNKNOWN，沒有任何一方的證據"], unknown: ["進口開放度", "亞洲採購", "採購決策權細節"], sources: ["公司網站", "產業名錄"] },
+      R7: { type: "工程用壁紙經銷商", category: "工程用壁紙", why: ["提供工程用壁紙與設計解決方案，具專門產品線（主要來源）", "服務商業與設計產業客戶（輔助來源）"], whyNot: ["進口開放度與亞洲採購目前都查無公開資料，沒有任何一方的證據"], unknown: ["進口開放度", "亞洲採購", "採購決策權細節"], sources: ["公司網站", "產業名錄"] },
       R8: { type: "進口商／家居裝飾批發商", category: "相鄰品類（家居裝飾／照明／配件）", why: ["註冊為家居裝飾與配件進口商（主要來源）", "擁有大型多品類目錄（輔助來源）"], whyNot: ["品類契合度為 WEAK——並非種子品類（壁紙／窗飾／SPC-LVT）；進口活動不能抵銷品類不匹配（領域學習規則）"], unknown: ["種子品類是否具有商業意義", "亞洲採購"], sources: ["進口商註冊資料", "貿易名錄"] },
       R9: { type: "垂直整合的地板製造商", category: "SPC／LVT 地板", why: ["自有擠出與壓合產線，生產剛性核心地板（主要來源）"], whyNot: ["它採購的是原料與機械，不是成品地板：對這些客戶而言它是競爭者，不是買方（主要來源）"], unknown: ["是否曾把溢單外包"], sources: ["公司生產頁面", "貿易產業報導"] },
       R10: { type: "有自有品牌系列的區域零售連鎖", category: "SPC／LVT 地板 · 壁紙", why: ["在區域門市網絡販售自有品牌地板與壁紙系列（主要來源）"], whyNot: ["其公開採購政策承諾自有品牌採用歐洲製造，並表明不偏好長途採購（主要來源）：有明確證據反對亞洲採購"], unknown: ["政策涵蓋全部系列或只涵蓋主力系列", "自有品牌以外的工程採購"], sources: ["公開採購政策", "貿易名錄"] },
@@ -373,7 +452,7 @@
     };
 
     let lang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "zh";
-    const state = { tier: "ALL", region: "ALL" };
+    const state = { tier: "ALL", region: "ALL", mode: "sample" };
     const t = (key) => locale[lang][key];
     const fill = (text, values) => Object.entries(values).reduce((out, [k, v]) => out.replaceAll(`{${k}}`, String(v)), text);
     const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -452,7 +531,10 @@
 
     function marketLens(r) {
       const mk = marketFor(r);
-      if (!mk) return "";
+      return mk ? lensHtml(mk) : "";
+    }
+
+    function lensHtml(mk) {
       const checks = mk.checksToVerify.length
         ? `<ul>${mk.checksToVerify.map((c) => `<li>${esc(L(c))}</li>`).join("")}</ul>`
         : `<p class="basis-note">${t("noChecks")}</p>`;
@@ -570,8 +652,139 @@
       renderGroups();
     }
 
-    document.getElementById("lang-switch").addEventListener("click", () => { lang = lang === "zh" ? "en" : "zh"; render(); });
+    // ---- bring your own product and market (own-list.js): in memory only, nothing is stored or sent.
+    const oc = () => OWN_COPY[lang];
+    const ownState = { categories: new Set(), country: "", companies: [] };
+    const ownQuestions = [["buyer", OPTIONS.buyer], ["category", OPTIONS.category], ["imports", OPTIONS.imports], ["asia", OPTIONS.asia], ["barrier", OPTIONS.barrier]];
+    const ownSelect = (field, values, current, i) => `<div class="own-field"><label for="own-${i}-${field}">${esc(oc().q[field])}</label><select id="own-${i}-${field}" data-field="${field}">${values.map((v) => `<option value="${v}"${v === current ? " selected" : ""}>${esc(oc().opt[v])}</option>`).join("")}</select></div>`;
+    const ownCheck = (field, checked, i) => `<label class="own-check"><input type="checkbox" data-field="${field}"${checked ? " checked" : ""}> ${esc(oc().q[field])}</label>`;
+
+    function setMode(mode, { scroll = false } = {}) {
+      state.mode = mode;
+      document.getElementById("view-sample").hidden = mode !== "sample";
+      document.getElementById("view-own").hidden = mode !== "own";
+      for (const card of document.querySelectorAll(".mode-card")) card.setAttribute("aria-pressed", String(card.dataset.mode === mode));
+      history.replaceState(null, "", `${location.pathname}${location.search}#mode-${mode}`);
+      if (scroll) document.getElementById(mode === "own" ? "view-own" : "view-sample").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderModeCards() {
+      const c = oc();
+      document.getElementById("mode-title").textContent = c.modeTitle;
+      for (const [id, tag, name, body, cta] of [["mode-sample", c.modeSampleTag, c.modeSampleTitle, c.modeSampleBody, c.modeSampleCta], ["mode-own", c.modeOwnTag, c.modeOwnTitle, c.modeOwnBody, c.modeOwnCta]]) {
+        const card = document.getElementById(id);
+        card.querySelector(".mode-tag").textContent = tag;
+        card.querySelector(".mode-name").textContent = name;
+        card.querySelector(".mode-body").textContent = body;
+        card.querySelector(".mode-cta").textContent = `${cta} →`;
+      }
+    }
+
+    function renderOwnStatic() {
+      const c = oc();
+      const text = { "own-title": c.ownHeading, "own-intro": c.ownIntro, "own-privacy": c.ownPrivacy, "own-step1": c.step1, "own-product-label": c.productLabel, "own-other-note": c.otherNote,
+        "own-country-label": c.countryLabel, "own-step2": c.step2, "own-add": c.addCompany, "own-sample": c.fillSample, "own-clear": c.clearAll, "own-step3": c.step3,
+        "own-plan-title": c.planTitle, "own-before-title": c.beforeTitle, "own-before-note": c.beforeNote, "own-next-title": c.nextTitle, "own-next-body": c.nextBody, "own-next-link": c.nextLink, "own-scope": c.scope };
+      for (const [id, value] of Object.entries(text)) document.getElementById(id).textContent = value;
+      document.getElementById("own-before").innerHTML = c.before.map((line) => `<li>${esc(line)}</li>`).join("");
+      document.getElementById("own-next-link").href = "https://apchen1978.github.io/commercial-decision-desk/" + (lang === "en" ? "?lang=en" : "") + "#mode-blank";
+      document.getElementById("own-categories").innerHTML = ["flooring", "wallcoverings", "windowTreatments", "other"].map((key) =>
+        `<label class="own-check"><input type="checkbox" data-category="${key}"${ownState.categories.has(key) ? " checked" : ""}> ${esc(c.categories[key])}</label>`).join("");
+      const regions = [...new Set(countryCodes().map((code) => MARKETS[code].region))];
+      document.getElementById("own-country").innerHTML = `<option value="">${esc(c.countryPlaceholder)}</option>` + regions.map((region) =>
+        `<optgroup label="${esc(L(REGIONS[region]))}">${countryCodes().filter((code) => MARKETS[code].region === region).map((code) => `<option value="${code}"${ownState.country === code ? " selected" : ""}>${esc(L(MARKETS[code].name))}</option>`).join("")}</optgroup>`).join("");
+    }
+
+    function renderOwnCompanies() {
+      const c = oc();
+      document.getElementById("own-companies").innerHTML = ownState.companies.map((co, i) => `
+        <article class="own-company" data-i="${i}">
+          <div class="own-company-head"><h4>${esc(fill(c.companyTitle, { n: i + 1 }))}</h4><button type="button" class="own-btn" data-remove="${i}">${esc(c.remove)}</button></div>
+          <div class="own-field"><label for="own-${i}-name">${esc(c.companyName)}</label><input type="text" id="own-${i}-name" data-field="name" maxlength="80" value="${esc(co.name)}" placeholder="${esc(c.companyNamePlaceholder)}" autocomplete="off"></div>
+          <fieldset><legend>${esc(c.fitGroup)}</legend><div class="own-grid">${ownQuestions.map(([field, values]) => ownSelect(field, values, co[field], i)).join("")}</div>
+            <div class="own-grid">${ownCheck("primarySource", co.primarySource, i)}${ownCheck("complianceGate", co.complianceGate, i)}</div></fieldset>
+          <fieldset><legend>${esc(c.angleGroup)}</legend><div class="own-grid">${ANGLE_FIELDS.map((field) => ownSelect(field, OPTIONS[field], co[field], i)).join("")}</div></fieldset>
+        </article>`).join("");
+      const add = document.getElementById("own-add");
+      add.disabled = ownState.companies.length >= MAX_COMPANIES;
+      add.textContent = add.disabled ? c.full : c.addCompany;
+    }
+
+    function renderOwnResult() {
+      const c = oc();
+      const host = document.getElementById("own-result");
+      if (!ownState.companies.length) { host.innerHTML = `<p class="own-intro">${esc(c.emptyResult)}</p>`; return; }
+      const ranked = rankOwn(ownState.companies);
+      const sum = summarizeOwn(ownState.companies);
+      const k = sum.counts;
+      const angleLine = ({ company, q, angle }) => {
+        if (q.tier === "EXCLUDE") return c.excludedNote;
+        const parts = ["supplierChange", "peopleChange", "need"].map((f) => `${c.angleShort[f]} ${c.opt[company[f]]}`).join(lang === "zh" ? "／" : " / ");
+        const status = angle.complete ? c.angleComplete : fill(c.angleMissing, { list: angle.missing.map((f) => c.angleShort[f]).join(lang === "zh" ? "、" : ", ") });
+        return `${c.anglesLine}: ${parts} · ${status}`;
+      };
+      host.innerHTML = `<ul class="own-summary"><li>${esc(fill(c.resultSummary, { total: sum.total, engage: k.ENGAGE_FIRST, verify: k.VERIFY_FIRST, hold: k.HOLD, exclude: k.EXCLUDE }))}</li>
+        <li>${esc(fill(c.angleSummary, { done: sum.anglesComplete, todo: sum.anglesMissing }))}</li></ul>` +
+        ranked.map((item) => {
+          const reasons = reasonList(item.q.reasons);
+          const move = item.q.tier === "ENGAGE_FIRST" ? t("move").ENGAGE_FIRST : fill(t("move")[item.q.tier], { reasons });
+          return `<div class="own-result-row card tier-${item.q.tier}"><h4>${esc(item.company.name || c.unnamed)} <span class="tag tier-${item.q.tier}">${t("tierLabel")[item.q.tier]}</span></h4>
+            <p>${esc(move)}</p><p class="angle">${esc(angleLine(item))}</p></div>`;
+        }).join("");
+    }
+
+    function renderOwnPlan() {
+      const c = oc();
+      const host = document.getElementById("own-plan");
+      const plan = ownState.categories.size && ownState.country ? marketPlan({ country: ownState.country, categories: [...ownState.categories] }) : null;
+      host.innerHTML = plan ? lensHtml(plan) : `<p class="own-intro">${esc(c.planNone)}</p>`;
+    }
+
+    function renderOwn() { renderModeCards(); renderOwnStatic(); renderOwnCompanies(); renderOwnResult(); renderOwnPlan(); }
+
+    const ownRoot = document.getElementById("view-own");
+    ownRoot.addEventListener("change", (e) => {
+      const target = e.target;
+      if (target.dataset.category) {
+        target.checked ? ownState.categories.add(target.dataset.category) : ownState.categories.delete(target.dataset.category);
+        renderOwnPlan();
+      } else if (target.id === "own-country") {
+        ownState.country = target.value;
+        renderOwnPlan();
+      } else if (target.dataset.field) {
+        const row = target.closest("[data-i]");
+        if (!row) return;
+        ownState.companies[Number(row.dataset.i)][target.dataset.field] = target.type === "checkbox" ? target.checked : target.value;
+        renderOwnResult();
+      }
+    });
+    ownRoot.addEventListener("input", (e) => {
+      const row = e.target.closest?.("[data-i]");
+      if (row && e.target.dataset.field === "name") { ownState.companies[Number(row.dataset.i)].name = e.target.value; renderOwnResult(); }
+    });
+    ownRoot.addEventListener("click", (e) => {
+      const remove = e.target.closest?.("[data-remove]");
+      if (remove) { ownState.companies.splice(Number(remove.dataset.remove), 1); renderOwnCompanies(); renderOwnResult(); return; }
+      if (e.target.id === "own-add" && ownState.companies.length < MAX_COMPANIES) {
+        ownState.companies.push(blankCompany());
+        renderOwnCompanies(); renderOwnResult();
+        document.getElementById(`own-${ownState.companies.length - 1}-name`)?.focus();
+      } else if (e.target.id === "own-sample") {
+        ownState.companies = SAMPLE_COMPANIES.map((co) => blankCompany(co));
+        if (!ownState.categories.size) ownState.categories.add("flooring");
+        if (!ownState.country && MARKETS.GB) ownState.country = "GB";
+        renderOwnStatic(); renderOwnCompanies(); renderOwnResult(); renderOwnPlan();
+      } else if (e.target.id === "own-clear") {
+        ownState.companies = [];
+        renderOwnCompanies(); renderOwnResult();
+      }
+    });
+    for (const card of document.querySelectorAll(".mode-card")) card.addEventListener("click", () => setMode(card.dataset.mode, { scroll: true }));
+
+    document.getElementById("lang-switch").addEventListener("click", () => { lang = lang === "zh" ? "en" : "zh"; render(); renderOwn(); });
     render();
+    renderOwn();
+    setMode(location.hash === "#mode-own" ? "own" : "sample");
   </script>
 </body>
 </html>

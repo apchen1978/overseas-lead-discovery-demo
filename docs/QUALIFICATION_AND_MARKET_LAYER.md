@@ -36,3 +36,15 @@ The CDD intake proposal contract (`schemaVersion` 1) is unchanged. Accounts in t
 ## Tests
 
 `node qualification.test.mjs`, `node markets.test.mjs`, `node cdd-intake-proposal.test.mjs`.
+
+## Bring your own product and market (`own-list.js`)
+
+The owner brings a product category, a target market and up to 20 candidate companies, and answers a few plain questions about each. `qualification.js` sorts them with the same rules as the sample list; `markets.js` lists what to check for that product in that market.
+
+- Nothing searches the web, scores, predicts, stores, uploads or sends. The list lives in memory on the page.
+- Every answer can be "查無公開資料" / "Not public". An unknown answer is never read as a yes. An unknown category fit cannot reach ENGAGE_FIRST (raised to VERIFY_FIRST in `own-list.js`; the shared rules are unchanged).
+- The angle worksheet (supplier change, personnel change, bundle vs product update) is a reading aid and never changes a tier.
+- A category outside the seed list gets no market checks.
+- Wording rules are enforced by `own-list.test.mjs`: no UNKNOWN, PASS, HOLD or WHY NOT in the copy, no reply or conversion numbers, no mention of third-party list tools.
+
+Tests: `node own-list.test.mjs`.
