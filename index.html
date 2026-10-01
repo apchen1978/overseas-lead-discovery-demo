@@ -158,7 +158,7 @@
     /* mode chooser + bring-your-own list */
     .mode-screen { margin: 4px 0 22px; }
     .mode-title { font-size: 16px; margin: 0 0 10px; text-align: center; }
-    .mode-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .mode-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .mode-card { text-align: left; font: inherit; color: inherit; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; display: grid; gap: 4px; }
     .mode-card[aria-pressed="true"] { border-color: var(--forest); outline: 2px solid var(--forest); outline-offset: -2px; }
     .mode-card:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
@@ -192,7 +192,31 @@
     .own-result-row .angle { color: var(--muted); }
     .own-summary li { margin: 4px 0; font-size: 14px; }
     .own-before li { margin: 6px 0; font-size: 14px; }
-    @media (max-width: 640px) { .mode-cards { grid-template-columns: 1fr; } .own-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 860px) { .mode-cards { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .own-grid { grid-template-columns: 1fr; } }
+    /* find-the-gap walk-through */
+    .gap-steps { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
+    .gap-step { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+    .gap-step-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .gap-step-head h3 { margin: 0; font-size: 17px; }
+    .gap-step-no { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); }
+    .gap-judging { margin: 6px 0 10px; font-size: 14px; color: var(--muted); }
+    .gap-who { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .gap-who > div { border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+    .gap-who .gap-ai { background: #eef3f0; }
+    .gap-who .gap-human { background: #fbf7ee; }
+    .gap-who b { display: block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .gap-result { margin-top: 10px; padding: 9px 11px; border-left: 3px solid var(--amber); background: #fbf7ee; color: var(--forest); font-size: 14px; font-weight: 700; }
+    .gap-result b { display: block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+    .gap-link { display: inline-block; margin-top: 8px; font-size: 14px; font-weight: 600; }
+    .gap-contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+    .gap-contrast > div { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+    .gap-contrast > div:last-child { border-color: var(--forest); }
+    .gap-contrast h3 { margin: 0 0 8px; font-size: 14px; }
+    .gap-contrast ul { margin: 0; padding-left: 18px; font-size: 14px; }
+    .gap-note { border-left: 3px solid var(--amber); padding: 6px 0 6px 12px; color: var(--muted); font-size: 14px; }
+    .gap-closing { margin: 22px 0 0; font-size: 19px; font-weight: 800; color: var(--forest); }
+    @media (max-width: 640px) { .gap-who, .gap-contrast { grid-template-columns: 1fr; } }
     /* take-away brief */
     .brief { border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 18px 20px; margin-top: 12px; }
     .brief h2 { font-size: 20px; margin: 0 0 2px; }
@@ -275,6 +299,7 @@
       <div class="mode-cards">
         <button type="button" class="mode-card" id="mode-sample" data-mode="sample" aria-pressed="true"><span class="mode-tag"></span><strong class="mode-name"></strong><span class="mode-body"></span><span class="mode-cta"></span></button>
         <button type="button" class="mode-card" id="mode-own" data-mode="own" aria-pressed="false"><span class="mode-tag"></span><strong class="mode-name"></strong><span class="mode-body"></span><span class="mode-cta"></span></button>
+        <button type="button" class="mode-card" id="mode-gap" data-mode="gap" aria-pressed="false"><span class="mode-tag"></span><strong class="mode-name"></strong><span class="mode-body"></span><span class="mode-cta"></span></button>
       </div>
     </section>
 
@@ -312,6 +337,8 @@
       <span data-copy="flow6">收斂短名單</span>
     </div>
     </div>
+
+    <div id="view-gap" class="own" hidden></div>
 
     <div id="view-own" class="own" hidden>
       <h2 id="own-title"></h2>
@@ -365,6 +392,7 @@
     import { TIERS, rankRecords, summarize } from "./qualification.js";
     import { MAX_COMPANIES, OPTIONS, ANGLE_FIELDS, blankCompany, rankOwn, summarizeOwn, marketPlan, countryCodes } from "./own-list.js";
     import { OWN_COPY, SAMPLE_COMPANIES } from "./own-list-copy.js";
+    import { GAP_COPY } from "./gap-walk-copy.js";
     import { BRIEF_COPY } from "./own-brief-copy.js";
     import { buildBrief, briefToMarkdown } from "./own-brief.js";
 
@@ -700,15 +728,16 @@
       state.mode = mode;
       document.getElementById("view-sample").hidden = mode !== "sample";
       document.getElementById("view-own").hidden = mode !== "own";
+      document.getElementById("view-gap").hidden = mode !== "gap";
       for (const card of document.querySelectorAll(".mode-card")) card.setAttribute("aria-pressed", String(card.dataset.mode === mode));
       history.replaceState(null, "", `${location.pathname}${location.search}#mode-${mode}`);
-      if (scroll) document.getElementById(mode === "own" ? "view-own" : "view-sample").scrollIntoView({ behavior: "smooth", block: "start" });
+      if (scroll) document.getElementById(mode === "own" ? "view-own" : mode === "gap" ? "view-gap" : "view-sample").scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     function renderModeCards() {
       const c = oc();
       document.getElementById("mode-title").textContent = c.modeTitle;
-      for (const [id, tag, name, body, cta] of [["mode-sample", c.modeSampleTag, c.modeSampleTitle, c.modeSampleBody, c.modeSampleCta], ["mode-own", c.modeOwnTag, c.modeOwnTitle, c.modeOwnBody, c.modeOwnCta]]) {
+      for (const [id, tag, name, body, cta] of [["mode-sample", c.modeSampleTag, c.modeSampleTitle, c.modeSampleBody, c.modeSampleCta], ["mode-gap", GAP_COPY[lang].modeTag, GAP_COPY[lang].modeTitle, GAP_COPY[lang].modeBody, GAP_COPY[lang].modeCta], ["mode-own", c.modeOwnTag, c.modeOwnTitle, c.modeOwnBody, c.modeOwnCta]]) {
         const card = document.getElementById(id);
         card.querySelector(".mode-tag").textContent = tag;
         card.querySelector(".mode-name").textContent = name;
@@ -819,7 +848,30 @@
       URL.revokeObjectURL(url);
     }
 
-    function renderOwn() { renderModeCards(); renderOwnStatic(); renderOwnCompanies(); renderOwnResult(); renderOwnPlan(); }
+    function renderGap() {
+      const g = GAP_COPY[lang];
+      const li = (items) => items.map((item) => `<li>${esc(item)}</li>`).join("");
+      document.getElementById("view-gap").innerHTML = `
+        <h2 id="gap-title">${esc(g.heading)}</h2>
+        <p>${esc(g.intro)}</p>
+        <p class="gap-note">${esc(g.disclosure)}</p>
+        <p><strong>${esc(g.company)}</strong> · ${esc(g.companyMeta)}</p>
+        <ol class="gap-steps">${g.steps.map((step, i) => `
+          <li class="gap-step">
+            <div class="gap-step-head"><h3>${esc(step.title)}</h3><span class="gap-step-no">${esc(g.stepWord)} ${i + 1} / ${g.steps.length} · ${esc(step.status)}</span></div>
+            <p class="gap-judging">${esc(step.judging)}</p>
+            <div class="gap-who"><div class="gap-ai"><b>${esc(g.aiLabel)}</b>${esc(step.ai)}</div><div class="gap-human"><b>${esc(g.humanLabel)}</b>${esc(step.human)}</div></div>
+            <div class="gap-result"><b>${esc(g.resultLabel)}</b>${esc(step.result)}</div>
+            ${step.linkLabel ? `<a class="gap-link" href="https://apchen1978.github.io/trade-profit-navigator-demo/?case=gulf-001" target="_blank" rel="noopener noreferrer">${esc(step.linkLabel)} →</a>` : ""}
+          </li>`).join("")}</ol>
+        <h2>${esc(g.contrastTitle)}</h2>
+        <div class="gap-contrast"><div><h3>${esc(g.listOnlyTitle)}</h3><ul>${li(g.listOnly)}</ul></div><div><h3>${esc(g.withGapTitle)}</h3><ul>${li(g.withGap)}</ul></div></div>
+        <p class="gap-closing">${esc(g.closing)}</p>
+        <p class="gap-note">${esc(g.boundary)}</p>
+        <p><button type="button" class="chip" id="gap-to-own">${esc(g.cta)} →</button></p>`;
+      document.getElementById("gap-to-own").addEventListener("click", () => setMode("own", { scroll: true }));
+    }
+    function renderOwn() { renderModeCards(); renderGap(); renderOwnStatic(); renderOwnCompanies(); renderOwnResult(); renderOwnPlan(); }
 
     const ownRoot = document.getElementById("view-own");
     ownRoot.addEventListener("change", (e) => {
@@ -865,7 +917,7 @@
     document.getElementById("lang-switch").addEventListener("click", () => { lang = lang === "zh" ? "en" : "zh"; render(); renderOwn(); });
     render();
     renderOwn();
-    setMode(location.hash === "#mode-own" ? "own" : "sample");
+    setMode(location.hash === "#mode-own" ? "own" : location.hash === "#mode-gap" ? "gap" : "sample");
   </script>
 </body>
 </html>
