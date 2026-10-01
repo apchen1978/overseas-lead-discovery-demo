@@ -862,7 +862,7 @@
             <p class="gap-judging">${esc(step.judging)}</p>
             <div class="gap-who"><div class="gap-ai"><b>${esc(g.aiLabel)}</b>${esc(step.ai)}</div><div class="gap-human"><b>${esc(g.humanLabel)}</b>${esc(step.human)}</div></div>
             <div class="gap-result"><b>${esc(g.resultLabel)}</b>${esc(step.result)}</div>
-            ${step.linkLabel ? `<a class="gap-link" href="https://apchen1978.github.io/trade-profit-navigator-demo/?case=gulf-001" target="_blank" rel="noopener noreferrer">${esc(step.linkLabel)} →</a>` : ""}
+            ${step.linkLabel ? `<a class="gap-link" href="https://apchen1978.github.io/trade-profit-navigator-demo/?case=gulf-001${lang === "en" ? "&lang=en" : ""}" target="_blank" rel="noopener noreferrer">${esc(step.linkLabel)} →</a>` : ""}
           </li>`).join("")}</ol>
         <h2>${esc(g.contrastTitle)}</h2>
         <div class="gap-contrast"><div><h3>${esc(g.listOnlyTitle)}</h3><ul>${li(g.listOnly)}</ul></div><div><h3>${esc(g.withGapTitle)}</h3><ul>${li(g.withGap)}</ul></div></div>
