@@ -1,10 +1,32 @@
 {
-  "zh": {
-    "len": 5609,
-    "hash": "089ed37efba0ac5e"
+  "sample": {
+    "zh": {
+      "len": 5609,
+      "hash": "089ed37efba0ac5e"
+    },
+    "en": {
+      "len": 12351,
+      "hash": "22b79c9259ed4d94"
+    }
   },
-  "en": {
-    "len": 12351,
-    "hash": "22b79c9259ed4d94"
+  "own": {
+    "zh": {
+      "len": 3895,
+      "hash": "71d13bc72287a0f3"
+    },
+    "en": {
+      "len": 10766,
+      "hash": "fbe39807133f8a81"
+    }
+  },
+  "gap": {
+    "zh": {
+      "len": 1904,
+      "hash": "a1e1179e86bb4cc5"
+    },
+    "en": {
+      "len": 5728,
+      "hash": "3178b4f1e17b3e2a"
+    }
   }
 }
