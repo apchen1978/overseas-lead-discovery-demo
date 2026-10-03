@@ -164,9 +164,11 @@ export const REGIONS = {
 
 // categoryKeys: the category keys this record touches. The CALLER works them out (see
 // category-map.js); a market file holds market facts, not product vocabulary.
-export function marketFor(record, categoryKeys = []) {
+// markets: the market table to read; defaults to the one in this file, so a different set of
+// markets can be passed in without editing anything here.
+export function marketFor(record, categoryKeys = [], markets = MARKETS) {
   const code = record?.market?.country;
-  const profile = MARKETS[code];
+  const profile = markets[code];
   if (!profile) return null;
   const keys = categoryKeys;
   return {
