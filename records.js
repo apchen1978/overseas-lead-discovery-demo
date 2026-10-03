@@ -32,7 +32,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "STRONG",
     importOpenness: "YES",
-    asiaSourcing: "CONFIRMED",
+    originSourcing: "CONFIRMED",
     entryBarrier: "HIGH",
     why: [
       "Group structure built around importing and co-producing rigid-core flooring with overseas manufacturing partners (PRIMARY)",
@@ -57,7 +57,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "STRONG",
     importOpenness: "YES",
-    asiaSourcing: "CONFIRMED",
+    originSourcing: "CONFIRMED",
     entryBarrier: "HIGH",
     why: [
       "Public profile states products sourced from dozens of countries including China and India (PRIMARY)",
@@ -80,7 +80,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "STRONG",
     importOpenness: "YES",
-    asiaSourcing: "CONFIRMED",
+    originSourcing: "CONFIRMED",
     entryBarrier: "HIGH",
     why: [
       "Public filing states production is contracted primarily in Asia and Europe, including China-origin click vinyl (PRIMARY / regulatory)",
@@ -102,7 +102,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "STRONG",
     importOpenness: "YES",
-    asiaSourcing: "CONFIRMED",
+    originSourcing: "CONFIRMED",
     entryBarrier: "MEDIUM",
     why: [
       "Public profile describes itself as a leading importer/distributor of wall coverings with global reach (PRIMARY)",
@@ -125,7 +125,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "STRONG",
     importOpenness: "YES",
-    asiaSourcing: "CONFIRMED",
+    originSourcing: "CONFIRMED",
     entryBarrier: "LOW",
     why: [
       "Business model is importing wallpaper; import records appear on third-party trade-intelligence platforms (VERIFICATION_REQUIRED)",
@@ -147,7 +147,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "STRONG",
     importOpenness: "YES",
-    asiaSourcing: "UNKNOWN",
+    originSourcing: "UNKNOWN",
     entryBarrier: "MEDIUM",
     why: [
       "Trade-only distributor of drapery fabrics and finished window treatments (PRIMARY)",
@@ -170,7 +170,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "STRONG",
     importOpenness: "UNKNOWN",
-    asiaSourcing: "UNKNOWN",
+    originSourcing: "UNKNOWN",
     entryBarrier: "MEDIUM",
     why: [
       "Contract wallcovering and design solutions distributor with specialty product lines (PRIMARY)",
@@ -193,7 +193,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "WEAK",
     importOpenness: "YES",
-    asiaSourcing: "UNKNOWN",
+    originSourcing: "UNKNOWN",
     entryBarrier: "MEDIUM",
     why: [
       "Registered importer of home décor and accessories (PRIMARY)",
@@ -219,7 +219,7 @@ export const records = [
     buyerFit: "LOW",
     categoryFit: "STRONG",
     importOpenness: "NO",
-    asiaSourcing: "NO",
+    originSourcing: "NO",
     entryBarrier: "HIGH",
     why: [
       "Operates its own extrusion and pressing lines for rigid-core flooring (PRIMARY)",
@@ -243,7 +243,7 @@ export const records = [
     buyerFit: "MEDIUM",
     categoryFit: "STRONG",
     importOpenness: "YES",
-    asiaSourcing: "NO",
+    originSourcing: "NO",
     entryBarrier: "MEDIUM",
     why: [
       "Runs private-label flooring and wallcovering ranges across a regional store network (PRIMARY)",
@@ -267,7 +267,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "PARTIAL",
     importOpenness: "YES",
-    asiaSourcing: "CONFIRMED",
+    originSourcing: "CONFIRMED",
     entryBarrier: "LOW",
     why: [
       "Imports décor products through a major port and lists wallcoverings as a secondary line (PRIMARY)",
@@ -293,7 +293,7 @@ export const records = [
     buyerFit: "HIGH",
     categoryFit: "STRONG",
     importOpenness: "YES",
-    asiaSourcing: "CONFIRMED",
+    originSourcing: "CONFIRMED",
     entryBarrier: "LOW",
     why: [
       "Active importer of wallcoverings and window treatments with Asia-origin goods (SUPPORTING)",

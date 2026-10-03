@@ -9,7 +9,7 @@ const check = (ok, message) => { assert.ok(ok, message); checks += 1; };
 const tierOf = (patch) => qualify({ ...CLEAR, ...patch }).tier;
 
 const CLEAR = {
-  id: "T1", buyerFit: "HIGH", categoryFit: "STRONG", importOpenness: "YES", asiaSourcing: "CONFIRMED", entryBarrier: "MEDIUM",
+  id: "T1", buyerFit: "HIGH", categoryFit: "STRONG", importOpenness: "YES", originSourcing: "CONFIRMED", entryBarrier: "MEDIUM",
   sources: [{ tier: "PRIMARY" }, { tier: "SUPPORTING" }],
 };
 
@@ -20,9 +20,9 @@ check(tierOf({ complianceGate: "SANCTIONS_JURISDICTION" }) === "EXCLUDE", "a com
 check(tierOf({ buyerFit: "LOW" }) === "EXCLUDE", "LOW buyer fit (not a buyer) excludes");
 check(tierOf({ importOpenness: "NO" }) === "EXCLUDE", "no import appetite excludes");
 check(tierOf({ categoryFit: "WEAK" }) === "HOLD", "weak category fit holds");
-check(tierOf({ asiaSourcing: "NO" }) === "HOLD", "explicit no-Asia-sourcing holds");
+check(tierOf({ originSourcing: "NO" }) === "HOLD", "explicit no-Asia-sourcing holds");
 check(tierOf({ importOpenness: "UNKNOWN" }) === "VERIFY_FIRST", "unknown import openness needs verifying");
-check(tierOf({ asiaSourcing: "UNKNOWN" }) === "VERIFY_FIRST", "unknown Asia sourcing needs verifying");
+check(tierOf({ originSourcing: "UNKNOWN" }) === "VERIFY_FIRST", "unknown Asia sourcing needs verifying");
 check(tierOf({ categoryFit: "PARTIAL" }) === "VERIFY_FIRST", "a partial category fit needs verifying");
 check(tierOf({ sources: [{ tier: "VERIFICATION_REQUIRED" }, { tier: "SUPPORTING" }] }) === "VERIFY_FIRST", "no PRIMARY source needs verifying");
 check(tierOf({ buyerFit: "MEDIUM" }) === "VERIFY_FIRST", "a buyer fit that is not strong needs verifying");
@@ -32,22 +32,22 @@ check(tierOf({ sources: [] }) === "VERIFY_FIRST", "no sources at all needs verif
 const stacked = qualify({ ...CLEAR, complianceGate: "X", categoryFit: "WEAK", importOpenness: "UNKNOWN" });
 check(stacked.tier === "EXCLUDE" && stacked.reasons.join() === "COMPLIANCE_GATE", "exclude outranks hold and verify");
 check(stacked.otherFlags.includes("WEAK_CATEGORY") && stacked.otherFlags.includes("IMPORT_UNKNOWN"), "the lesser flags stay visible");
-const holdVerify = qualify({ ...CLEAR, categoryFit: "WEAK", asiaSourcing: "UNKNOWN" });
-check(holdVerify.tier === "HOLD" && holdVerify.otherFlags.join() === "ASIA_UNKNOWN", "hold outranks verify");
+const holdVerify = qualify({ ...CLEAR, categoryFit: "WEAK", originSourcing: "UNKNOWN" });
+check(holdVerify.tier === "HOLD" && holdVerify.otherFlags.join() === "ORIGIN_UNKNOWN", "hold outranks verify");
 const two = qualify({ ...CLEAR, buyerFit: "LOW", importOpenness: "NO" });
 check(two.reasons.join() === "NOT_A_BUYER,NO_IMPORT_APPETITE", "every reason at the deciding tier is listed");
 
 // Entry barrier orders accounts; it never changes a tier.
 check(tierOf({ entryBarrier: "LOW" }) === tierOf({ entryBarrier: "HIGH" }), "entry barrier is not a gate");
 check(Object.keys(qualify(CLEAR)).sort().join() === "barrier,otherFlags,reasons,tier", "the result carries no score or probability");
-check(tierOf({ buyerFit: " high ", categoryFit: "strong", importOpenness: "yes", asiaSourcing: "confirmed" }) === "ENGAGE_FIRST", "values are matched case- and space-insensitively");
+check(tierOf({ buyerFit: " high ", categoryFit: "strong", importOpenness: "yes", originSourcing: "confirmed" }) === "ENGAGE_FIRST", "values are matched case- and space-insensitively");
 
 // Ranking: tier, then easiest door, then a stable numeric id order.
 const ranked = rankRecords([
   { ...CLEAR, id: "R10", entryBarrier: "LOW" },
   { ...CLEAR, id: "R2", entryBarrier: "LOW" },
   { ...CLEAR, id: "R3", entryBarrier: "HIGH" },
-  { ...CLEAR, id: "R4", asiaSourcing: "UNKNOWN", entryBarrier: "LOW" },
+  { ...CLEAR, id: "R4", originSourcing: "UNKNOWN", entryBarrier: "LOW" },
   { ...CLEAR, id: "R5", complianceGate: "X", entryBarrier: "LOW" },
 ]).map(({ record }) => record.id).join(",");
 check(ranked === "R2,R10,R3,R4,R5", "tier first, then LOW before HIGH, then R2 before R10");
@@ -58,10 +58,10 @@ check(records.length === 12 && Object.keys(expected).length === 12, "twelve exam
 for (const [id, tier] of Object.entries(expected)) check(qualify(records.find((r) => r.id === id)).tier === tier, `${id} is ${tier}`);
 check(new Set(records.map((r) => qualify(r).tier)).size === TIERS.length, "the examples use every tier: they are no longer all alike");
 check(qualify(records.find((r) => r.id === "R5")).reasons.join() === "NO_PRIMARY_SOURCE", "R5 fails only because its evidence is third-party");
-check(qualify(records.find((r) => r.id === "R8")).otherFlags.includes("ASIA_UNKNOWN"), "R8 is held for category, with its unknown Asia sourcing still shown");
+check(qualify(records.find((r) => r.id === "R8")).otherFlags.includes("ORIGIN_UNKNOWN"), "R8 is held for category, with its unknown Asia sourcing still shown");
 
 // Summary facts.
-const s = summarize(records);
+const s = summarize(records, (r) => MARKETS[r.market?.country]?.region);
 check(s.total === 12 && s.counts.ENGAGE_FIRST === 4 && s.counts.VERIFY_FIRST === 4 && s.counts.HOLD === 2 && s.counts.EXCLUDE === 2, "tier counts");
 check(s.engageHighBarrier === 3, "three of the four qualified accounts are HIGH-barrier");
 check(s.lowBarrierNotReadyIds.join() === "R5,R11", "the easiest doors are not yet qualified");

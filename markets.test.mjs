@@ -1,7 +1,11 @@
 // markets.test.mjs — the market layer lists checks to verify; it must never invent numbers or facts.
 import assert from "node:assert/strict";
 import { records } from "./records.js";
-import { CATEGORY_KEYS, MARKETS, MARKET_BASIS, REGIONS, categoryKeysFor, marketFor } from "./markets.js";
+import { MARKETS, MARKET_BASIS, REGIONS, marketFor } from "./markets.js";
+import { CATEGORY_KEYS, categoryKeysFor } from "./category-map.js";
+
+// marketFor takes the category keys from the caller; this is the way the page calls it.
+const marketOf = (record) => marketFor(record, categoryKeysFor(record?.category));
 
 let checks = 0;
 const check = (ok, message) => { assert.ok(ok, message); checks += 1; };
@@ -40,14 +44,14 @@ check(!/iran|syria|korea|cuba|crimea|russia/i.test(JSON.stringify(MARKETS.SANCTI
 
 // marketFor.
 const r2 = records.find((r) => r.id === "R2");
-const us = marketFor(r2);
+const us = marketOf(r2);
 check(us.code === "US" && us.currency === "USD" && us.basis === "DOMAIN_LEARNING", "R2 resolves to the US market, labelled as domain learning");
 check(us.categoryKeys.join() === "flooring" && us.checksToVerify.length === MARKETS.US.checks.flooring.length, "only the checks for the record's category are listed");
 check(us.checksToVerify.every((c) => c.key === "flooring"), "each check says which category it belongs to");
 const r8 = records.find((r) => r.id === "R8");
-check(marketFor(r8).checksToVerify.length === 0, "an adjacent category gets no invented checks");
-check(marketFor({ market: { country: "ZZ" }, category: "flooring" }) === null, "an unknown country resolves to nothing");
-check(marketFor({}) === null, "a record without a market resolves to nothing");
+check(marketOf(r8).checksToVerify.length === 0, "an adjacent category gets no invented checks");
+check(marketOf({ market: { country: "ZZ" }, category: "flooring" }) === null, "an unknown country resolves to nothing");
+check(marketOf({}) === null, "a record without a market resolves to nothing");
 const eu = ["DE", "FR", "NL", "PL"].map((c) => MARKETS[c].checks.flooring.map((i) => i.en).join("|"));
 check(new Set(eu).size === 1, "EU markets share one regulatory checklist, so it is not presented as country-specific");
 

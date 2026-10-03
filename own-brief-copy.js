@@ -54,8 +54,8 @@ export const BRIEF_COPY = {
     tier: { ENGAGE_FIRST: "先開發", VERIFY_FIRST: "先查證", HOLD: "暫緩", EXCLUDE: "排除" },
     reasons: {
       COMPLIANCE_GATE: "落在合規閘門", NOT_A_BUYER: "不是買方", NO_IMPORT_APPETITE: "沒有進口意願",
-      WEAK_CATEGORY: "品類契合度弱", NO_ASIA_SOURCING: "明確不採購亞洲貨源", IMPORT_UNKNOWN: "進口開放度查無公開資料",
-      ASIA_UNKNOWN: "亞洲採購查無公開資料", CATEGORY_UNKNOWN: "品類契合度查無公開資料", PARTIAL_CATEGORY: "品類只部分契合",
+      WEAK_CATEGORY: "品類契合度弱", NO_ORIGIN_SOURCING: "明確不採購亞洲貨源", IMPORT_UNKNOWN: "進口開放度查無公開資料",
+      ORIGIN_UNKNOWN: "亞洲採購查無公開資料", CATEGORY_UNKNOWN: "品類契合度查無公開資料", PARTIAL_CATEGORY: "品類只部分契合",
       NO_PRIMARY_SOURCE: "缺少第一手來源", BUYER_FIT_NOT_STRONG: "買方契合度不夠強", ALL_GATES_CLEAR: "所有閘門通過",
     },
     next: {
@@ -114,8 +114,8 @@ export const BRIEF_COPY = {
     tier: { ENGAGE_FIRST: "Engage first", VERIFY_FIRST: "Verify first", HOLD: "On hold", EXCLUDE: "Excluded" },
     reasons: {
       COMPLIANCE_GATE: "Behind a compliance gate", NOT_A_BUYER: "Not a buyer", NO_IMPORT_APPETITE: "No import appetite",
-      WEAK_CATEGORY: "Weak category fit", NO_ASIA_SOURCING: "Explicitly not sourcing from Asia", IMPORT_UNKNOWN: "Import openness not public",
-      ASIA_UNKNOWN: "Asia sourcing not public", CATEGORY_UNKNOWN: "Category fit not public", PARTIAL_CATEGORY: "Category fit is only partial",
+      WEAK_CATEGORY: "Weak category fit", NO_ORIGIN_SOURCING: "Explicitly not sourcing from Asia", IMPORT_UNKNOWN: "Import openness not public",
+      ORIGIN_UNKNOWN: "Asia sourcing not public", CATEGORY_UNKNOWN: "Category fit not public", PARTIAL_CATEGORY: "Category fit is only partial",
       NO_PRIMARY_SOURCE: "No primary source", BUYER_FIT_NOT_STRONG: "Buyer fit is not strong", ALL_GATES_CLEAR: "Every gate is clear",
     },
     next: {

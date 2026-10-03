@@ -14,9 +14,6 @@
 
 export const MARKET_BASIS = "DOMAIN_LEARNING";
 
-// Seed categories the demo qualifies buyers for.
-export const CATEGORY_KEYS = ["flooring", "wallcoverings", "windowTreatments"];
-
 const EU_CHECKS = {
   flooring: [
     { zh: "建築產品法規（CPR）下的 CE 標示與性能聲明（彈性地板適用的調和標準）", en: "CE marking and declaration of performance under the Construction Products Regulation (harmonised standard for resilient floor coverings)" },
@@ -165,22 +162,15 @@ export const REGIONS = {
   restricted: { zh: "受限制", en: "Restricted" },
 };
 
-// Which seed category keys a free-text record category touches. Deliberately simple
-// and visible; a record can touch several, or none (an adjacent category).
-export function categoryKeysFor(category = "") {
-  const text = String(category).toLowerCase();
-  const keys = [];
-  if (/floor|spc|lvt|tile|stone/.test(text)) keys.push("flooring");
-  if (/wallcover|wallpaper/.test(text)) keys.push("wallcoverings");
-  if (/window|drap|curtain|fabric|textile/.test(text)) keys.push("windowTreatments");
-  return keys;
-}
-
-export function marketFor(record) {
+// categoryKeys: the category keys this record touches. The CALLER works them out (see
+// category-map.js); a market file holds market facts, not product vocabulary.
+// markets: the market table to read; defaults to the one in this file, so a different set of
+// markets can be passed in without editing anything here.
+export function marketFor(record, categoryKeys = [], markets = MARKETS) {
   const code = record?.market?.country;
-  const profile = MARKETS[code];
+  const profile = markets[code];
   if (!profile) return null;
-  const keys = categoryKeysFor(record.category);
+  const keys = categoryKeys;
   return {
     code,
     ...profile,

@@ -389,6 +389,7 @@
     import { records } from "./records.js";
     import { buildIntakeProposal } from "./cdd-intake-proposal.js";
     import { MARKETS, REGIONS, marketFor } from "./markets.js";
+    import { categoryKeysFor } from "./category-map.js";
     import { TIERS, rankRecords, summarize } from "./qualification.js";
     import { MAX_COMPANIES, OPTIONS, ANGLE_FIELDS, blankCompany, rankOwn, summarizeOwn, marketPlan, countryCodes } from "./own-list.js";
     import { OWN_COPY, SAMPLE_COMPANIES } from "./own-list-copy.js";
@@ -424,7 +425,7 @@
         allTiers: "全部", allRegions: "全部地區", regionLabel: "地區",
         reasons: {
           COMPLIANCE_GATE: "落在合規閘門（例如受全面制裁的司法管轄區）", NOT_A_BUYER: "不是買方（自己生產，是競爭者）", NO_IMPORT_APPETITE: "沒有進口意願",
-          WEAK_CATEGORY: "品類契合度弱", NO_ASIA_SOURCING: "明確不採購亞洲貨源", IMPORT_UNKNOWN: "進口開放度查無公開資料", ASIA_UNKNOWN: "亞洲採購查無公開資料", CATEGORY_UNKNOWN: "品類契合度查無公開資料",
+          WEAK_CATEGORY: "品類契合度弱", NO_ORIGIN_SOURCING: "明確不採購亞洲貨源", IMPORT_UNKNOWN: "進口開放度查無公開資料", ORIGIN_UNKNOWN: "亞洲採購查無公開資料", CATEGORY_UNKNOWN: "品類契合度查無公開資料",
           PARTIAL_CATEGORY: "品類只部分契合", NO_PRIMARY_SOURCE: "缺少第一手來源（只有第三方或輔助來源）", BUYER_FIT_NOT_STRONG: "買方契合度不夠強", ALL_GATES_CLEAR: "所有閘門通過",
         },
         move: {
@@ -475,7 +476,7 @@
         allTiers: "All", allRegions: "All regions", regionLabel: "Region",
         reasons: {
           COMPLIANCE_GATE: "Compliance gate (for example a comprehensively sanctioned jurisdiction)", NOT_A_BUYER: "Not a buyer (produces in-house; a competitor)", NO_IMPORT_APPETITE: "No import appetite",
-          WEAK_CATEGORY: "Weak category fit", NO_ASIA_SOURCING: "Explicitly not sourcing from Asia", IMPORT_UNKNOWN: "Import openness not public", ASIA_UNKNOWN: "Asia sourcing not public", CATEGORY_UNKNOWN: "Category fit not public",
+          WEAK_CATEGORY: "Weak category fit", NO_ORIGIN_SOURCING: "Explicitly not sourcing from Asia", IMPORT_UNKNOWN: "Import openness not public", ORIGIN_UNKNOWN: "Asia sourcing not public", CATEGORY_UNKNOWN: "Category fit not public",
           PARTIAL_CATEGORY: "Category fit is only partial", NO_PRIMARY_SOURCE: "No primary source (only third-party or supporting evidence)", BUYER_FIT_NOT_STRONG: "Buyer fit is not strong", ALL_GATES_CLEAR: "Every gate is clear",
         },
         move: {
@@ -527,7 +528,7 @@
     const portfolioUrl = (hash) => `https://paulstradecraft.com/${lang === "en" ? "?lang=en" : ""}${hash}`;
 
     const ranked = rankRecords(records);
-    const summary = summarize(records);
+    const summary = summarize(records, (r) => MARKETS[r.market?.country]?.region);
 
     function signalClass(v) {
       if (["HIGH", "STRONG", "YES", "CONFIRMED"].includes(v)) return "ok";
@@ -595,7 +596,7 @@
     }
 
     function marketLens(r) {
-      const mk = marketFor(r);
+      const mk = marketFor(r, categoryKeysFor(r.category));
       return mk ? lensHtml(mk) : "";
     }
 
@@ -636,7 +637,7 @@
             <span class="tag ${signalClass(r.buyerFit)}">${t("buyer")} ${esc(r.buyerFit)}</span>
             <span class="tag ${signalClass(r.categoryFit)}">${t("category")} ${esc(r.categoryFit)}</span>
             <span class="tag ${signalClass(r.importOpenness)}">${t("import")} ${esc(r.importOpenness)}</span>
-            <span class="tag ${signalClass(r.asiaSourcing)}">${t("asia")} ${esc(r.asiaSourcing)}</span>
+            <span class="tag ${signalClass(r.originSourcing)}">${t("asia")} ${esc(r.originSourcing)}</span>
           </div>
         </div>
         <p class="first-move">${esc(move)}</p>
@@ -644,7 +645,7 @@
           <div class="row"><span>${t("buyer")}</span><b>${valSpan(r.buyerFit)}</b></div>
           <div class="row"><span>${t("category")}</span><b>${valSpan(r.categoryFit)}</b></div>
           <div class="row"><span>${t("import")}</span><b>${valSpan(r.importOpenness)}</b></div>
-          <div class="row"><span>${t("asia")}</span><b>${valSpan(r.asiaSourcing)}</b></div>
+          <div class="row"><span>${t("asia")}</span><b>${valSpan(r.originSourcing)}</b></div>
           <div class="row"><span>${t("barrier")}</span><b class="val-plain">${esc(r.entryBarrier)}</b></div>
         </div>
         ${exportBlock}
