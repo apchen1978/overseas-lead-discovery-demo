@@ -81,7 +81,7 @@ for (const f of ["cdd-intake-proposal-r6-unknown-heavy.json", "cdd-intake-propos
 // 6. do-not-map discipline — forbidden fields absent from the export
 {
   const p = buildIntakeProposal(records[0], { now: FIXED_NOW });
-  const forbiddenInExport = ["entryBarrier", "asiaSourcing", "recommendation", "momentum", "coverage", "probability", "priorityScore", "humanDecision", "commercialOutcome"];
+  const forbiddenInExport = ["entryBarrier", "originSourcing", "asiaSourcing", "recommendation", "momentum", "coverage", "probability", "priorityScore", "humanDecision", "commercialOutcome"];
   const present = forbiddenInExport.filter((k) => k in p || k in (p.opportunityProposal || {}));
   check("no forbidden field leaked into export", present.length === 0, present.join(", "));
   check("entryBarrier not mapped into opportunityProposal", !("entryBarrier" in p.opportunityProposal));
@@ -128,8 +128,8 @@ for (const f of ["cdd-intake-proposal-r6-unknown-heavy.json", "cdd-intake-propos
   const f = loadFixture("cdd-intake-proposal-r6-unknown-heavy.json");
   check("R6 unknowns preserved verbatim",
     JSON.stringify(f.unknowns) === JSON.stringify(["Asia sourcing", "Whether it buys finished curtains or fabric only"]));
-  check("R6 no invented signals (asiaSourcing stays out of signals)",
-    !f.proposedSignals.some((s) => s.signal === "ASIA_SOURCING"));
+  check("R6 no invented signals (originSourcing stays out of signals)",
+    !f.proposedSignals.some((s) => s.signal === "ORIGIN_SOURCING" || s.signal === "ASIA_SOURCING"));
   check("R6 plausible commercial core intact",
     f.opportunityProposal.market.importOpenness === "YES" &&
     f.proposedSignals.find((s) => s.signal === "BUYER_FIT").value === "HIGH");

@@ -16,6 +16,7 @@
 
 import { qualify, TIERS } from "./qualification.js";
 import { MARKETS, marketFor, REGIONS } from "./markets.js";
+import { categoryKeysFor } from "./category-map.js";
 
 export const MAX_COMPANIES = 20;
 export const UNKNOWN = "UNKNOWN";
@@ -80,7 +81,7 @@ export function toRecord(company) {
     buyerFit: { YES: "HIGH", PARTIAL: "MEDIUM", NO: "LOW", UNKNOWN: "UNKNOWN" }[c.buyer],
     categoryFit: c.category,
     importOpenness: c.imports,
-    asiaSourcing: { YES: "CONFIRMED", NO: "NO", UNKNOWN: "UNKNOWN" }[c.asia],
+    originSourcing: { YES: "CONFIRMED", NO: "NO", UNKNOWN: "UNKNOWN" }[c.asia],
     entryBarrier: c.barrier,
     complianceGate: c.complianceGate ? "OWNER_FLAGGED" : undefined,
     sources: c.primarySource ? [{ tier: "PRIMARY" }] : [],
@@ -137,6 +138,6 @@ export function summarizeOwn(companies = []) {
 export function marketPlan({ country, categories = [] } = {}) {
   if (!MARKETS[country]) return null;
   const text = categories.map((key) => CATEGORY_TEXT[key]).filter(Boolean).join(" · ");
-  const mk = marketFor({ market: { country }, category: text });
+  const mk = marketFor({ market: { country }, category: text }, categoryKeysFor(text));
   return { ...mk, noSeedCategory: mk.categoryKeys.length === 0 };
 }

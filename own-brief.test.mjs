@@ -44,7 +44,7 @@ check(zh.rows[0].tierLabel === "先開發" && zh.product === "地板", "the zh b
 check(Object.keys(BRIEF_COPY.zh).join() === Object.keys(BRIEF_COPY.en).join(), "zh and en copy have the same keys");
 
 // Every reason code the rules can give has a label in both languages.
-const codes = ["COMPLIANCE_GATE", "NOT_A_BUYER", "NO_IMPORT_APPETITE", "WEAK_CATEGORY", "NO_ASIA_SOURCING", "IMPORT_UNKNOWN", "ASIA_UNKNOWN", "CATEGORY_UNKNOWN", "PARTIAL_CATEGORY", "NO_PRIMARY_SOURCE", "BUYER_FIT_NOT_STRONG", "ALL_GATES_CLEAR"];
+const codes = ["COMPLIANCE_GATE", "NOT_A_BUYER", "NO_IMPORT_APPETITE", "WEAK_CATEGORY", "NO_ORIGIN_SOURCING", "IMPORT_UNKNOWN", "ORIGIN_UNKNOWN", "CATEGORY_UNKNOWN", "PARTIAL_CATEGORY", "NO_PRIMARY_SOURCE", "BUYER_FIT_NOT_STRONG", "ALL_GATES_CLEAR"];
 for (const lang of ["zh", "en"]) for (const code of codes) check(typeof BRIEF_COPY[lang].reasons[code] === "string" && BRIEF_COPY[lang].reasons[code].length > 0, `${lang} has a label for ${code}`);
 const everyTier = [
   blankCompany({ name: "a", buyer: "YES", category: "STRONG", imports: "YES", asia: "YES", primarySource: true }),

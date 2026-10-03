@@ -13,12 +13,10 @@
  *   ENGAGE_FIRST   every gate above is clear
  *
  * Entry barrier is NOT a gate: it says how hard the door is to open, so it only
- * orders accounts inside a tier (LOW before MEDIUM before HIGH). The market layer
- * (markets.js) never changes a tier; it lists what still has to be verified.
+ * orders accounts inside a tier (LOW before MEDIUM before HIGH). A market layer, if
+ * the caller has one, never changes a tier; it lists what still has to be verified.
  * A tier is a reading order for people, not a probability of winning the account.
  */
-
-import { MARKETS } from "./markets.js";
 
 export const TIERS = ["ENGAGE_FIRST", "VERIFY_FIRST", "HOLD", "EXCLUDE"];
 const BARRIER_ORDER = { LOW: 0, MEDIUM: 1, HIGH: 2 };
@@ -30,7 +28,7 @@ export function qualify(record) {
   const buyerFit = upper(record.buyerFit);
   const categoryFit = upper(record.categoryFit);
   const importOpenness = upper(record.importOpenness);
-  const asiaSourcing = upper(record.asiaSourcing);
+  const originSourcing = upper(record.originSourcing);
   const tiersOfSources = (record.sources || []).map((s) => upper(s.tier));
 
   const exclude = [];
@@ -40,11 +38,11 @@ export function qualify(record) {
 
   const hold = [];
   if (categoryFit === "WEAK") hold.push("WEAK_CATEGORY");
-  if (asiaSourcing === "NO") hold.push("NO_ASIA_SOURCING");
+  if (originSourcing === "NO") hold.push("NO_ORIGIN_SOURCING");
 
   const verify = [];
   if (importOpenness === "UNKNOWN") verify.push("IMPORT_UNKNOWN");
-  if (asiaSourcing === "UNKNOWN") verify.push("ASIA_UNKNOWN");
+  if (originSourcing === "UNKNOWN") verify.push("ORIGIN_UNKNOWN");
   if (categoryFit === "PARTIAL" || categoryFit === "MEDIUM") verify.push("PARTIAL_CATEGORY");
   if (!tiersOfSources.includes("PRIMARY")) verify.push("NO_PRIMARY_SOURCE");
   if (!STRONG.has(buyerFit) && buyerFit !== "LOW") verify.push("BUYER_FIT_NOT_STRONG");
@@ -74,7 +72,8 @@ export function rankRecords(records) {
 }
 
 // Facts the page turns into sentences. No prose here: the page owns the wording.
-export function summarize(records) {
+// regionOf(record) -> a region label; the caller supplies it from whatever market data it uses.
+export function summarize(records, regionOf = () => "unknown") {
   const ranked = rankRecords(records);
   const counts = Object.fromEntries(TIERS.map((t) => [t, 0]));
   for (const { q } of ranked) counts[q.tier] += 1;
@@ -83,7 +82,7 @@ export function summarize(records) {
   const lowBarrierNotReady = openable.filter(({ q }) => q.barrier === "LOW" && q.tier !== "ENGAGE_FIRST");
   const byRegion = {};
   for (const { record, q } of ranked) {
-    const region = MARKETS[record.market?.country]?.region ?? "unknown";
+    const region = regionOf(record) ?? "unknown";
     byRegion[region] ??= { total: 0, engage: 0 };
     byRegion[region].total += 1;
     if (q.tier === "ENGAGE_FIRST") byRegion[region].engage += 1;

@@ -1,0 +1,1943 @@
+{
+  "perRecord": {
+    "R1": {
+      "q": {
+        "tier": "ENGAGE_FIRST",
+        "reasons": [
+          "ALL_GATES_CLEAR"
+        ],
+        "otherFlags": [],
+        "barrier": "HIGH"
+      },
+      "market": {
+        "code": "GB",
+        "name": {
+          "zh": "英國",
+          "en": "United Kingdom"
+        },
+        "region": "europe",
+        "currency": "GBP",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "英國建築產品的 UKCA／CE 承認狀態（規則會調整，需查最新公告）",
+              "en": "UKCA and CE recognition status for construction products (rules change; check the current position)"
+            },
+            {
+              "zh": "英國 REACH 對塑化劑與其他物質的限制",
+              "en": "UK REACH restrictions on plasticisers and other substances"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "公共與商用建築的室內裝修防火要求",
+              "en": "Fire requirements for interior finishes in public and commercial buildings"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "窗簾阻燃標準（例如 BS 5867，公共與商用場所）",
+              "en": "Flame-retardancy standard for curtains and drapes (for example BS 5867, public and commercial premises)"
+            },
+            {
+              "zh": "窗飾拉繩安全（EN 13120）",
+              "en": "Cord safety for internal blinds (EN 13120)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "flooring"
+        ],
+        "checksToVerify": [
+          {
+            "key": "flooring",
+            "zh": "英國建築產品的 UKCA／CE 承認狀態（規則會調整，需查最新公告）",
+            "en": "UKCA and CE recognition status for construction products (rules change; check the current position)"
+          },
+          {
+            "key": "flooring",
+            "zh": "英國 REACH 對塑化劑與其他物質的限制",
+            "en": "UK REACH restrictions on plasticisers and other substances"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R1",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Norcliff Flooring Group",
+            "type": "Importer / private-label flooring brand"
+          },
+          "market": {
+            "category": "SPC / LVT flooring",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Group structure built around importing and co-producing rigid-core flooring with overseas manufacturing partners (PRIMARY)",
+            "Public product program lists SPC / WPC / LVT as core lines (PRIMARY)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Exact annual purchase volume",
+          "Which specific suppliers are current"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Describes itself as a global manufacturer, so some product may be produced in-house; still purchases Asian-made finished goods (contradictory evidence)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R2": {
+      "q": {
+        "tier": "ENGAGE_FIRST",
+        "reasons": [
+          "ALL_GATES_CLEAR"
+        ],
+        "otherFlags": [],
+        "barrier": "HIGH"
+      },
+      "market": {
+        "code": "US",
+        "name": {
+          "zh": "美國",
+          "en": "United States"
+        },
+        "region": "north-america",
+        "currency": "USD",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "州級化學品揭露（例如加州 Proposition 65 警示）",
+              "en": "State chemical-disclosure rules (for example California Proposition 65 warnings)"
+            },
+            {
+              "zh": "商用地板常被要求的防火測試（例如 ASTM E648 臨界輻射通量）",
+              "en": "Fire tests commonly requested for commercial flooring (for example ASTM E648 critical radiant flux)"
+            },
+            {
+              "zh": "若產品含複合木芯：TSCA Title VI 甲醛排放規定",
+              "en": "If the product has a composite-wood core: TSCA Title VI formaldehyde emission rules"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "商用壁材常被要求的表面燃燒特性（例如 ASTM E84）",
+              "en": "Surface-burning characteristics commonly requested for commercial wallcoverings (for example ASTM E84)"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "有拉繩窗飾的 CPSC 安全規則（現成品與訂製品規定要分開確認）",
+              "en": "CPSC safety rule for corded window coverings (confirm stock and custom products separately)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "flooring"
+        ],
+        "checksToVerify": [
+          {
+            "key": "flooring",
+            "zh": "州級化學品揭露（例如加州 Proposition 65 警示）",
+            "en": "State chemical-disclosure rules (for example California Proposition 65 warnings)"
+          },
+          {
+            "key": "flooring",
+            "zh": "商用地板常被要求的防火測試（例如 ASTM E648 臨界輻射通量）",
+            "en": "Fire tests commonly requested for commercial flooring (for example ASTM E648 critical radiant flux)"
+          },
+          {
+            "key": "flooring",
+            "zh": "若產品含複合木芯：TSCA Title VI 甲醛排放規定",
+            "en": "If the product has a composite-wood core: TSCA Title VI formaldehyde emission rules"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R2",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Meridian Surfaces International",
+            "type": "Multi-category distributor / importer"
+          },
+          "market": {
+            "category": "SPC / LVT flooring · tile · stone",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Public profile states products sourced from dozens of countries including China and India (PRIMARY)",
+            "Multiple interior-material categories with a dedicated global sourcing team (PRIMARY)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Supplier-switching appetite",
+          "Current Asia supplier mix"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Large mature buyer — likely has established supplier relationships (entry difficulty, not buyer fit)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R3": {
+      "q": {
+        "tier": "ENGAGE_FIRST",
+        "reasons": [
+          "ALL_GATES_CLEAR"
+        ],
+        "otherFlags": [],
+        "barrier": "HIGH"
+      },
+      "market": {
+        "code": "US",
+        "name": {
+          "zh": "美國",
+          "en": "United States"
+        },
+        "region": "north-america",
+        "currency": "USD",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "州級化學品揭露（例如加州 Proposition 65 警示）",
+              "en": "State chemical-disclosure rules (for example California Proposition 65 warnings)"
+            },
+            {
+              "zh": "商用地板常被要求的防火測試（例如 ASTM E648 臨界輻射通量）",
+              "en": "Fire tests commonly requested for commercial flooring (for example ASTM E648 critical radiant flux)"
+            },
+            {
+              "zh": "若產品含複合木芯：TSCA Title VI 甲醛排放規定",
+              "en": "If the product has a composite-wood core: TSCA Title VI formaldehyde emission rules"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "商用壁材常被要求的表面燃燒特性（例如 ASTM E84）",
+              "en": "Surface-burning characteristics commonly requested for commercial wallcoverings (for example ASTM E84)"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "有拉繩窗飾的 CPSC 安全規則（現成品與訂製品規定要分開確認）",
+              "en": "CPSC safety rule for corded window coverings (confirm stock and custom products separately)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "flooring"
+        ],
+        "checksToVerify": [
+          {
+            "key": "flooring",
+            "zh": "州級化學品揭露（例如加州 Proposition 65 警示）",
+            "en": "State chemical-disclosure rules (for example California Proposition 65 warnings)"
+          },
+          {
+            "key": "flooring",
+            "zh": "商用地板常被要求的防火測試（例如 ASTM E648 臨界輻射通量）",
+            "en": "Fire tests commonly requested for commercial flooring (for example ASTM E648 critical radiant flux)"
+          },
+          {
+            "key": "flooring",
+            "zh": "若產品含複合木芯：TSCA Title VI 甲醛排放規定",
+            "en": "If the product has a composite-wood core: TSCA Title VI formaldehyde emission rules"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R3",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Harborview Hard-Surface Retail Group",
+            "type": "Large direct-import flooring retailer"
+          },
+          "market": {
+            "category": "SPC / LVT flooring",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Public filing states production is contracted primarily in Asia and Europe, including China-origin click vinyl (PRIMARY / regulatory)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Current supplier contracts",
+          "Openness to new Asia suppliers"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Extremely large mature buyer that already buys direct — expect existing supplier relationships",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R4": {
+      "q": {
+        "tier": "ENGAGE_FIRST",
+        "reasons": [
+          "ALL_GATES_CLEAR"
+        ],
+        "otherFlags": [],
+        "barrier": "MEDIUM"
+      },
+      "market": {
+        "code": "GB",
+        "name": {
+          "zh": "英國",
+          "en": "United Kingdom"
+        },
+        "region": "europe",
+        "currency": "GBP",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "英國建築產品的 UKCA／CE 承認狀態（規則會調整，需查最新公告）",
+              "en": "UKCA and CE recognition status for construction products (rules change; check the current position)"
+            },
+            {
+              "zh": "英國 REACH 對塑化劑與其他物質的限制",
+              "en": "UK REACH restrictions on plasticisers and other substances"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "公共與商用建築的室內裝修防火要求",
+              "en": "Fire requirements for interior finishes in public and commercial buildings"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "窗簾阻燃標準（例如 BS 5867，公共與商用場所）",
+              "en": "Flame-retardancy standard for curtains and drapes (for example BS 5867, public and commercial premises)"
+            },
+            {
+              "zh": "窗飾拉繩安全（EN 13120）",
+              "en": "Cord safety for internal blinds (EN 13120)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "flooring",
+          "wallcoverings"
+        ],
+        "checksToVerify": [
+          {
+            "key": "flooring",
+            "zh": "英國建築產品的 UKCA／CE 承認狀態（規則會調整，需查最新公告）",
+            "en": "UKCA and CE recognition status for construction products (rules change; check the current position)"
+          },
+          {
+            "key": "flooring",
+            "zh": "英國 REACH 對塑化劑與其他物質的限制",
+            "en": "UK REACH restrictions on plasticisers and other substances"
+          },
+          {
+            "key": "wallcoverings",
+            "zh": "公共與商用建築的室內裝修防火要求",
+            "en": "Fire requirements for interior finishes in public and commercial buildings"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R4",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Vantage Wallcoverings & Home",
+            "type": "Multi-category interior distributor / importer"
+          },
+          "market": {
+            "category": "Wallcoverings · flooring · home accessories",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Public profile describes itself as a leading importer/distributor of wall coverings with global reach (PRIMARY)",
+            "Operates offices on three continents including China (PRIMARY)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Direct China supplier contracts",
+          "Wallcovering vs flooring purchase mix"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Has some in-house manufacturing capabilities (partial vertical integration)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R5": {
+      "q": {
+        "tier": "VERIFY_FIRST",
+        "reasons": [
+          "NO_PRIMARY_SOURCE"
+        ],
+        "otherFlags": [],
+        "barrier": "LOW"
+      },
+      "market": {
+        "code": "AU",
+        "name": {
+          "zh": "澳洲",
+          "en": "Australia"
+        },
+        "region": "oceania",
+        "currency": "AUD",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "建築法規與防滑、防火要求（依專案類型）",
+              "en": "Building code, slip-resistance and fire requirements by project type"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "商用專案的防火與表面燃燒要求",
+              "en": "Fire and surface-burning requirements for commercial projects"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "有拉繩室內窗飾的強制安全標準（澳洲有專門規定）",
+              "en": "Mandatory safety standard for corded internal window coverings (Australia has a dedicated rule)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "wallcoverings"
+        ],
+        "checksToVerify": [
+          {
+            "key": "wallcoverings",
+            "zh": "商用專案的防火與表面燃燒要求",
+            "en": "Fire and surface-burning requirements for commercial projects"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R5",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Aster Wallcoverings Import Co.",
+            "type": "Wallpaper importer / distributor"
+          },
+          "market": {
+            "category": "Wallcoverings",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Business model is importing wallpaper; import records appear on third-party trade-intelligence platforms (VERIFICATION_REQUIRED)"
+          ],
+          "sourceTiers": [
+            "VERIFICATION_REQUIRED",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Specific Asia suppliers",
+          "Purchase volume"
+        ],
+        "potentialTensions": [
+          {
+            "note": "No official website found — contact seeding requires directories (verification gap)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R6": {
+      "q": {
+        "tier": "VERIFY_FIRST",
+        "reasons": [
+          "ORIGIN_UNKNOWN"
+        ],
+        "otherFlags": [],
+        "barrier": "MEDIUM"
+      },
+      "market": {
+        "code": "DE",
+        "name": {
+          "zh": "德國",
+          "en": "Germany"
+        },
+        "region": "europe",
+        "currency": "EUR",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "建築產品法規（CPR）下的 CE 標示與性能聲明（彈性地板適用的調和標準）",
+              "en": "CE marking and declaration of performance under the Construction Products Regulation (harmonised standard for resilient floor coverings)"
+            },
+            {
+              "zh": "REACH 對部分塑化劑（鄰苯二甲酸酯）與其他物質的限制",
+              "en": "REACH restrictions on certain plasticisers (phthalates) and other substances in vinyl"
+            },
+            {
+              "zh": "各國室內空氣排放標示（例如法國 A+、德國 AgBB 體系）",
+              "en": "National indoor-air emission labelling (for example the French A+ class, the German AgBB scheme)"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "工程專案常要求的室內裝修材料防火等級（EN 13501-1 Euroclass）",
+              "en": "Fire classification for interior finishes that projects often require (EN 13501-1 Euroclass)"
+            },
+            {
+              "zh": "REACH 與化學品限制、依產品確認",
+              "en": "REACH and other chemical restrictions, confirmed per product"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "室內窗飾拉繩安全標準（EN 13120）",
+              "en": "Cord-safety standard for internal blinds (EN 13120)"
+            },
+            {
+              "zh": "工程與公共建築的織物防火要求（依國家與專案）",
+              "en": "Fire performance for contract textiles in public and commercial buildings (by country and project)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "windowTreatments"
+        ],
+        "checksToVerify": [
+          {
+            "key": "windowTreatments",
+            "zh": "室內窗飾拉繩安全標準（EN 13120）",
+            "en": "Cord-safety standard for internal blinds (EN 13120)"
+          },
+          {
+            "key": "windowTreatments",
+            "zh": "工程與公共建築的織物防火要求（依國家與專案）",
+            "en": "Fire performance for contract textiles in public and commercial buildings (by country and project)"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R6",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Delphi Textile Distributors",
+            "type": "Wholesale distributor / private-label textiles"
+          },
+          "market": {
+            "category": "Window treatments · fabrics",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Trade-only distributor of drapery fabrics and finished window treatments (PRIMARY)",
+            "Carries multiple international brands, indicating imported goods (PRIMARY)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Asia sourcing",
+          "Whether it buys finished curtains or fabric only"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Asia sourcing not confirmed — imports may be European (import openness ≠ Asia sourcing)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R7": {
+      "q": {
+        "tier": "VERIFY_FIRST",
+        "reasons": [
+          "IMPORT_UNKNOWN",
+          "ORIGIN_UNKNOWN"
+        ],
+        "otherFlags": [],
+        "barrier": "MEDIUM"
+      },
+      "market": {
+        "code": "CA",
+        "name": {
+          "zh": "加拿大",
+          "en": "Canada"
+        },
+        "region": "north-america",
+        "currency": "CAD",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "消費品英法雙語標示要求（依產品與包裝確認）",
+              "en": "Bilingual English and French labelling requirements for consumer products (confirm by product and packaging)"
+            },
+            {
+              "zh": "各省建築與防火規範（依專案類型）",
+              "en": "Provincial building and fire requirements by project type"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "工程專案的防火與表面燃燒要求（依專案與省）",
+              "en": "Fire and surface-burning requirements for commercial projects (by project and province)"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "有拉繩窗飾產品規定（加拿大有專門法規，需逐項確認）",
+              "en": "Corded window covering regulations (Canada has dedicated rules; confirm item by item)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "wallcoverings"
+        ],
+        "checksToVerify": [
+          {
+            "key": "wallcoverings",
+            "zh": "工程專案的防火與表面燃燒要求（依專案與省）",
+            "en": "Fire and surface-burning requirements for commercial projects (by project and province)"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R7",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Northgate Contract Wallcovering",
+            "type": "Contract wallcovering distributor"
+          },
+          "market": {
+            "category": "Wallcoverings (contract)",
+            "importOpenness": "UNKNOWN"
+          },
+          "rationale": [
+            "Contract wallcovering and design solutions distributor with specialty product lines (PRIMARY)",
+            "Serves commercial / design trade (SUPPORTING)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "UNKNOWN",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Import openness",
+          "Asia sourcing",
+          "Purchase authority detail"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Import openness and Asia sourcing both UNKNOWN — no evidence either way",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R8": {
+      "q": {
+        "tier": "HOLD",
+        "reasons": [
+          "WEAK_CATEGORY"
+        ],
+        "otherFlags": [
+          "ORIGIN_UNKNOWN"
+        ],
+        "barrier": "MEDIUM"
+      },
+      "market": {
+        "code": "AE",
+        "name": {
+          "zh": "阿聯",
+          "en": "United Arab Emirates"
+        },
+        "region": "middle-east",
+        "currency": "AED",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "進口貨的符合性認證：依 HS 編碼確認適用哪一套制度",
+              "en": "Conformity requirements for imported goods: confirm which scheme applies to the HS code"
+            },
+            {
+              "zh": "各酋長國對室內材料的專案核准與防火核准（依專案）",
+              "en": "Emirate-level project and civil-defence approvals for interior materials (by project)"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "工程專案的防火核准與材料核准",
+              "en": "Fire and material approvals for commercial projects"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "酒店與工程專案的織物防火要求（依業主與專案規格）",
+              "en": "Fabric fire requirements for hospitality and project supply (by owner and project specification)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "專案供貨常見信用狀或預付款、保留款與履約保證；請確認保兌與開狀行風險。",
+          "en": "Project supply commonly involves L/C or advance payment, retention money and performance guarantees; confirm confirmation and issuing-bank risk."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [],
+        "checksToVerify": []
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R8",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Cascade Home Décor Supply",
+            "type": "Importer / wholesale home décor"
+          },
+          "market": {
+            "category": "Adjacent (home décor / lighting / accessories)",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Registered importer of home décor and accessories (PRIMARY)",
+            "Large multi-category catalog (SUPPORTING)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "WEAK",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Whether any seed category is commercially meaningful",
+          "Asia sourcing"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Category fit is WEAK — no core seed category (wallcoverings / window treatments / SPC-LVT); import activity cannot compensate (domain-learning rule)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R9": {
+      "q": {
+        "tier": "EXCLUDE",
+        "reasons": [
+          "NOT_A_BUYER",
+          "NO_IMPORT_APPETITE"
+        ],
+        "otherFlags": [
+          "NO_ORIGIN_SOURCING"
+        ],
+        "barrier": "HIGH"
+      },
+      "market": {
+        "code": "PL",
+        "name": {
+          "zh": "波蘭",
+          "en": "Poland"
+        },
+        "region": "europe",
+        "currency": "PLN",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "建築產品法規（CPR）下的 CE 標示與性能聲明（彈性地板適用的調和標準）",
+              "en": "CE marking and declaration of performance under the Construction Products Regulation (harmonised standard for resilient floor coverings)"
+            },
+            {
+              "zh": "REACH 對部分塑化劑（鄰苯二甲酸酯）與其他物質的限制",
+              "en": "REACH restrictions on certain plasticisers (phthalates) and other substances in vinyl"
+            },
+            {
+              "zh": "各國室內空氣排放標示（例如法國 A+、德國 AgBB 體系）",
+              "en": "National indoor-air emission labelling (for example the French A+ class, the German AgBB scheme)"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "工程專案常要求的室內裝修材料防火等級（EN 13501-1 Euroclass）",
+              "en": "Fire classification for interior finishes that projects often require (EN 13501-1 Euroclass)"
+            },
+            {
+              "zh": "REACH 與化學品限制、依產品確認",
+              "en": "REACH and other chemical restrictions, confirmed per product"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "室內窗飾拉繩安全標準（EN 13120）",
+              "en": "Cord-safety standard for internal blinds (EN 13120)"
+            },
+            {
+              "zh": "工程與公共建築的織物防火要求（依國家與專案）",
+              "en": "Fire performance for contract textiles in public and commercial buildings (by country and project)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "flooring"
+        ],
+        "checksToVerify": [
+          {
+            "key": "flooring",
+            "zh": "建築產品法規（CPR）下的 CE 標示與性能聲明（彈性地板適用的調和標準）",
+            "en": "CE marking and declaration of performance under the Construction Products Regulation (harmonised standard for resilient floor coverings)"
+          },
+          {
+            "key": "flooring",
+            "zh": "REACH 對部分塑化劑（鄰苯二甲酸酯）與其他物質的限制",
+            "en": "REACH restrictions on certain plasticisers (phthalates) and other substances in vinyl"
+          },
+          {
+            "key": "flooring",
+            "zh": "各國室內空氣排放標示（例如法國 A+、德國 AgBB 體系）",
+            "en": "National indoor-air emission labelling (for example the French A+ class, the German AgBB scheme)"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R9",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Halden Surfaces Manufacturing",
+            "type": "Flooring manufacturer (vertically integrated)"
+          },
+          "market": {
+            "category": "SPC / LVT flooring",
+            "importOpenness": "NO"
+          },
+          "rationale": [
+            "Operates its own extrusion and pressing lines for rigid-core flooring (PRIMARY)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "LOW",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "NO",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Whether it ever subcontracts overflow volume"
+        ],
+        "potentialTensions": [
+          {
+            "note": "It buys raw materials and machinery, not finished flooring: for these customers it is a competitor, not a buyer (PRIMARY)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R10": {
+      "q": {
+        "tier": "HOLD",
+        "reasons": [
+          "NO_ORIGIN_SOURCING"
+        ],
+        "otherFlags": [
+          "BUYER_FIT_NOT_STRONG"
+        ],
+        "barrier": "MEDIUM"
+      },
+      "market": {
+        "code": "FR",
+        "name": {
+          "zh": "法國",
+          "en": "France"
+        },
+        "region": "europe",
+        "currency": "EUR",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "建築產品法規（CPR）下的 CE 標示與性能聲明（彈性地板適用的調和標準）",
+              "en": "CE marking and declaration of performance under the Construction Products Regulation (harmonised standard for resilient floor coverings)"
+            },
+            {
+              "zh": "REACH 對部分塑化劑（鄰苯二甲酸酯）與其他物質的限制",
+              "en": "REACH restrictions on certain plasticisers (phthalates) and other substances in vinyl"
+            },
+            {
+              "zh": "各國室內空氣排放標示（例如法國 A+、德國 AgBB 體系）",
+              "en": "National indoor-air emission labelling (for example the French A+ class, the German AgBB scheme)"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "工程專案常要求的室內裝修材料防火等級（EN 13501-1 Euroclass）",
+              "en": "Fire classification for interior finishes that projects often require (EN 13501-1 Euroclass)"
+            },
+            {
+              "zh": "REACH 與化學品限制、依產品確認",
+              "en": "REACH and other chemical restrictions, confirmed per product"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "室內窗飾拉繩安全標準（EN 13120）",
+              "en": "Cord-safety standard for internal blinds (EN 13120)"
+            },
+            {
+              "zh": "工程與公共建築的織物防火要求（依國家與專案）",
+              "en": "Fire performance for contract textiles in public and commercial buildings (by country and project)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "flooring",
+          "wallcoverings"
+        ],
+        "checksToVerify": [
+          {
+            "key": "flooring",
+            "zh": "建築產品法規（CPR）下的 CE 標示與性能聲明（彈性地板適用的調和標準）",
+            "en": "CE marking and declaration of performance under the Construction Products Regulation (harmonised standard for resilient floor coverings)"
+          },
+          {
+            "key": "flooring",
+            "zh": "REACH 對部分塑化劑（鄰苯二甲酸酯）與其他物質的限制",
+            "en": "REACH restrictions on certain plasticisers (phthalates) and other substances in vinyl"
+          },
+          {
+            "key": "flooring",
+            "zh": "各國室內空氣排放標示（例如法國 A+、德國 AgBB 體系）",
+            "en": "National indoor-air emission labelling (for example the French A+ class, the German AgBB scheme)"
+          },
+          {
+            "key": "wallcoverings",
+            "zh": "工程專案常要求的室內裝修材料防火等級（EN 13501-1 Euroclass）",
+            "en": "Fire classification for interior finishes that projects often require (EN 13501-1 Euroclass)"
+          },
+          {
+            "key": "wallcoverings",
+            "zh": "REACH 與化學品限制、依產品確認",
+            "en": "REACH and other chemical restrictions, confirmed per product"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R10",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Verdane Interiors Retail",
+            "type": "Regional retail chain with private-label ranges"
+          },
+          "market": {
+            "category": "SPC / LVT flooring · wallcoverings",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Runs private-label flooring and wallcovering ranges across a regional store network (PRIMARY)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "MEDIUM",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Whether the policy covers every range or only the flagship line",
+          "Commercial-project purchases outside private label"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Its published sourcing policy commits private-label ranges to European-made supply and states a preference against long-distance sourcing (PRIMARY): explicit evidence against Asia sourcing",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R11": {
+      "q": {
+        "tier": "VERIFY_FIRST",
+        "reasons": [
+          "PARTIAL_CATEGORY"
+        ],
+        "otherFlags": [],
+        "barrier": "LOW"
+      },
+      "market": {
+        "code": "NL",
+        "name": {
+          "zh": "荷蘭",
+          "en": "Netherlands"
+        },
+        "region": "europe",
+        "currency": "EUR",
+        "checks": {
+          "flooring": [
+            {
+              "zh": "建築產品法規（CPR）下的 CE 標示與性能聲明（彈性地板適用的調和標準）",
+              "en": "CE marking and declaration of performance under the Construction Products Regulation (harmonised standard for resilient floor coverings)"
+            },
+            {
+              "zh": "REACH 對部分塑化劑（鄰苯二甲酸酯）與其他物質的限制",
+              "en": "REACH restrictions on certain plasticisers (phthalates) and other substances in vinyl"
+            },
+            {
+              "zh": "各國室內空氣排放標示（例如法國 A+、德國 AgBB 體系）",
+              "en": "National indoor-air emission labelling (for example the French A+ class, the German AgBB scheme)"
+            }
+          ],
+          "wallcoverings": [
+            {
+              "zh": "工程專案常要求的室內裝修材料防火等級（EN 13501-1 Euroclass）",
+              "en": "Fire classification for interior finishes that projects often require (EN 13501-1 Euroclass)"
+            },
+            {
+              "zh": "REACH 與化學品限制、依產品確認",
+              "en": "REACH and other chemical restrictions, confirmed per product"
+            }
+          ],
+          "windowTreatments": [
+            {
+              "zh": "室內窗飾拉繩安全標準（EN 13120）",
+              "en": "Cord-safety standard for internal blinds (EN 13120)"
+            },
+            {
+              "zh": "工程與公共建築的織物防火要求（依國家與專案）",
+              "en": "Fire performance for contract textiles in public and commercial buildings (by country and project)"
+            }
+          ]
+        },
+        "payment": {
+          "zh": "成熟經銷商常要求賒帳（O/A）；首單多以訂金或信用狀談，並需先做信用調查。",
+          "en": "Established distributors commonly ask for open account; first orders are often negotiated with a deposit or an L/C, after a credit check."
+        },
+        "remedyWatch": {
+          "zh": "依 HS/CN 編碼與原產地，查證是否有反傾銷或平衡稅等貿易救濟措施。",
+          "en": "Check by HS/CN code and origin whether anti-dumping or countervailing measures apply."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "wallcoverings"
+        ],
+        "checksToVerify": [
+          {
+            "key": "wallcoverings",
+            "zh": "工程專案常要求的室內裝修材料防火等級（EN 13501-1 Euroclass）",
+            "en": "Fire classification for interior finishes that projects often require (EN 13501-1 Euroclass)"
+          },
+          {
+            "key": "wallcoverings",
+            "zh": "REACH 與化學品限制、依產品確認",
+            "en": "REACH and other chemical restrictions, confirmed per product"
+          }
+        ]
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R11",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Marlow Coatings & Decor Wholesale",
+            "type": "Paint, coatings and décor distributor"
+          },
+          "market": {
+            "category": "Paints and coatings · wallcoverings (secondary line)",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Imports décor products through a major port and lists wallcoverings as a secondary line (PRIMARY)",
+            "Asia-origin goods appear in its public product catalogue (PRIMARY)"
+          ],
+          "sourceTiers": [
+            "PRIMARY",
+            "SUPPORTING"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "PARTIAL",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Share of revenue from wallcoverings",
+          "Who owns the wallcovering purchasing decision"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Wallcoverings are a side line beside paints and coatings, so the commercial weight of the seed category is unclear (partial category fit)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    },
+    "R12": {
+      "q": {
+        "tier": "EXCLUDE",
+        "reasons": [
+          "COMPLIANCE_GATE"
+        ],
+        "otherFlags": [],
+        "barrier": "LOW"
+      },
+      "market": {
+        "code": "SANCTIONED",
+        "name": {
+          "zh": "受全面制裁的司法管轄區（未具名）",
+          "en": "Jurisdiction under comprehensive sanctions (not named)"
+        },
+        "region": "restricted",
+        "currency": null,
+        "checks": {
+          "flooring": [],
+          "wallcoverings": [],
+          "windowTreatments": []
+        },
+        "payment": {
+          "zh": "不適用：合規閘門已排除。",
+          "en": "Not applicable: excluded by the compliance gate."
+        },
+        "remedyWatch": {
+          "zh": "不適用。",
+          "en": "Not applicable."
+        },
+        "basis": "DOMAIN_LEARNING",
+        "categoryKeys": [
+          "wallcoverings",
+          "windowTreatments"
+        ],
+        "checksToVerify": []
+      },
+      "proposal": {
+        "kind": "cdd-intake-proposal",
+        "schemaVersion": 1,
+        "sourceSystem": "overseas-lead-discovery",
+        "sourceRecordId": "R12",
+        "generatedAt": "2026-10-03T00:00:00.000Z",
+        "sourceDisclosure": {
+          "classification": "REPRESENTATIVE_ANONYMIZED",
+          "anonymized": true,
+          "syntheticElements": true,
+          "realProspectIdentitiesExposed": false,
+          "note": "Source record is anonymized / representative / synthetic (per demo disclosure): company names are fictional, evidence phrasing is reconstructed, real prospect identities are not exposed. This proposal must never be represented as real buyer evidence."
+        },
+        "opportunityProposal": {
+          "buyer": {
+            "name": "Kestrel Interior Trading",
+            "type": "Importer / trading company"
+          },
+          "market": {
+            "category": "Wallcoverings · window treatments",
+            "importOpenness": "YES"
+          },
+          "rationale": [
+            "Active importer of wallcoverings and window treatments with Asia-origin goods (SUPPORTING)"
+          ],
+          "sourceTiers": [
+            "SUPPORTING",
+            "PRIMARY"
+          ]
+        },
+        "proposedSignals": [
+          {
+            "signal": "BUYER_FIT",
+            "value": "HIGH",
+            "sourceField": "buyerFit"
+          },
+          {
+            "signal": "CATEGORY_FIT",
+            "value": "STRONG",
+            "sourceField": "categoryFit"
+          },
+          {
+            "signal": "IMPORT_OPENNESS",
+            "value": "YES",
+            "sourceField": "importOpenness"
+          }
+        ],
+        "unknowns": [
+          "Whether any lawful route exists, which needs legal counsel and is outside this tool"
+        ],
+        "potentialTensions": [
+          {
+            "note": "Its registered address is in a jurisdiction under comprehensive sanctions: not a candidate whatever the fit (compliance gate)",
+            "notCanonicalContradiction": true,
+            "reviewNote": "Candidate tension from source 'why not' evidence — NOT a CDD canonical contradiction. CDD must require human review before treating this as a contradiction."
+          }
+        ],
+        "humanReviewRequired": true,
+        "boundary": {
+          "excludedFromCdd": [
+            "entryBarrier",
+            "asiaSourcing",
+            "recommendation",
+            "momentum",
+            "coverage",
+            "probability",
+            "priorityScore",
+            "humanDecision",
+            "commercialOutcome"
+          ],
+          "note": "Proposal only. CDD must validate, map and require human review before using any signal as evidence; nothing here is a recommendation, score or decision."
+        }
+      }
+    }
+  },
+  "ranked": [
+    {
+      "id": "R4",
+      "q": {
+        "tier": "ENGAGE_FIRST",
+        "reasons": [
+          "ALL_GATES_CLEAR"
+        ],
+        "otherFlags": [],
+        "barrier": "MEDIUM"
+      }
+    },
+    {
+      "id": "R1",
+      "q": {
+        "tier": "ENGAGE_FIRST",
+        "reasons": [
+          "ALL_GATES_CLEAR"
+        ],
+        "otherFlags": [],
+        "barrier": "HIGH"
+      }
+    },
+    {
+      "id": "R2",
+      "q": {
+        "tier": "ENGAGE_FIRST",
+        "reasons": [
+          "ALL_GATES_CLEAR"
+        ],
+        "otherFlags": [],
+        "barrier": "HIGH"
+      }
+    },
+    {
+      "id": "R3",
+      "q": {
+        "tier": "ENGAGE_FIRST",
+        "reasons": [
+          "ALL_GATES_CLEAR"
+        ],
+        "otherFlags": [],
+        "barrier": "HIGH"
+      }
+    },
+    {
+      "id": "R5",
+      "q": {
+        "tier": "VERIFY_FIRST",
+        "reasons": [
+          "NO_PRIMARY_SOURCE"
+        ],
+        "otherFlags": [],
+        "barrier": "LOW"
+      }
+    },
+    {
+      "id": "R11",
+      "q": {
+        "tier": "VERIFY_FIRST",
+        "reasons": [
+          "PARTIAL_CATEGORY"
+        ],
+        "otherFlags": [],
+        "barrier": "LOW"
+      }
+    },
+    {
+      "id": "R6",
+      "q": {
+        "tier": "VERIFY_FIRST",
+        "reasons": [
+          "ORIGIN_UNKNOWN"
+        ],
+        "otherFlags": [],
+        "barrier": "MEDIUM"
+      }
+    },
+    {
+      "id": "R7",
+      "q": {
+        "tier": "VERIFY_FIRST",
+        "reasons": [
+          "IMPORT_UNKNOWN",
+          "ORIGIN_UNKNOWN"
+        ],
+        "otherFlags": [],
+        "barrier": "MEDIUM"
+      }
+    },
+    {
+      "id": "R8",
+      "q": {
+        "tier": "HOLD",
+        "reasons": [
+          "WEAK_CATEGORY"
+        ],
+        "otherFlags": [
+          "ORIGIN_UNKNOWN"
+        ],
+        "barrier": "MEDIUM"
+      }
+    },
+    {
+      "id": "R10",
+      "q": {
+        "tier": "HOLD",
+        "reasons": [
+          "NO_ORIGIN_SOURCING"
+        ],
+        "otherFlags": [
+          "BUYER_FIT_NOT_STRONG"
+        ],
+        "barrier": "MEDIUM"
+      }
+    },
+    {
+      "id": "R12",
+      "q": {
+        "tier": "EXCLUDE",
+        "reasons": [
+          "COMPLIANCE_GATE"
+        ],
+        "otherFlags": [],
+        "barrier": "LOW"
+      }
+    },
+    {
+      "id": "R9",
+      "q": {
+        "tier": "EXCLUDE",
+        "reasons": [
+          "NOT_A_BUYER",
+          "NO_IMPORT_APPETITE"
+        ],
+        "otherFlags": [
+          "NO_ORIGIN_SOURCING"
+        ],
+        "barrier": "HIGH"
+      }
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "counts": {
+      "ENGAGE_FIRST": 4,
+      "VERIFY_FIRST": 4,
+      "HOLD": 2,
+      "EXCLUDE": 2
+    },
+    "engageIds": [
+      "R4",
+      "R1",
+      "R2",
+      "R3"
+    ],
+    "engageHighBarrier": 3,
+    "lowBarrierNotReadyIds": [
+      "R5",
+      "R11"
+    ],
+    "excludedIds": [
+      "R12",
+      "R9"
+    ],
+    "byRegion": {
+      "europe": {
+        "total": 6,
+        "engage": 2
+      },
+      "north-america": {
+        "total": 3,
+        "engage": 2
+      },
+      "oceania": {
+        "total": 1,
+        "engage": 0
+      },
+      "middle-east": {
+        "total": 1,
+        "engage": 0
+      },
+      "restricted": {
+        "total": 1,
+        "engage": 0
+      }
+    }
+  }
+}

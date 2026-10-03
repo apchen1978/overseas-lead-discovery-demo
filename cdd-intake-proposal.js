@@ -23,6 +23,9 @@ export const ALLOWED_SIGNALS = ["BUYER_FIT", "CATEGORY_FIT", "IMPORT_OPENNESS"];
 // Source fields explicitly EXCLUDED from CDD decision fields.
 export const EXCLUDED_FROM_CDD = [
   "entryBarrier", // lead-entry difficulty, not an opportunity-quality dimension
+  // Contract vocabulary, schemaVersion 1: this label is part of the exported payload and the
+  // frozen fixtures, so it keeps its historical name. The source record now calls the same
+  // field `originSourcing`; it is still never exported.
   "asiaSourcing", // source-specific; no CDD counterpart (kept in source record only)
   "recommendation",
   "momentum",

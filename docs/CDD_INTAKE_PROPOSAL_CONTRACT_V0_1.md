@@ -136,3 +136,5 @@ number, impossible date); R6 unknowns verbatim; R1 tension flagged
 non-canonical.
 
 **Result: 42/42 PASS** · deterministic · no network · no persistence.
+
+> Note (2026-10-03): inside the source record the field behind `asiaSourcing` is now named `originSourcing` (method code stays product- and region-neutral). The contract keeps the historical label `asiaSourcing` in `excludedFromCdd`; schemaVersion 1 output is unchanged and is checked against the frozen fixtures.
