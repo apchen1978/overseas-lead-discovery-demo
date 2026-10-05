@@ -3,7 +3,7 @@
  *
  * One synthetic company is taken through five judgments: who it is, whom to
  * approach, what gap it has, how to open the first order, and whether a repeated
- * gap earns a bundle. Each step says what the AI did and what a person judged.
+ * gap earns a bundle. Each step separates what was found from what a person decides.
  *
  * Kept apart from the page so a test can check the rules that govern it: the page
  * shows WHAT each step judges, never HOW the data is found; no product category,
@@ -14,15 +14,15 @@ export const GAP_COPY = {
   zh: {
     modeTag: "03 · 找缺口",
     modeTitle: "看一家公司怎麼從名字走到開口的理由",
-    modeBody: "用一家合成公司走一遍五個判斷：線索、入口、缺口、首單條件、要不要組合。每一步標出 AI 做了什麼、人判斷了什麼。",
+    modeBody: "用一家示範公司走五個判斷：線索、入口、缺口、首單條件、要不要組合；每一步分開「整理到的線索」與「要人拍板的點」。",
     modeCta: "查看走查",
     heading: "從名字到開口的理由",
     intro: "名單只給你名字。這裡用一家合成公司，示範五個判斷怎麼接起來，讓你看到：缺口，才是你可以開口的理由。",
     disclosure: "合成公司，不是任何真實買家。每一步只示範「在判斷什麼」，不示範資料怎麼取得；沒有進行任何接觸，也不代表任何回覆、會議或訂單。",
     company: "合成公司 N-07",
     companyMeta: "進口與批發 · 中型市場 · 合成資料",
-    aiLabel: "AI 做了什麼",
-    humanLabel: "人判斷什麼",
+    aiLabel: "整理到的線索",
+    humanLabel: "要人拍板的點",
     resultLabel: "這一步得到",
     stepWord: "步驟",
     steps: [
@@ -80,15 +80,15 @@ export const GAP_COPY = {
   en: {
     modeTag: "03 · Find the gap",
     modeTitle: "See how one company goes from a name to a reason to speak",
-    modeBody: "One synthetic company, five judgments: clue, entry point, gap, first-order terms, and whether to bundle. Each step shows what the AI did and what a person judged.",
+    modeBody: "One demo company, five judgments: clue, entry point, gap, first-order terms, and whether to bundle. Each step separates what was found from the call a person has to make.",
     modeCta: "View the walk-through",
     heading: "From a name to a reason to speak",
     intro: "A list gives you a name. Here one synthetic company is taken through five judgments, so you can see that the gap is the reason you have to open the conversation.",
     disclosure: "A synthetic company, not a real buyer. Each step shows what is being judged, not how the data is found. No contact was made and nothing here means a reply, a meeting or an order.",
     company: "Synthetic company N-07",
     companyMeta: "Import and wholesale · mid-size market · synthetic data",
-    aiLabel: "What the AI did",
-    humanLabel: "What a person judges",
+    aiLabel: "What was found",
+    humanLabel: "The call a person makes",
     resultLabel: "What this step gives you",
     stepWord: "Step",
     steps: [
