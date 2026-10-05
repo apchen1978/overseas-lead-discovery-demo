@@ -42,7 +42,7 @@ export const BRIEF_COPY = {
     before: [
       "先查誰拍板：職稱不一定準，以公司自己的公開資料為準，查不到就標「查無公開資料」。",
       "先看收款風險：對方可能要求賒帳（O/A）或信用狀（L/C）。這只是初步查核，不是信用報告。",
-      "逐家寫切入點，再起草信：每一家都要有自己的理由，不用同一套模板。信由你確認後才寄出，AI 不代寄。",
+      "逐家寫切入點，再起草信：每一家都要有自己的理由，不用同一套模板。信由你確認後才寄出，系統不代寄。",
     ],
     notTitle: "這份簡報不代表",
     not: [
@@ -102,7 +102,7 @@ export const BRIEF_COPY = {
     before: [
       "Find who decides: titles are not always reliable, so rely on the company’s own public material and mark “Not public” when it cannot be found.",
       "Look at payment risk first: the buyer may ask for open account (O/A) or a letter of credit (L/C). This is a preliminary check, not a credit report.",
-      "Write an angle for each company, then draft the message: each one needs its own reason, not one shared template. You approve before anything is sent; AI never sends on its own.",
+      "Write an angle for each company, then draft the message: each one needs its own reason, not one shared template. You approve before anything is sent; the tool never sends on its own.",
     ],
     notTitle: "What this brief does not mean",
     not: [
