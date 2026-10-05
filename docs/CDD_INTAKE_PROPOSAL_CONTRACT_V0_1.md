@@ -1,21 +1,21 @@
-# CDD × Overseas Lead Discovery — Intake Proposal Contract v0.1
+# Commercial Decision Desk × Overseas Lead Discovery — Intake Proposal Contract v0.1
 
-**Status:** source-side design delivered (Evidence Handoff v0.1, owner-authorized).
-**Scope:** `overseas-lead-discovery-demo` only. No CDD integration was performed;
-this document defines the contract for Codex's CDD import slice.
+**Status:** source-side design delivered (Evidence Handoff v0.1, approved).
+**Scope:** `overseas-lead-discovery-demo` only. No Commercial Decision Desk integration was performed;
+this document defines the contract for the Commercial Decision Desk import step.
 
 ---
 
 ## 1. Purpose and boundary
 
-The export is a **proposal for CDD intake** — never canonical CDD evidence.
+The export is a **proposal for Commercial Decision Desk intake** — never canonical Commercial Decision Desk evidence.
 It takes one qualified source record, preserves its classification
 (anonymized / representative / synthetic) **visibly**, and proposes only the
-signals CDD can consume. Everything else — scores, recommendation, gates,
+signals Commercial Decision Desk can consume. Everything else — scores, recommendation, gates,
 human decision, commercial outcome — is **out of scope by design**.
 
 > Export = "here is a candidate and what the source believes, with its
-> uncertainties". Import = "the human decides whether any of it becomes CDD
+> uncertainties". Import = "the human decides whether any of it becomes Commercial Decision Desk
 > evidence". The handoff never crosses that line.
 
 ## 2. Contract (schemaVersion 1)
@@ -33,26 +33,26 @@ human decision, commercial outcome — is **out of scope by design**.
 | `unknowns` | array | source unknowns, verbatim |
 | `potentialTensions` | array | candidate tensions, **not** canonical contradictions |
 | `humanReviewRequired` | boolean | always `true` |
-| `boundary` | object | excluded-from-CDD list + note |
+| `boundary` | object | excluded-from-Commercial Decision Desk list + note |
 
 `sourceDisclosure` is mandatory and must state, on every export:
 `classification: "REPRESENTATIVE_ANONYMIZED"`, `anonymized: true`,
 `syntheticElements: true`, `realProspectIdentitiesExposed: false`, plus a note.
 **An export that loses this classification is invalid.**
 
-## 3. Mapping table — source field → proposed CDD field → excluded / reason
+## 3. Mapping table — source field → proposed Commercial Decision Desk field → excluded / reason
 
-| Source field (records.js) | Proposed CDD field | Mapped? | Reason |
+| Source field (records.js) | Proposed Commercial Decision Desk field | Mapped? | Reason |
 |---|---|---|---|
-| `buyerFit` | `BUYER_FIT` signal | ✅ map | CDD Buyer Fit dimension |
-| `categoryFit` | `CATEGORY_FIT` signal | ✅ map | CDD Category/Product Fit dimension |
-| `importOpenness` | `IMPORT_OPENNESS` signal + `market.importOpenness` | ✅ map | CDD Import Openness dimension |
+| `buyerFit` | `BUYER_FIT` signal | ✅ map | Commercial Decision Desk Buyer Fit dimension |
+| `categoryFit` | `CATEGORY_FIT` signal | ✅ map | Commercial Decision Desk Category/Product Fit dimension |
+| `importOpenness` | `IMPORT_OPENNESS` signal + `market.importOpenness` | ✅ map | Commercial Decision Desk Import Openness dimension |
 | `why[]` | `opportunityProposal.rationale` | ✅ map | verbatim reasoning with tier tags |
 | `sources[].tier` | `opportunityProposal.sourceTiers` | ✅ map | PRIMARY / SUPPORTING / VERIFICATION_REQUIRED only |
 | `unknown[]` | `unknowns` | ✅ map | verbatim, never filled in |
-| `whyNot[]` | `potentialTensions` | ⚠️ as candidate | flagged `notCanonicalContradiction: true`; **not** a CDD contradiction |
-| `entryBarrier` | — | ❌ **excluded** | lead-entry difficulty, not an opportunity-quality dimension; must not enter CDD decision fields |
-| `asiaSourcing` | — | ❌ **excluded** | source-specific; no CDD counterpart (remains in source record only) |
+| `whyNot[]` | `potentialTensions` | ⚠️ as candidate | flagged `notCanonicalContradiction: true`; **not** a Commercial Decision Desk contradiction |
+| `entryBarrier` | — | ❌ **excluded** | lead-entry difficulty, not an opportunity-quality dimension; must not enter Commercial Decision Desk decision fields |
+| `asiaSourcing` | — | ❌ **excluded** | source-specific; no Commercial Decision Desk counterpart (remains in source record only) |
 | `type` / `category` | `buyer.type` / `market.category` | ✅ map | descriptive context only |
 | `name` | `buyer.name` | ✅ map | fictional/anonymized name, covered by disclosure |
 | recommendation / momentum / coverage / probability / priorityScore / humanDecision / commercialOutcome | — | ❌ **excluded** | the source has no such authority; any value here would be invented |
@@ -62,10 +62,10 @@ human decision, commercial outcome — is **out of scope by design**.
 - `entryBarrier` never appears in `opportunityProposal` or any decision field.
 - `whyNot` is exported as `potentialTensions` with
   `notCanonicalContradiction: true` and a human-review note — it is **never**
-  registered as a CDD canonical contradiction by the source.
+  registered as a Commercial Decision Desk canonical contradiction by the source.
 - No recommendation, Momentum, Coverage, probability, priority score, human
   decision, or commercial outcome is produced by the export.
-- `asiaSourcing` is deliberately not proposed as a signal (no CDD counterpart).
+- `asiaSourcing` is deliberately not proposed as a signal (no Commercial Decision Desk counterpart).
 
 ## 5. Fixtures (two, both from existing anonymized records)
 
@@ -77,41 +77,41 @@ human decision, commercial outcome — is **out of scope by design**.
 Fixtures are true snapshots of `buildIntakeProposal(record)` — the tests assert
 fixture == build(record) modulo `generatedAt`.
 
-## 6. What CDD MUST require the human to review (import-side obligations)
+## 6. What Commercial Decision Desk MUST require the human to review (import-side obligations)
 
-1. **Truth boundary survives import.** Every proposal imported into CDD must
+1. **Truth boundary survives import.** Every proposal imported into Commercial Decision Desk must
    carry its `REPRESENTATIVE_ANONYMIZED` classification; it must never be
    presented as real buyer evidence.
 2. **Signals are proposals, not evidence.** Before any proposed signal
-   (`BUYER_FIT` / `CATEGORY_FIT` / `IMPORT_OPENNESS`) becomes a CDD evidence
-   dimension, a human must confirm it against CDD's evidence vocabulary and
+   (`BUYER_FIT` / `CATEGORY_FIT` / `IMPORT_OPENNESS`) becomes a Commercial Decision Desk evidence
+   dimension, a human must confirm it against Commercial Decision Desk's evidence vocabulary and
    decide its level — the source proposes, the human assigns.
 3. **Every `potentialTension` requires a human decision** on whether it rises
-   to a CDD canonical contradiction. The source explicitly does not decide
-   this; CDD must not promote a tension silently.
-4. **Every `unknowns` entry stays UNKNOWN** in CDD unless the human resolves it
+   to a Commercial Decision Desk canonical contradiction. The source explicitly does not decide
+   this; Commercial Decision Desk must not promote a tension silently.
+4. **Every `unknowns` entry stays UNKNOWN** in Commercial Decision Desk unless the human resolves it
    with evidence. The import must not infer values.
 5. **Nothing in this export authorizes action.** Human decision and commercial
-   outcome remain entirely with the CDD human workflow.
+   outcome remain entirely with the Commercial Decision Desk human workflow.
 
 ## 6a. Import acceptance gate (P1, reviewer ruling 2026-08-26 — ACCEPTED with condition)
 
 Independent review accepted the source-side contract with one hard condition for
-the CDD import slice: `proposedSignals` carry `signal` / `value` / `sourceField`
+the Commercial Decision Desk import slice: `proposedSignals` carry `signal` / `value` / `sourceField`
 only — there is **no per-signal `rationale` or `sourceRefs`**, so the export
 cannot answer "which source evidence supports BUYER_FIT?" per signal. Therefore
-the CDD import **must not** convert signals into formal evidence directly.
+the Commercial Decision Desk import **must not** convert signals into formal evidence directly.
 
-The import slice MUST enforce, before anything enters the existing CDD adapter:
+The import slice MUST enforce, before anything enters the existing Commercial Decision Desk adapter:
 
 1. **Import preview** shows source signal, global `rationale[]` and source tier —
    never a bare signal → evidence conversion.
-2. **Owner confirms each proposed signal individually.**
+2. **The decision-maker confirms each proposed signal individually.**
 3. Until confirmed, every signal stays labeled **`PROPOSED`** — it is not
    evidence.
-4. CDD **never auto-registers** a contradiction (potentialTensions require
+4. Commercial Decision Desk **never auto-registers** a contradiction (potentialTensions require
    human escalation, per §6 item 3).
-5. CDD **never auto-produces** a recommendation from this proposal.
+5. Commercial Decision Desk **never auto-produces** a recommendation from this proposal.
 
 These are acceptance gates for the import slice, not blockers for the
 source-side contract (`72d81ee`). The source side does not change its schema to
