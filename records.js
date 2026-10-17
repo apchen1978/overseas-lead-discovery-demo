@@ -120,7 +120,7 @@ export const records = [
     market: { country: "AU" },
     basis: "REPRESENTATIVE",
     name: "Aster Wallcoverings Import Co.",
-    type: "Wallpaper importer / distributor",
+    type: "Wallcovering importer / distributor",
     category: "Wallcoverings",
     buyerFit: "HIGH",
     categoryFit: "STRONG",
@@ -128,7 +128,7 @@ export const records = [
     originSourcing: "CONFIRMED",
     entryBarrier: "LOW",
     why: [
-      "Business model is importing wallpaper; import records appear on third-party trade-intelligence platforms (VERIFICATION_REQUIRED)",
+      "Business model is importing wallcoverings; import records appear on third-party trade-intelligence platforms (VERIFICATION_REQUIRED)",
     ],
     whyNot: ["No official website found — contact seeding requires directories (verification gap)"],
     unknown: ["Specific Asia suppliers", "Purchase volume"],

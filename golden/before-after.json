@@ -672,14 +672,14 @@
         "opportunityProposal": {
           "buyer": {
             "name": "Aster Wallcoverings Import Co.",
-            "type": "Wallpaper importer / distributor"
+            "type": "Wallcovering importer / distributor"
           },
           "market": {
             "category": "Wallcoverings",
             "importOpenness": "YES"
           },
           "rationale": [
-            "Business model is importing wallpaper; import records appear on third-party trade-intelligence platforms (VERIFICATION_REQUIRED)"
+            "Business model is importing wallcoverings; import records appear on third-party trade-intelligence platforms (VERIFICATION_REQUIRED)"
           ],
           "sourceTiers": [
             "VERIFICATION_REQUIRED",
