@@ -22,7 +22,7 @@ export const OWN_COPY = {
     ownPrivacy: "資料只留在這個頁面，不儲存、不上傳。請只輸入公司名稱，不要輸入個人資料。",
     step1: "1 · 你的產品與目標市場",
     productLabel: "你的產品屬於哪一類（可複選）",
-    categories: { flooring: "地板（SPC／LVT、磁磚、石材）", wallcoverings: "壁紙、壁材", windowTreatments: "窗簾、窗飾、布料", other: "其他" },
+    categories: { flooring: "地板（SPC／LVT、磁磚、石材）", wallcoverings: "壁布、壁材", windowTreatments: "窗簾、窗飾、布料", other: "其他" },
     otherNote: "選「其他」時，市場層不會列出任何查核項目，因為沒有研究過的品類，我們不替它編造。",
     countryLabel: "目標市場",
     countryPlaceholder: "請選擇國家",

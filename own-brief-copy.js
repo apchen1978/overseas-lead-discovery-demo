@@ -65,7 +65,7 @@ export const BRIEF_COPY = {
       EXCLUDE: "不投入：{reasons}。",
     },
     opt: { YES: "是", NO: "否", BUNDLE: "打包組合", UPDATE: "產品更新", BOTH: "兩者都有", UNKNOWN: "查無公開資料" },
-    categories: { flooring: "地板", wallcoverings: "壁紙、壁材", windowTreatments: "窗簾、窗飾、布料", other: "其他" },
+    categories: { flooring: "地板", wallcoverings: "壁布、壁材", windowTreatments: "窗簾、窗飾、布料", other: "其他" },
   },
   en: {
     sectionTitle: "4 · Take away: the list brief",
