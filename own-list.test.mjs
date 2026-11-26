@@ -89,6 +89,8 @@ check(["QA", "SA"].every((code) => MARKETS[code].region === "middle-east"), "the
 check(MARKETS.QA.checks.windowTreatments.length === 0 && MARKETS.SA.checks.windowTreatments.length === 0, "unverified Gulf category checks may stay empty");
 check(marketPlan({ country: "QA", categories: ["wallcoverings"] }).checksToVerify.length === 1, "Qatar wallcoverings show only the sourced mosque-project check");
 check(marketPlan({ country: "SA", categories: ["wallcoverings"] }).checksToVerify.length === 1, "Saudi wallcoverings show only the sourced building-project check");
+check(countryCodes().filter((code) => MARKETS[code].region === "south-america").join() === "AR,PE", "Argentina and Peru are offered together as South America targets");
+check(marketPlan({ country: "AR", categories: ["windowTreatments"] }).checksToVerify.length === 1 && marketPlan({ country: "PE", categories: ["windowTreatments"] }).checksToVerify.length === 1, "South America window-treatment checks show only the sourced labelling check");
 check(PRODUCT_CATEGORIES.includes("other") && PRODUCT_CATEGORIES.length === 4, "three seed categories plus other");
 
 // The wording rules for this mode.
