@@ -70,6 +70,32 @@
     .tier-box.VERIFY_FIRST .n { color: #8a6d1a; }
     .tier-box.HOLD .n { color: var(--bad); }
     .tier-box.EXCLUDE .n { color: #5a4a44; }
+    /* Market map: one row per region, a bar for how its demo records fall into tiers, chips for the countries that have a market-check list. */
+    .mapview { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 16px; margin: 0 0 22px; }
+    .mapview h2 { font-size: 17px; margin: 0 0 4px; }
+    .map-note { font-size: 13px; color: var(--muted); margin: 0 0 12px; line-height: 1.55; max-width: 70ch; }
+    .map-row { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 6px 16px; align-items: center; width: 100%; text-align: left; font: inherit; color: inherit; background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 13px 6px; cursor: pointer; }
+    .map-row:first-child { border-top: 0; }
+    .map-row:hover { background: var(--bone); }
+    .map-row[aria-pressed="true"] { background: var(--paper); outline: 2px solid var(--forest); outline-offset: -2px; border-radius: 10px; }
+    .map-region { font-size: 15px; font-weight: 700; line-height: 1.3; }
+    .map-region small { display: block; margin-top: 2px; font-size: 12px; font-weight: 500; color: var(--muted); }
+    .map-body { display: grid; gap: 9px; min-width: 0; }
+    .map-bar { display: flex; height: 16px; border-radius: 8px; overflow: hidden; background: #e9ece4; }
+    .map-seg { min-width: 8px; }
+    .map-seg.ENGAGE_FIRST, .map-key.ENGAGE_FIRST { background: #2f6b4f; }
+    .map-seg.VERIFY_FIRST, .map-key.VERIFY_FIRST { background: #d1a93e; }
+    .map-seg.HOLD, .map-key.HOLD { background: #c0614c; }
+    .map-seg.EXCLUDE, .map-key.EXCLUDE { background: #8d8079; }
+    .map-countries { display: flex; flex-wrap: wrap; gap: 6px; }
+    .map-c { font-size: 12.5px; font-weight: 600; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--forest); color: var(--forest); background: #fff; }
+    .map-c b { margin-left: 6px; font-weight: 800; }
+    .map-c.none { border-style: dashed; border-color: #b4bcb1; color: var(--muted); font-weight: 500; }
+    .map-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+    .map-legend span { display: inline-flex; align-items: center; }
+    .map-key { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px; }
+    .map-key.dash { background: #fff; border: 1px dashed #8a948a; }
+    @media (max-width: 640px) { .map-row { grid-template-columns: 1fr; gap: 8px; } .mapview { padding: 14px 12px; } }
     .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; align-items: center; }
     .chips .label { font-size: 12px; color: var(--muted); margin-right: 4px; }
     .chip { font: inherit; font-size: 13px; font-weight: 600; color: var(--forest); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
@@ -316,6 +342,13 @@
     </div>
     <p class="funnel-note" data-copy="funnel"></p>
 
+    <section class="mapview" aria-labelledby="map-title">
+      <h2 id="map-title" data-copy="mapTitle">示範涵蓋的市場版圖</h2>
+      <p class="map-note" data-copy="mapNote"></p>
+      <div id="map-rows" role="group"></div>
+      <p class="map-legend" id="map-legend"></p>
+    </section>
+
     <section class="insight" aria-labelledby="insight-title">
       <h2 id="insight-title" data-copy="insightTitle">篩選之後看到什麼</h2>
       <ul id="insight-list"></ul>
@@ -423,6 +456,9 @@
           EXCLUDE: "不是可服務的買方，或被合規閘門擋下",
         },
         allTiers: "全部", allRegions: "全部地區", regionLabel: "地區",
+        mapTitle: "示範涵蓋的市場版圖",
+        mapNote: "每一列是一個區域：色條是這區示範紀錄的分層，下方是已建立市場查核清單的國家。虛線表示只有市場查核、還沒有示範紀錄。點一列，下面的名單就只看該區域。",
+        mapRows: "{n} 家示範紀錄", mapNoRows: "尚無示範紀錄", mapNoneKey: "虛線：只有市場查核清單，尚無示範紀錄", mapRestricted: "另有 {n} 筆為受限制地區的示範紀錄，不列入地圖。", mapAria: "{region}：{n} 家示範紀錄",
         reasons: {
           COMPLIANCE_GATE: "落在合規閘門（例如受全面制裁的司法管轄區）", NOT_A_BUYER: "不是買方（自己生產，是競爭者）", NO_IMPORT_APPETITE: "沒有進口意願",
           WEAK_CATEGORY: "品類契合度弱", NO_ORIGIN_SOURCING: "明確不採購亞洲貨源", IMPORT_UNKNOWN: "進口開放度查無公開資料", ORIGIN_UNKNOWN: "亞洲採購查無公開資料", CATEGORY_UNKNOWN: "品類契合度查無公開資料",
@@ -474,6 +510,9 @@
           EXCLUDE: "Not a buyer we can serve, or stopped by a compliance gate",
         },
         allTiers: "All", allRegions: "All regions", regionLabel: "Region",
+        mapTitle: "Markets this demo covers",
+        mapNote: "Each row is a region: the bar shows how its demo records fall into tiers, and the chips below are the countries that have a market-check list. A dashed chip has market checks but no demo record yet. Click a row to filter the list below to that region.",
+        mapRows: "{n} demo records", mapNoRows: "No demo records yet", mapNoneKey: "Dashed: market checks only, no demo record yet", mapRestricted: "{n} more demo record(s) are from a restricted jurisdiction and are not on the map.", mapAria: "{region}: {n} demo records",
         reasons: {
           COMPLIANCE_GATE: "Compliance gate (for example a comprehensively sanctioned jurisdiction)", NOT_A_BUYER: "Not a buyer (produces in-house; a competitor)", NO_IMPORT_APPETITE: "No import appetite",
           WEAK_CATEGORY: "Weak category fit", NO_ORIGIN_SOURCING: "Explicitly not sourcing from Asia", IMPORT_UNKNOWN: "Import openness not public", ORIGIN_UNKNOWN: "Asia sourcing not public", CATEGORY_UNKNOWN: "Category fit not public",
@@ -554,6 +593,42 @@
         .map(([key, v]) => fill(t("regionItem"), { region: L(REGIONS[key]), total: v.total, engage: v.engage }));
       lines.push(fill(t("insightRegions"), { list: regions.join(lang === "zh" ? "；" : "; ") }));
       document.getElementById("insight-list").innerHTML = lines.map((l) => `<li>${esc(l)}</li>`).join("");
+    }
+
+    function renderMap() {
+      const regionKeys = Object.keys(REGIONS).filter((key) => key !== "restricted" && Object.values(MARKETS).some((m) => m.region === key));
+      const rows = regionKeys.map((key) => {
+        const tiers = Object.fromEntries(TIERS.map((tier) => [tier, 0]));
+        const perCountry = {};
+        for (const { record, q } of ranked) {
+          const code = record.market?.country;
+          if (MARKETS[code]?.region !== key) continue;
+          tiers[q.tier] += 1;
+          perCountry[code] = (perCountry[code] || 0) + 1;
+        }
+        const total = Object.values(tiers).reduce((a, b) => a + b, 0);
+        const countries = Object.entries(MARKETS).filter(([, m]) => m.region === key).map(([code, m]) => ({ name: L(m.name), n: perCountry[code] || 0 }));
+        return { key, tiers, total, countries };
+      });
+      const max = Math.max(1, ...rows.map((r) => r.total));
+      const restrictedCount = ranked.filter(({ record }) => MARKETS[record.market?.country]?.region === "restricted").length;
+      document.getElementById("map-rows").innerHTML = rows.map((r) => {
+        const bar = r.total
+          ? `<div class="map-bar" style="width:${Math.max(18, Math.round((r.total / max) * 100))}%" aria-hidden="true">${TIERS.filter((tier) => r.tiers[tier]).map((tier) => `<span class="map-seg ${tier}" style="flex:${r.tiers[tier]}" title="${esc(t("tierLabel")[tier])} ${r.tiers[tier]}"></span>`).join("")}</div>`
+          : "";
+        const chips = r.countries.map((c) => `<span class="map-c${c.n ? "" : " none"}">${esc(c.name)}${c.n ? `<b>${c.n}</b>` : ""}</span>`).join("");
+        return `<button type="button" class="map-row" data-map-region="${r.key}" aria-pressed="${state.region === r.key}" aria-label="${esc(fill(t("mapAria"), { region: L(REGIONS[r.key]), n: r.total }))}">
+          <span class="map-region">${esc(L(REGIONS[r.key]))}<small>${esc(r.total ? fill(t("mapRows"), { n: r.total }) : t("mapNoRows"))}</small></span>
+          <span class="map-body">${bar}<span class="map-countries">${chips}</span></span>
+        </button>`;
+      }).join("");
+      document.getElementById("map-legend").innerHTML = TIERS.map((tier) => `<span><i class="map-key ${tier}"></i>${esc(t("tierLabel")[tier])}</span>`).join("") + `<span><i class="map-key dash"></i>${esc(t("mapNoneKey"))}</span>`
+        + (restrictedCount ? `<span>${esc(fill(t("mapRestricted"), { n: restrictedCount }))}</span>` : "");
+      document.querySelectorAll("#map-rows .map-row").forEach((row) => row.addEventListener("click", () => {
+        state.region = state.region === row.dataset.mapRegion ? "ALL" : row.dataset.mapRegion;
+        render();
+        if (state.region !== "ALL") document.getElementById("matrix").scrollIntoView({ behavior: "smooth", block: "start" });
+      }));
     }
 
     function renderFilters() {
@@ -712,6 +787,7 @@
       sw.setAttribute("aria-label", lang === "zh" ? "Switch language" : "切換語言");
       document.getElementById("flow").setAttribute("aria-label", lang === "zh" ? "工作流程" : "Workflow steps");
       renderNav();
+      renderMap();
       renderInsights();
       renderFilters();
       renderMatrix();
