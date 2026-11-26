@@ -240,7 +240,7 @@ export const MARKETS = {
     remedyWatch: REMEDY,
   },
   QA: {
-    name: { zh: "卡塔爾", en: "Qatar" },
+    name: { zh: "卡達", en: "Qatar" },
     region: "middle-east",
     currency: "QAR",
     checks: {
@@ -263,7 +263,7 @@ export const MARKETS = {
     remedyWatch: REMEDY,
   },
   SA: {
-    name: { zh: "沙特阿拉伯", en: "Saudi Arabia" },
+    name: { zh: "沙烏地阿拉伯", en: "Saudi Arabia" },
     region: "middle-east",
     currency: "SAR",
     checks: {
