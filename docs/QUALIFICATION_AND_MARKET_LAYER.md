@@ -21,6 +21,7 @@ Each market profile lists checks to verify before quoting (by seed category), pa
 
 - **East Asia** includes Japan and South Korea. Both are available as targets in the own-list mode and appear on the market map as markets with checks to verify and no sample records.
 - **Southeast Asia** includes the Philippines and Indonesia. The current official-source checks cover ceramic tiles in the Philippines and textile floor coverings in Indonesia. Other category checklists are empty pending source verification.
+- **Middle East** now includes Qatar and Saudi Arabia alongside the existing UAE profile. Qatar's source-backed checks cover mosque or prayer-hall floor and wall finishes, plus commercial import documents; Saudi Arabia's cover product conformity certificate scoping and building-project interior finishes. Other Qatar and Saudi category checklists remain empty pending readable official sources.
 - The East Asia entries cite their official references in `markets.js`. Confirm applicability for the exact product, installation site where relevant, HS code, origin and shipment year.
 
 - **Domain learning, not verified fact.** No duty rate, no current legal status, no guarantee. Tests fail if a percentage, a duty figure or a promise of clearance appears in any market text.
