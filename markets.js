@@ -282,6 +282,39 @@ export const MARKETS = {
     payment: PAYMENT_ESTABLISHED,
     remedyWatch: REMEDY,
   },
+  AR: {
+    name: { zh: "阿根廷", en: "Argentina" },
+    region: "south-america",
+    currency: "ARS",
+    checks: {
+      flooring: [],
+      wallcoverings: [],
+      windowTreatments: [
+        // Argentina, Secretaría de Industria y Comercio, Resolución 549/2021 (textile product labelling), item 28 on bed, table, kitchen, bath and curtain products when packaged:
+        // https://www.argentina.gob.ar/normativa/nacional/norma-350418/texto
+        // The labelling rules were amended later (for example by Resolución 156/2024); confirm the consolidated text in force before relying on the item numbers.
+        { zh: "成品窗簾：確認目前有效的紡織品標示規定，包括包裝或內附資訊上的纖維成分、原產國與尺寸。", en: "For finished curtains, check the textile labelling rules currently in force, including fibre composition, country of origin and dimensions on the pack or an insert." },
+      ],
+    },
+    payment: PAYMENT_ESTABLISHED,
+    remedyWatch: REMEDY,
+  },
+  PE: {
+    name: { zh: "秘魯", en: "Peru" },
+    region: "south-america",
+    currency: "PEN",
+    checks: {
+      flooring: [],
+      wallcoverings: [],
+      windowTreatments: [
+        // Andean Community General Secretariat, Resolución 2109 of 2019, Reglamento Técnico Andino para el Etiquetado de Confecciones (Gaceta Oficial del Acuerdo de Cartagena No. 3814); its Annex 1 lists NANDINA 63.03 "Visillos y cortinas; guardamalletas y rodapiés de cama".
+        // Text as compiled by Colombia's tax authority (DIAN), because the Community's own PDF link returned 404: https://normograma.dian.gov.co/dian/compilacion/docs/resolucion_sgcandina_rsg2109.htm
+        { zh: "成品窗簾：確認安第斯共同體服裝與紡織品標示技術法規對標籤內容的要求，並確認它在秘魯的生效時間與主管機關。", en: "For finished curtains, check what the Andean technical regulation on garment and textile labelling requires on the label, and when it took effect and who enforces it in Peru." },
+      ],
+    },
+    payment: PAYMENT_ESTABLISHED,
+    remedyWatch: REMEDY,
+  },
   // Not a real country: an unnamed jurisdiction under comprehensive sanctions.
   SANCTIONED: {
     name: { zh: "受全面制裁的司法管轄區（未具名）", en: "Jurisdiction under comprehensive sanctions (not named)" },
@@ -298,6 +331,7 @@ export const REGIONS = {
   europe: { zh: "歐洲", en: "Europe" },
   "east-asia": { zh: "東亞", en: "East Asia" },
   "southeast-asia": { zh: "東南亞", en: "Southeast Asia" },
+  "south-america": { zh: "南美", en: "South America" },
   oceania: { zh: "大洋洲", en: "Oceania" },
   "middle-east": { zh: "中東", en: "Middle East" },
   restricted: { zh: "受限制", en: "Restricted" },
