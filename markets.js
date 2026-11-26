@@ -103,6 +103,72 @@ export const MARKETS = {
   FR: { name: { zh: "法國", en: "France" }, region: "europe", currency: "EUR", checks: EU_CHECKS, payment: PAYMENT_ESTABLISHED, remedyWatch: REMEDY },
   NL: { name: { zh: "荷蘭", en: "Netherlands" }, region: "europe", currency: "EUR", checks: EU_CHECKS, payment: PAYMENT_ESTABLISHED, remedyWatch: REMEDY },
   PL: { name: { zh: "波蘭", en: "Poland" }, region: "europe", currency: "PLN", checks: EU_CHECKS, payment: PAYMENT_ESTABLISHED, remedyWatch: REMEDY },
+  JP: {
+    name: { zh: "日本", en: "Japan" },
+    region: "east-asia",
+    currency: "JPY",
+    checks: {
+      flooring: [
+        // Ministry of Land, Infrastructure, Transport and Tourism (MLIT), public building renovation specification §6.8: https://www.mlit.go.jp/gobuild/content/001888823.pdf
+        { zh: "公共建築翻修用的塑膠地板：依產品構造與工程規格確認是否適用 JIS A 5705。", en: "For vinyl flooring in public building renovations, check whether JIS A 5705 fits the product construction and project specification." },
+        // Ministry of Agriculture, Forestry and Fisheries (MAFF), JAS catalogue, forestry products item 8: https://www.maff.go.jp/j/jas/jas_standard/index.html
+        // MAFF Standards Council minutes, flooring scope discussion: https://www.maff.go.jp/j/jas/kaigi/20240716_gijiroku.html
+        { zh: "木質地板：依基材與構造確認是否符合 JAS 1073 的適用範圍。", en: "For wood-based flooring, check whether the core and construction fall within the scope of JAS 1073." },
+      ],
+      wallcoverings: [
+        // MLIT, public building renovation specification §6.14: https://www.mlit.go.jp/gobuild/content/001888823.pdf
+        { zh: "公共建築翻修用的壁紙：依工程規格確認所需的防火等級及適用底材。", en: "For wallpaper in public building renovations, check the specified fire classification and suitable substrates." },
+      ],
+      windowTreatments: [
+        // Consumer Affairs Agency (CAA), curtain labeling guide: https://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_25.html
+        { zh: "成品布簾：依產品型態確認纖維成分及洗護標示。", en: "For finished fabric curtains, check which fibre composition and care labels apply to the product." },
+      ],
+    },
+    // Japan External Trade Organization (JETRO), import terms §III.1: https://www.jetro.go.jp/world/qa/04A-011203.html
+    payment: {
+      zh: "向買方確認採電匯或信用狀，並在報價前談妥付款時點。",
+      en: "Confirm with the buyer whether to use a bank transfer or a letter of credit, and agree on payment timing before quoting.",
+    },
+    // Japan Customs, Trade Remedy System: https://www.customs.go.jp/english/traderemedy/index.htm
+    // Ministry of Finance, anti-dumping notices: https://www.mof.go.jp/english/policy/customs_tariff/traderemedy/anti-dumping-duty.htm
+    remedyWatch: {
+      zh: "查日本海關的反傾銷及平衡措施資料，依產品、HS 編碼、原產地與出貨年份確認適用範圍。",
+      en: "Check Japan Customs for anti-dumping and countervailing measures, then verify coverage by product, HS code, origin and shipment year.",
+    },
+  },
+  KR: {
+    name: { zh: "韓國", en: "South Korea" },
+    region: "east-asia",
+    currency: "KRW",
+    checks: {
+      flooring: [
+        // Korea Ministry of Government Legislation, Indoor Air Quality Control Act Art. 11 and Enforcement Rule Annex 5:
+        // https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032875593
+        // https://www.law.go.kr/LSW/flDownload.do?bylClsCd=110201&flSeq=156771385
+        { zh: "依地板材質及安裝場所，確認是否需要甲醛及總揮發性有機化合物的排放檢測資料。", en: "Check whether the flooring material and installation site call for test data on formaldehyde and total volatile organic compound emissions." },
+      ],
+      wallcoverings: [
+        // Korea Ministry of Government Legislation, Indoor Air Quality Control Act Art. 11: https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032875593
+        // Korea Ministry of Government Legislation, Indoor Air Quality Control Act Art. 11-6: https://www.law.go.kr/LSW/LsiJoLinkP.do?docType=JO&joNo=001106000&languageType=KO&lsNm=%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0%EC%A7%88%20%EA%B4%80%EB%A6%AC%EB%B2%95
+        { zh: "依壁紙類型及安裝場所，確認是否需要室內空氣污染物排放的查驗證明及標示。", en: "Check whether the wallpaper type and installation site call for emissions verification and a corresponding label." },
+      ],
+      windowTreatments: [
+        // Korea Ministry of Government Legislation, Fire Facilities Act Enforcement Decree Art. 31: https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1030672451
+        // Korea National Fire Agency, Flame Retardancy Performance Standards Art. 3, via the National Law Information Center: https://www.law.go.kr/admRulInfoP.do?admRulSeq=2100000269722
+        { zh: "依場所用途及窗簾或百葉簾類型，確認是否需要阻燃性能檢測資料。", en: "Check whether the building use and curtain or blind type call for flame-retardancy test evidence." },
+      ],
+    },
+    // Korea Trade Insurance Corporation (K-SURE), import insurance FAQ: https://www.ksure.or.kr/rh-kr/bbs/i-382/list.do?pageIndex=2&pageItm=10&searchCl1=6&searchCondition=
+    payment: {
+      zh: "請買方確認採信用狀或電匯，並釐清電匯安排在出貨前還是出貨後。",
+      en: "Ask whether the buyer will use a letter of credit or a bank transfer. For a transfer, confirm whether payment is due before or after shipment.",
+    },
+    // Korea Trade Commission, anti-dumping investigation register: https://www.ktc.go.kr/searchList.do?searchCondition=S
+    remedyWatch: {
+      zh: "追蹤韓國貿易委員會的反傾銷調查及結果，依產品、HS 編碼、原產地與出貨年份確認是否相關。",
+      en: "Track Korea Trade Commission anti-dumping investigations and outcomes, and check their relevance by product, HS code, origin and shipment year.",
+    },
+  },
   AU: {
     name: { zh: "澳洲", en: "Australia" },
     region: "oceania",
@@ -157,6 +223,7 @@ export const MARKETS = {
 export const REGIONS = {
   "north-america": { zh: "北美", en: "North America" },
   europe: { zh: "歐洲", en: "Europe" },
+  "east-asia": { zh: "東亞", en: "East Asia" },
   oceania: { zh: "大洋洲", en: "Oceania" },
   "middle-east": { zh: "中東", en: "Middle East" },
   restricted: { zh: "受限制", en: "Restricted" },

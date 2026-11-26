@@ -17,7 +17,10 @@ Deterministic rules with no weights and no score, in the same spirit as the Comm
 
 ## Market layer (`markets.js`)
 
-For each representative country: the KINDS of checks a seller usually clears before quoting into that market (per seed category), general payment practice, and a reminder to check trade remedies by HS code and origin.
+Each market profile lists checks to verify before quoting (by seed category), payment terms to discuss, and a reminder to check trade remedies by HS code and origin.
+
+- **East Asia** includes Japan and South Korea. Both are available as targets in the own-list mode and appear on the market map as markets with checks to verify and no sample records.
+- The East Asia entries cite their official references in `markets.js`. Confirm applicability for the exact product, installation site where relevant, HS code, origin and shipment year.
 
 - **Domain learning, not verified fact.** No duty rate, no current legal status, no guarantee. Tests fail if a percentage, a duty figure or a promise of clearance appears in any market text.
 - It **never changes a tier**: `qualification.test.mjs` re-qualifies every record with the market removed and expects the same tier.
