@@ -239,6 +239,49 @@ export const MARKETS = {
     },
     remedyWatch: REMEDY,
   },
+  QA: {
+    name: { zh: "卡塔爾", en: "Qatar" },
+    region: "middle-east",
+    currency: "QAR",
+    checks: {
+      flooring: [
+        // Qatar Ministry of Interior, Civil Defence Technical Requirements Guide, Prayer Halls (Masjid) and Mosque, item 3.3.2.2, PDF p. 22 (printed p. 15):
+        // https://portal.moi.gov.qa/wps/wcm/connect/5de0989f-0938-4d2d-b23f-f22e39322006/civil_defence_technical_requirements_guide_2024_01.pdf?MOD=AJPERES
+        { zh: "若地毯類地板用於清真寺或禮拜堂，確認專案是否要求提供 ASTM D2859 測試資料。", en: "For carpet-like flooring in a mosque or prayer hall, check whether the project calls for ASTM D2859 test evidence." },
+        // Qatar General Authority of Customs, Unified Guide for Customs Procedures, Importation §0101, commercial importation, documents to be attached:
+        // https://customs.gov.qa/English/Procedures/UnifiedGuide/Pages/Importation.aspx
+        { zh: "商業進口地板時，向進口商確認詳細發票、原產地證明，以及多品項貨物附 HS 編碼的裝箱單。", en: "For a commercial flooring import, confirm with the importer the detailed invoice, certificate of origin and, for multiple goods, a packing list showing HS codes." },
+      ],
+      wallcoverings: [
+        // Qatar Ministry of Interior, Civil Defence Technical Requirements Guide, Prayer Halls (Masjid) and Mosque, items 3.3.1.1–3.3.1.2, PDF p. 22 (printed p. 15):
+        // https://portal.moi.gov.qa/wps/wcm/connect/5de0989f-0938-4d2d-b23f-f22e39322006/civil_defence_technical_requirements_guide_2024_01.pdf?MOD=AJPERES
+        { zh: "若壁材用於清真寺或禮拜堂，依安裝位置確認室內牆面飾材的防火等級要求。", en: "For wallcoverings in a mosque or prayer hall, check the interior wall-finish fire classification for the installation location." },
+      ],
+      windowTreatments: [],
+    },
+    payment: PAYMENT_ESTABLISHED,
+    remedyWatch: REMEDY,
+  },
+  SA: {
+    name: { zh: "沙特阿拉伯", en: "Saudi Arabia" },
+    region: "middle-east",
+    currency: "SAR",
+    checks: {
+      flooring: [
+        // Saudi Standards, Metrology and Quality Organization (SASO), Registration of a product conformity certificate, Service Requirements:
+        // https://saso.gov.sa/en/eservices/pages/maineservicesdetails.aspx?serviceid=396
+        { zh: "依地板產品分類確認是否須透過 SABER 登記產品符合性證書，以及應備的型號與技術文件。", en: "By flooring product classification, check whether a product conformity certificate must be registered through SABER and which model and technical documents are needed." },
+      ],
+      wallcoverings: [
+        // Saudi Building Code Center, SBC 201 (2024), Code Details, main objectives and occupancy classification:
+        // https://www.sbc.gov.sa/En/BC/pages/buildingcode/BCDetails.aspx?codeId=201&year=2024
+        { zh: "建築專案用壁材：依建築用途與工程規格確認 SBC 201 的室內飾面要求。", en: "For wallcoverings in a building project, check the SBC 201 interior-finish requirements for the building occupancy and project specification." },
+      ],
+      windowTreatments: [],
+    },
+    payment: PAYMENT_ESTABLISHED,
+    remedyWatch: REMEDY,
+  },
   // Not a real country: an unnamed jurisdiction under comprehensive sanctions.
   SANCTIONED: {
     name: { zh: "受全面制裁的司法管轄區（未具名）", en: "Jurisdiction under comprehensive sanctions (not named)" },

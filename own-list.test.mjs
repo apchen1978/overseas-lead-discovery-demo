@@ -84,6 +84,11 @@ check(marketPlan({ country: "ZZ", categories: ["flooring"] }) === null && market
 check(!countryCodes().some((code) => MARKETS[code].region === "restricted"), "the sanctioned placeholder is not offered as a target market");
 check(countryCodes().filter((code) => MARKETS[code].region === "east-asia").join() === "JP,KR", "Japan and South Korea are offered together as East Asia targets");
 check(countryCodes().filter((code) => MARKETS[code].region === "southeast-asia").join() === "PH,ID", "Philippines and Indonesia are offered together as Southeast Asia targets");
+check(countryCodes().filter((code) => ["QA", "SA"].includes(code)).join() === "QA,SA", "Qatar and Saudi Arabia are offered as targets");
+check(["QA", "SA"].every((code) => MARKETS[code].region === "middle-east"), "the Gulf targets use the existing Middle East region");
+check(MARKETS.QA.checks.windowTreatments.length === 0 && MARKETS.SA.checks.windowTreatments.length === 0, "unverified Gulf category checks may stay empty");
+check(marketPlan({ country: "QA", categories: ["wallcoverings"] }).checksToVerify.length === 1, "Qatar wallcoverings show only the sourced mosque-project check");
+check(marketPlan({ country: "SA", categories: ["wallcoverings"] }).checksToVerify.length === 1, "Saudi wallcoverings show only the sourced building-project check");
 check(PRODUCT_CATEGORIES.includes("other") && PRODUCT_CATEGORIES.length === 4, "three seed categories plus other");
 
 // The wording rules for this mode.
