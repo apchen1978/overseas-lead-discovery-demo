@@ -169,6 +169,36 @@ export const MARKETS = {
       en: "Track Korea Trade Commission anti-dumping investigations and outcomes, and check their relevance by product, HS code, origin and shipment year.",
     },
   },
+  PH: {
+    name: { zh: "菲律賓", en: "Philippines" },
+    region: "southeast-asia",
+    currency: "PHP",
+    checks: {
+      flooring: [
+        // Department of Trade and Industry, Bureau of Philippine Standards, ceramic tiles mandatory certification guidance: https://bps.dti.gov.ph/press-releases/28-2021/264-ceramic-tiles-relisted-under-dti-bps-mandatory-products
+        { zh: "若是陶瓷磚，依製造方式及產品用途確認 BPS 認證、產品標記與進口文件要求。", en: "For ceramic tiles, check the BPS certification, product markings and import documents for the manufacturing method and intended use." },
+      ],
+      wallcoverings: [],
+      windowTreatments: [],
+    },
+    payment: PAYMENT_ESTABLISHED,
+    remedyWatch: REMEDY,
+  },
+  ID: {
+    name: { zh: "印尼", en: "Indonesia" },
+    region: "southeast-asia",
+    currency: "IDR",
+    checks: {
+      flooring: [
+        // Ministry of Trade, Directorate General of Foreign Trade, import approval FAQ for textiles, carpets and other textile floor coverings: https://ditjendaglu.kemendag.go.id/faq
+        { zh: "若是地毯或其他紡織地板，依產品分類確認是否需要進口核准及相關申請資料。", en: "For carpets or other textile floor coverings, check whether the product classification calls for import approval and supporting application documents." },
+      ],
+      wallcoverings: [],
+      windowTreatments: [],
+    },
+    payment: PAYMENT_ESTABLISHED,
+    remedyWatch: REMEDY,
+  },
   AU: {
     name: { zh: "澳洲", en: "Australia" },
     region: "oceania",
@@ -224,6 +254,7 @@ export const REGIONS = {
   "north-america": { zh: "北美", en: "North America" },
   europe: { zh: "歐洲", en: "Europe" },
   "east-asia": { zh: "東亞", en: "East Asia" },
+  "southeast-asia": { zh: "東南亞", en: "Southeast Asia" },
   oceania: { zh: "大洋洲", en: "Oceania" },
   "middle-east": { zh: "中東", en: "Middle East" },
   restricted: { zh: "受限制", en: "Restricted" },
