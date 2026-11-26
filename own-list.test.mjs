@@ -82,6 +82,7 @@ check(plan && plan.checksToVerify.length > 0 && !plan.noSeedCategory, "a seed ca
 check(marketPlan({ country: eu, categories: ["other"] }).checksToVerify.length === 0 && marketPlan({ country: eu, categories: ["other"] }).noSeedCategory, "a category outside the seed list gets no invented checks");
 check(marketPlan({ country: "ZZ", categories: ["flooring"] }) === null && marketPlan() === null, "an unknown market gives no plan");
 check(!countryCodes().some((code) => MARKETS[code].region === "restricted"), "the sanctioned placeholder is not offered as a target market");
+check(countryCodes().filter((code) => MARKETS[code].region === "east-asia").join() === "JP,KR", "Japan and South Korea are offered together as East Asia targets");
 check(PRODUCT_CATEGORIES.includes("other") && PRODUCT_CATEGORIES.length === 4, "three seed categories plus other");
 
 // The wording rules for this mode.
