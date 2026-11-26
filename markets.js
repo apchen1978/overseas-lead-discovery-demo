@@ -111,7 +111,8 @@ export const MARKETS = {
       flooring: [
         // Ministry of Land, Infrastructure, Transport and Tourism (MLIT), public building renovation specification §6.8: https://www.mlit.go.jp/gobuild/content/001888823.pdf
         { zh: "公共建築翻修用的塑膠地板：依產品構造與工程規格確認是否適用 JIS A 5705。", en: "For vinyl flooring in public building renovations, check whether JIS A 5705 fits the product construction and project specification." },
-        // Ministry of Agriculture, Forestry and Fisheries (MAFF), JAS 1073-1 §1: https://www.maff.go.jp/j/jas/jas_standard/attach/pdf/index-437.pdf
+        // Ministry of Agriculture, Forestry and Fisheries (MAFF), JAS catalogue, forestry products item 8: https://www.maff.go.jp/j/jas/jas_standard/index.html
+        // MAFF Standards Council minutes, flooring scope discussion: https://www.maff.go.jp/j/jas/kaigi/20240716_gijiroku.html
         { zh: "木質地板：依基材與構造確認是否符合 JAS 1073 的適用範圍。", en: "For wood-based flooring, check whether the core and construction fall within the scope of JAS 1073." },
       ],
       wallcoverings: [
@@ -148,12 +149,12 @@ export const MARKETS = {
       ],
       wallcoverings: [
         // Korea Ministry of Government Legislation, Indoor Air Quality Control Act Art. 11: https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1032875593
-        // Korea Ministry of Government Legislation, Indoor Air Quality Control Act Art. 11-6: https://www.law.go.kr/법령/실내공기질관리법/제11조의6
+        // Korea Ministry of Government Legislation, Indoor Air Quality Control Act Art. 11-6: https://www.law.go.kr/LSW/LsiJoLinkP.do?docType=JO&joNo=001106000&languageType=KO&lsNm=%EC%8B%A4%EB%82%B4%EA%B3%B5%EA%B8%B0%EC%A7%88%20%EA%B4%80%EB%A6%AC%EB%B2%95
         { zh: "依壁紙類型及安裝場所，確認是否需要室內空氣污染物排放的查驗證明及標示。", en: "Check whether the wallpaper type and installation site call for emissions verification and a corresponding label." },
       ],
       windowTreatments: [
         // Korea Ministry of Government Legislation, Fire Facilities Act Enforcement Decree Art. 31: https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1030672451
-        // Korea National Fire Agency, Flame Retardancy Performance Standards Art. 3, via the National Law Information Center: https://www.law.go.kr/lbook/lbFileDownload.do?flExt=pdf&lbookConflSeq=104911&lbookSeq=105473
+        // Korea National Fire Agency, Flame Retardancy Performance Standards Art. 3, via the National Law Information Center: https://www.law.go.kr/admRulInfoP.do?admRulSeq=2100000269722
         { zh: "依場所用途及窗簾或百葉簾類型，確認是否需要阻燃性能檢測資料。", en: "Check whether the building use and curtain or blind type call for flame-retardancy test evidence." },
       ],
     },
